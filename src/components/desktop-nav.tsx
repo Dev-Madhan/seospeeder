@@ -11,10 +11,10 @@ import { LinkItem } from "@/components/sheard";
 
 export function DesktopNav() {
 	return (
-		<NavigationMenu className="hidden md:flex">
-			<NavigationMenuList>
+		<NavigationMenu className="hidden lg:flex">
+			<NavigationMenuList className="gap-2 lg:gap-5 space-x-0">
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent">
+					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold">
 						Products
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
@@ -42,7 +42,7 @@ export function DesktopNav() {
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent">
+					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold">
 						Digital Marketing
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
@@ -75,9 +75,16 @@ export function DesktopNav() {
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuLink asChild className="px-4">
-						<a className="rounded-md p-2 text-sm font-medium hover:bg-accent" href="#">
-							Pricing
+					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
+						<a className="rounded-md p-2 hover:bg-accent" href="#about">
+							About
+						</a>
+					</NavigationMenuLink>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
+					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
+						<a className="rounded-md p-2 hover:bg-accent" href="#contact">
+							Contact
 						</a>
 					</NavigationMenuLink>
 				</NavigationMenuItem>

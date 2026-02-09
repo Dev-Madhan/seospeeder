@@ -78,7 +78,7 @@ export function MobileNav() {
 				aria-controls="mobile-menu"
 				aria-expanded={open}
 				aria-label="Toggle menu"
-				className="md:hidden border-2"
+				className="lg:hidden border-2"
 				onClick={() => setOpen(!open)}
 				size="icon"
 				variant="outline"
@@ -106,7 +106,7 @@ export function MobileNav() {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm md:hidden"
+						className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
 						onClick={() => setOpen(false)}
 					>
 						<motion.div
@@ -241,13 +241,25 @@ export function MobileNav() {
 											</AnimatePresence>
 										</motion.div>
 
-										{/* Pricing Link */}
+										{/* About Link */}
 										<motion.a
 											variants={itemVariants}
-											href="#"
+											href="#about"
 											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
+											onClick={() => setOpen(false)}
 										>
-											<span>Pricing</span>
+											<span>About</span>
+											<ChevronRight className="size-5" />
+										</motion.a>
+
+										{/* Contact Link */}
+										<motion.a
+											variants={itemVariants}
+											href="#contact"
+											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
+											onClick={() => setOpen(false)}
+										>
+											<span>Contact</span>
 											<ChevronRight className="size-5" />
 										</motion.a>
 									</div>
@@ -255,11 +267,11 @@ export function MobileNav() {
 
 								{/* Footer Actions */}
 								<div className="border-t-2 border-border p-4 space-y-3">
-									<Button className="w-full border-2" variant="outline" size="lg">
-										Sign In
+									<Button className="w-full border-2" variant="outline" size="lg" asChild>
+										<a href="#services">Explore Services</a>
 									</Button>
-									<Button className="w-full border-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600" size="lg">
-										Get Started
+									<Button className="w-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity" size="lg" asChild>
+										<a href="#audit">Test Your Website</a>
 									</Button>
 								</div>
 							</div>

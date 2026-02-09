@@ -1,0 +1,242 @@
+import React from 'react'
+import Link from 'next/link'
+import { ArrowRight, ChevronRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import { TextEffect } from '@/components/ui/text-effect'
+import { AnimatedGroup } from '@/components/ui/animated-group'
+
+const transitionVariants = {
+    item: {
+        hidden: {
+            opacity: 0,
+            filter: 'blur(12px)',
+            y: 12,
+        },
+        visible: {
+            opacity: 1,
+            filter: 'blur(0px)',
+            y: 0,
+            transition: {
+                type: 'spring' as const,
+                bounce: 0.3,
+                duration: 1.5,
+            },
+        },
+    },
+}
+
+export default function HeroSection() {
+    return (
+        <>
+            <main className="overflow-hidden">
+                <div
+                    aria-hidden
+                    className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block">
+                    <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
+                    <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
+                    <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
+                </div>
+                <section className="relative overflow-visible">
+                    <div className="relative pt-24 md:pt-32 lg:pt-36">
+                        <div
+                            aria-hidden
+                            className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
+                        />
+
+                        <div className="mx-auto max-w-7xl px-6">
+                            <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+                                <AnimatedGroup variants={transitionVariants}>
+                                    <Link
+                                        href="#audit"
+                                        className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-3 rounded-full border px-4 py-2 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950">
+                                        <span className="text-foreground text-xs md:text-sm font-medium">Boost Your Rankings with AI-Powered SEO</span>
+                                        <span className="dark:border-background block h-4 w-px bg-zinc-300 dark:bg-zinc-700"></span>
+
+                                        <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
+                                            <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
+                                                <span className="flex size-6">
+                                                    <ArrowRight className="m-auto size-3" />
+                                                </span>
+                                                <span className="flex size-6">
+                                                    <ArrowRight className="m-auto size-3" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </AnimatedGroup>
+
+                                <TextEffect
+                                    preset="fade-in-blur"
+                                    speedSegment={0.3}
+                                    as="h1"
+                                    className="mx-auto mt-6 md:mt-10 max-w-4xl text-balance text-[2.75rem] font-bold leading-[1.1] md:text-6xl lg:text-7xl lg:mt-16 xl:text-[5.25rem]">
+                                    Get Found. Get Traffic.
+                                </TextEffect>
+                                <TextEffect
+                                    per="line"
+                                    preset="fade-in-blur"
+                                    speedSegment={0.3}
+                                    delay={0.5}
+                                    as="p"
+                                    className="mx-auto mt-6 md:mt-8 max-w-2xl text-balance text-base md:text-lg text-muted-foreground opacity-90">
+                                    Data-driven SEO strategies designed to outpace your competition, drive qualified leads, and maximize your digital growth.
+                                </TextEffect>
+
+                                <AnimatedGroup
+                                    variants={{
+                                        container: {
+                                            visible: {
+                                                transition: {
+                                                    staggerChildren: 0.1,
+                                                    delayChildren: 0.8,
+                                                },
+                                            },
+                                        },
+                                        ...transitionVariants,
+                                    }}
+                                    className="mt-10 md:mt-12 flex flex-col items-center justify-center gap-3 md:flex-row">
+                                    <Button
+                                        key={1}
+                                        asChild
+                                        size="lg"
+                                        className="w-full sm:w-auto rounded-xl px-8 text-base font-semibold">
+                                        <Link href="#audit">
+                                            <span className="text-nowrap">Test Your Website</span>
+                                        </Link>
+                                    </Button>
+                                    <Button
+                                        key={2}
+                                        asChild
+                                        size="lg"
+                                        variant="outline"
+                                        className="w-full sm:w-auto rounded-xl px-8 text-base">
+                                        <Link href="#services">
+                                            <span className="text-nowrap">Explore Services</span>
+                                        </Link>
+                                    </Button>
+                                </AnimatedGroup>
+                            </div>
+                        </div>
+
+                        <AnimatedGroup
+                            variants={{
+                                container: {
+                                    visible: {
+                                        transition: {
+                                            staggerChildren: 0.05,
+                                            delayChildren: 1,
+                                        },
+                                    },
+                                },
+                                ...transitionVariants,
+                            }}>
+                            <div className="mask-b-from-55% relative mx-auto mt-12 md:mt-16 lg:mt-20 overflow-hidden px-4 md:px-6 lg:px-0">
+                                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-2 md:p-3 shadow-2xl shadow-zinc-950/20 ring-1">
+                                    {/* Multi-layered Blur Gradient to Merge with Section Below */}
+                                    <div className="absolute inset-x-0 bottom-0 z-10 h-24 md:h-32 lg:h-40 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
+                                    <div className="absolute inset-x-0 -bottom-1 h-8 md:h-12 lg:h-16 bg-background z-10 pointer-events-none" />
+
+                                    {/* Blur Gradient Effect Backgrounds */}
+                                    <div className="absolute -top-24 left-1/2 -z-10 h-[20rem] md:h-[30rem] lg:h-[40rem] w-[20rem] md:w-[40rem] lg:w-[60rem] -translate-x-1/2 opacity-20 blur-[80px] md:blur-[100px] dark:opacity-10 pointer-events-none">
+                                        <div className="aspect-[1155/678] w-full bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-40" 
+                                             style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }} 
+                                        />
+                                    </div>
+                                    
+                                    <Image
+                                        className="bg-background aspect-[4/3] md:aspect-[16/10] lg:aspect-[15/8] relative hidden rounded-[10px] md:rounded-2xl dark:block w-full h-auto object-cover object-top"
+                                        src="/assets/images/mail2.webp"
+                                        alt="seospeeder SEO Dashboard Dark Mode"
+                                        width={2700}
+                                        height={1440}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                                        priority
+                                    />
+                                    <Image
+                                        className="z-2 border-border/25 aspect-[4/3] md:aspect-[16/10] lg:aspect-[15/8] relative rounded-[10px] md:rounded-2xl border dark:hidden w-full h-auto object-cover object-top"
+                                        src="/assets/images/mail2-light.webp"
+                                        alt="seospeeder SEO Dashboard Light Mode"
+                                        width={2700}
+                                        height={1440}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                                        priority
+                                    />
+                                </div>
+                            </div>
+                        </AnimatedGroup>
+                    </div>
+                </section>
+                <section className="bg-background pb-16 pt-4 md:pb-32 relative z-20 -mt-12 md:-mt-16 lg:-mt-24">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-32 md:h-40 lg:h-48 bg-background/60 blur-[40px] md:blur-[60px] lg:blur-[80px] pointer-events-none -z-10" />
+                    <div className="absolute inset-x-0 top-0 h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent to-background pointer-events-none -z-10" />
+                    <div className="group relative m-auto max-w-5xl px-6">
+                        <div className="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100 uppercase tracking-widest font-semibold text-xs text-muted-foreground">
+                            <span>Meet Our Loyal Customers</span>
+                        </div>
+                        <div className="group-hover:blur-sm mx-auto mt-12 grid max-w-2xl grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-12 md:gap-y-12 lg:gap-x-16 lg:gap-y-14 transition-all duration-500 group-hover:opacity-30">
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-5 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/nvidia.svg"
+                                    alt="Nvidia Logo"
+                                />
+                            </div>
+
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-4 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/column.svg"
+                                    alt="Column Logo"
+                                />
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-4 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/github.svg"
+                                    alt="GitHub Logo"
+                                />
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-5 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/nike.svg"
+                                    alt="Nike Logo"
+                                />
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-5 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
+                                    alt="Lemon Squeezy Logo"
+                                />
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-4 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/laravel.svg"
+                                    alt="Laravel Logo"
+                                />
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-7 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/lilly.svg"
+                                    alt="Lilly Logo"
+                                />
+                            </div>
+
+                            <div className="flex items-center justify-center">
+                                <img
+                                    className="h-6 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+                                    src="https://html.tailus.io/blocks/customers/openai.svg"
+                                    alt="OpenAI Logo"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </>
+    )
+}

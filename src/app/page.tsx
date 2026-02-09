@@ -1,17 +1,11 @@
 import { Navbar } from "@/components/navbar"
+import HeroSection from "@/components/hero-section"
 
 export default function Home() {
   return (
     <div className="min-h-svh w-full">
       <Navbar />
-      <main className="flex-1">
-        <section className="flex h-screen items-center justify-center">
-          <h1 className="text-4xl font-bold">Hero</h1>
-        </section>
-        <section className="flex h-screen items-center justify-center">
-          <h1 className="text-4xl font-bold">Section</h1>
-        </section>
-      </main>
+      <HeroSection />
     </div>
   )
 }
