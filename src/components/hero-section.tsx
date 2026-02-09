@@ -45,12 +45,12 @@ export default function HeroSection() {
                         />
 
                         <div className="mx-auto max-w-7xl px-6">
-                            <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+                            <div className="text-center mx-auto lg:mt-0">
                                 <AnimatedGroup variants={transitionVariants}>
                                     <Link
                                         href="#audit"
                                         className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-3 rounded-full border px-4 py-2 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950">
-                                        <span className="text-foreground text-xs md:text-sm font-medium">Boost Your Rankings with AI-Powered SEO</span>
+                                        <span className="text-foreground text-xs md:text-sm font-medium">Boost Rankings with AI SEO</span>
                                         <span className="dark:border-background block h-4 w-px bg-zinc-300 dark:bg-zinc-700"></span>
 
                                         <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
@@ -70,8 +70,8 @@ export default function HeroSection() {
                                     preset="fade-in-blur"
                                     speedSegment={0.3}
                                     as="h1"
-                                    className="mx-auto mt-6 md:mt-10 max-w-4xl text-balance text-[2.75rem] font-bold leading-[1.1] md:text-6xl lg:text-7xl lg:mt-16 xl:text-[5.25rem]">
-                                    Get Found. Get Traffic.
+                                    className="mx-auto mt-6 md:mt-10 max-w-5xl text-balance text-[2.5rem] font-bold leading-[1.1] md:text-6xl lg:text-7xl lg:mt-16 xl:text-8xl">
+                                    Boost Your Search Visibility
                                 </TextEffect>
                                 <TextEffect
                                     per="line"
@@ -79,7 +79,7 @@ export default function HeroSection() {
                                     speedSegment={0.3}
                                     delay={0.5}
                                     as="p"
-                                    className="mx-auto mt-6 md:mt-8 max-w-2xl text-balance text-base md:text-lg text-muted-foreground opacity-90">
+                                    className="mx-auto mt-6 md:mt-8 max-w-2xl text-balance text-sm md:text-lg text-muted-foreground opacity-90">
                                     Data-driven SEO strategies designed to outpace your competition, drive qualified leads, and maximize your digital growth.
                                 </TextEffect>
 

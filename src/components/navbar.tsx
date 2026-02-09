@@ -9,6 +9,7 @@ import { Icons } from "@/components/icons"
 import { DesktopNav } from "@/components/desktop-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Button } from "@/components/ui/button"
 
 const INITIAL_WIDTH = "70rem"
 const MAX_WIDTH = "1000px"
@@ -25,24 +26,28 @@ export function Navbar() {
   }, [scrollY])
 
   return (
-    <header
-      className={cn(
-        "sticky z-50 flex justify-center transition-all duration-300",
-        hasScrolled ? "top-4 mx-4 md:top-8" : "top-0 mx-0"
-      )}
+    <motion.header
+      initial={false}
+      animate={{
+        y: hasScrolled ? 16 : 0,
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className="sticky top-0 z-50 flex justify-center w-full px-4"
     >
       <motion.div
-        initial={{ width: INITIAL_WIDTH }}
+        initial={false}
         animate={{ 
+          scaleX: hasScrolled ? 1 : 1, // Placeholder if we wanted to scale
           width: hasScrolled 
-            ? (typeof window !== 'undefined' && window.innerWidth < 1024 ? "94%" : MAX_WIDTH) 
+            ? (typeof window !== 'undefined' && window.innerWidth < 1024 ? "100%" : MAX_WIDTH) 
             : INITIAL_WIDTH 
         }}
-        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="w-full flex justify-center"
       >
         <div
           className={cn(
-            "mx-auto rounded-2xl transition-all duration-300",
+            "w-full rounded-2xl transition-all duration-300",
             hasScrolled
               ? "border-border bg-background/80 border-2 px-2 backdrop-blur-md shadow-lg shadow-zinc-950/5"
               : "max-w-7xl px-4 md:px-8 shadow-none"
@@ -60,12 +65,14 @@ export function Navbar() {
 
             <div className="flex shrink-0 flex-row items-center gap-2 md:gap-3 lg:gap-4">
               <div className="flex items-center">
-                <Link
-                  className="text-primary-foreground hidden h-8 w-fit items-center justify-center rounded-full bg-primary px-4 text-sm font-normal tracking-wide shadow-sm lg:flex transition-opacity hover:opacity-90"
-                  href="#audit"
+                <Button 
+                  asChild 
+                  className="hidden lg:flex rounded-xl font-semibold h-9 px-6 shadow-lg shadow-zinc-950/10"
                 >
-                  Test Your Website
-                </Link>
+                  <Link href="#audit">
+                    Test Your Website
+                  </Link>
+                </Button>
               </div>
               <ThemeToggle />
               <div className="lg:hidden">
@@ -75,6 +82,6 @@ export function Navbar() {
           </div>
         </div>
       </motion.div>
-    </header>
+    </motion.header>
   )
 }
