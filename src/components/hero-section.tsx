@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
+import LogoCloud from '@/components/logo-cloud-2'
 
 const transitionVariants = {
     item: {
@@ -167,75 +168,7 @@ export default function HeroSection() {
                         </AnimatedGroup>
                     </div>
                 </section>
-                <section className="bg-background pb-16 pt-4 md:pb-32 relative z-20 -mt-12 md:-mt-16 lg:-mt-24">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-32 md:h-40 lg:h-48 bg-background/60 blur-[40px] md:blur-[60px] lg:blur-[80px] pointer-events-none -z-10" />
-                    <div className="absolute inset-x-0 top-0 h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent to-background pointer-events-none -z-10" />
-                    <div className="group relative m-auto max-w-5xl px-6">
-                        <div className="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100 uppercase tracking-widest font-semibold text-xs text-muted-foreground">
-                            <span>Meet Our Loyal Customers</span>
-                        </div>
-                        <div className="group-hover:blur-sm mx-auto mt-12 grid max-w-2xl grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-12 md:gap-y-12 lg:gap-x-16 lg:gap-y-14 transition-all duration-500 group-hover:opacity-30">
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-5 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                                    alt="Nvidia Logo"
-                                />
-                            </div>
-
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-4 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/column.svg"
-                                    alt="Column Logo"
-                                />
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-4 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/github.svg"
-                                    alt="GitHub Logo"
-                                />
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-5 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/nike.svg"
-                                    alt="Nike Logo"
-                                />
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-5 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                                    alt="Lemon Squeezy Logo"
-                                />
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-4 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/laravel.svg"
-                                    alt="Laravel Logo"
-                                />
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-7 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/lilly.svg"
-                                    alt="Lilly Logo"
-                                />
-                            </div>
-
-                            <div className="flex items-center justify-center">
-                                <img
-                                    className="h-6 w-auto object-contain dark:invert opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                                    src="https://html.tailus.io/blocks/customers/openai.svg"
-                                    alt="OpenAI Logo"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <LogoCloud />
             </main>
         </>
     )

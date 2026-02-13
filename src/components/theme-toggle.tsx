@@ -3,21 +3,49 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import { motion, AnimatePresence } from "motion/react"
 
 import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button variant="outline" size="icon" className="h-8 w-8 rounded-full border-2">
+        <Sun className="h-[1.2rem] w-[1.2rem]" />
+      </Button>
+    )
+  }
 
   return (
     <Button
       variant="outline"
       size="icon"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="h-8 w-8 cursor-pointer rounded-full border-2"
+      className="h-8 w-8 cursor-pointer rounded-full border-2 relative overflow-hidden"
     >
-      <Sun className="text-primary h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-      <Moon className="text-primary absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+           key={theme}
+           initial={{ y: 20, opacity: 0, rotate: -90 }}
+           animate={{ y: 0, opacity: 1, rotate: 0 }}
+           exit={{ y: -20, opacity: 0, rotate: 90 }}
+           transition={{ duration: 0.2, type: "spring", stiffness: 300, damping: 20 }}
+           className="flex items-center justify-center"
+        >
+          {theme === "light" ? (
+            <Sun className="text-primary h-[1.2rem] w-[1.2rem]" />
+          ) : (
+            <Moon className="text-primary h-[1.2rem] w-[1.2rem]" />
+          )}
+        </motion.div>
+      </AnimatePresence>
       <span className="sr-only">Toggle theme</span>
     </Button>
   )

@@ -139,6 +139,17 @@ export function MobileNav() {
 									animate="open"
 								>
 									<div className="space-y-4">
+										{/* About Link */}
+										<motion.a
+											variants={itemVariants}
+											href="#about"
+											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
+											onClick={() => setOpen(false)}
+										>
+											<span>About</span>
+											<ChevronRight className="size-5" />
+										</motion.a>
+
 										{/* Product Section */}
 										<motion.div variants={itemVariants}>
 											<button
@@ -240,17 +251,6 @@ export function MobileNav() {
 												)}
 											</AnimatePresence>
 										</motion.div>
-
-										{/* About Link */}
-										<motion.a
-											variants={itemVariants}
-											href="#about"
-											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
-											onClick={() => setOpen(false)}
-										>
-											<span>About</span>
-											<ChevronRight className="size-5" />
-										</motion.a>
 
 										{/* Contact Link */}
 										<motion.a

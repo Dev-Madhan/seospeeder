@@ -14,6 +14,13 @@ export function DesktopNav() {
 		<NavigationMenu className="hidden lg:flex">
 			<NavigationMenuList className="gap-2 lg:gap-5 space-x-0">
 				<NavigationMenuItem>
+					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
+						<a className="rounded-md p-2 hover:bg-accent" href="#about">
+							About
+						</a>
+					</NavigationMenuLink>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
 					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold">
 						Products
 					</NavigationMenuTrigger>
@@ -73,13 +80,6 @@ export function DesktopNav() {
 							))}
 						</ul>
 					</NavigationMenuContent>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
-						<a className="rounded-md p-2 hover:bg-accent" href="#about">
-							About
-						</a>
-					</NavigationMenuLink>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
