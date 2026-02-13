@@ -206,16 +206,18 @@ function SetupVisual() {
 						key={i}
 						initial={{ opacity: 0, scale: 1 }}
 						animate={{ 
-							scale: [1, 2],
-							opacity: [0.5, 0]
+							scale: [1, 2.2],
+							opacity: [0, 0.5, 0]
 						}}
 						transition={{ 
 							duration: 3, 
 							repeat: Infinity, 
 							delay: i * 1,
-							ease: "linear" 
+							times: [0, 0.2, 1],
+							ease: "easeOut" 
 						}}
-						className="absolute inset-0 rounded-full border border-primary/20 z-0 pointer-events-none"
+						className="absolute inset-0 rounded-full border border-primary/20 z-0 pointer-events-none will-change-transform"
+						style={{ transform: "translateZ(0)" }}
 					/>
 				))}
 
