@@ -204,17 +204,18 @@ function SetupVisual() {
 				{[0, 1, 2].map((i) => (
 					<motion.div
 						key={i}
+						initial={{ opacity: 0, scale: 1 }}
 						animate={{ 
-							scale: [1.1, 2.1],
+							scale: [1, 2],
 							opacity: [0.5, 0]
 						}}
 						transition={{ 
 							duration: 3, 
 							repeat: Infinity, 
 							delay: i * 1,
-							ease: "easeOut" 
+							ease: "linear" 
 						}}
-						className="absolute inset-0 rounded-full border border-primary/20 z-0"
+						className="absolute inset-0 rounded-full border border-primary/20 z-0 pointer-events-none"
 					/>
 				))}
 
