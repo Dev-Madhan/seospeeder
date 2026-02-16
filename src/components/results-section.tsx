@@ -40,14 +40,7 @@ export function ResultsSection() {
       opacity: 0,
       duration: 1.2,
       ease: 'expo.out',
-    }, '-=0.8')
-    .from('.gsap-metric-item', {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'back.out(1.2)',
-    }, '-=0.6');
+    }, '-=0.8');
 
   }, { scope: containerRef });
 
@@ -209,13 +202,16 @@ function MetricItem({
 
   return (
     <motion.div 
-      className="gsap-metric-item p-4 rounded-2xl transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800/50 cursor-default"
+      className="p-4 rounded-2xl transition-all duration-200 sm:hover:bg-zinc-100 dark:sm:hover:bg-zinc-800/50 active:scale-[0.98] sm:active:scale-100 cursor-default"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
     >
       <div className="flex items-center gap-3 mb-3 min-h-[3rem]">
         <div className="p-2 rounded-lg bg-white dark:bg-zinc-900/50 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800">
            {icon}
         </div>
-        <span className="text-sm font-medium text-zinc-500 uppercase tracking-wider leading-tight">{label}</span>
+        <span className="text-xs sm:text-sm font-medium text-zinc-500 uppercase tracking-wider leading-tight">{label}</span>
       </div>
       <div className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight text-center sm:text-left flex items-center justify-center sm:justify-start">
         {prefix}<span ref={ref}>0</span>{suffix}
