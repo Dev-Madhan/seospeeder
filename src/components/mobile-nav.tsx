@@ -146,7 +146,7 @@ export function MobileNav() {
 											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
 											onClick={() => setOpen(false)}
 										>
-											<span>About</span>
+											<span className="font-inter font-semibold">About</span>
 											<ChevronRight className="size-5" />
 										</motion.a>
 
@@ -156,7 +156,7 @@ export function MobileNav() {
 												onClick={() => toggleSection("product")}
 												className="flex w-full items-center justify-between rounded-lg border-2 border-border bg-card p-3 text-left font-medium transition-colors hover:bg-accent"
 											>
-												<span>Products</span>
+												<span className="font-inter font-semibold">Products</span>
 												<ChevronRight
 													className={cn(
 														"size-5 transition-transform duration-300",
@@ -187,8 +187,8 @@ export function MobileNav() {
 																		<link.icon className="size-5" />
 																	</div>
 																	<div className="flex-1 min-w-0">
-																		<p className="font-medium text-sm">{link.label}</p>
-																		<p className="text-xs text-muted-foreground line-clamp-2">
+																		<p className="font-semibold text-sm font-inter">{link.label}</p>
+																		<p className="text-xs text-muted-foreground line-clamp-2 font-inter font-medium">
 																			{link.description}
 																		</p>
 																	</div>
@@ -206,7 +206,7 @@ export function MobileNav() {
 												onClick={() => toggleSection("company")}
 												className="flex w-full items-center justify-between rounded-lg border-2 border-border bg-card p-3 text-left font-medium transition-colors hover:bg-accent"
 											>
-												<span>Digital Marketing</span>
+												<span className="font-inter font-semibold">Digital Marketing</span>
 												<ChevronRight
 													className={cn(
 														"size-5 transition-transform duration-300",
@@ -237,9 +237,9 @@ export function MobileNav() {
 																		<link.icon className="size-5" />
 																	</div>
 																	<div className="flex-1 min-w-0">
-																		<p className="font-medium text-sm">{link.label}</p>
+																		<p className="font-semibold text-sm font-inter">{link.label}</p>
 																		{link.description && (
-																			<p className="text-xs text-muted-foreground line-clamp-2">
+																			<p className="text-xs text-muted-foreground line-clamp-2 font-inter font-medium">
 																				{link.description}
 																			</p>
 																		)}
@@ -259,7 +259,7 @@ export function MobileNav() {
 											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
 											onClick={() => setOpen(false)}
 										>
-											<span>Contact</span>
+											<span className="font-inter font-semibold">Contact</span>
 											<ChevronRight className="size-5" />
 										</motion.a>
 									</div>
@@ -268,10 +268,10 @@ export function MobileNav() {
 								{/* Footer Actions */}
 								<div className="border-t-2 border-border p-4 space-y-3">
 									<Button className="w-full border-2" variant="outline" size="lg" asChild>
-										<a href="#services">Explore Services</a>
+										<a href="#services" className="font-inter font-semibold">Explore Services</a>
 									</Button>
 									<Button className="w-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity" size="lg" asChild>
-										<a href="#audit">Test Your Website</a>
+										<a href="#audit" className="font-inter font-semibold">Test Your Website</a>
 									</Button>
 								</div>
 							</div>

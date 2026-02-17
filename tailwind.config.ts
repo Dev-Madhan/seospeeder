@@ -21,6 +21,7 @@ const config = {
       fontFamily: {
         primary: ["var(--font-bricolage)", "sans-serif"],
         secondary: ["var(--font-poppins)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,4 +1,5 @@
 import { CSSProperties } from 'react'
+import { Highlighter } from "@/components/ui/highlighter"
 
 export function Stats() {
     return (
@@ -7,9 +8,9 @@ export function Stats() {
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16">
                     <div className="max-w-2xl space-y-4 text-center lg:text-left mx-auto lg:mx-0">
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground">
-                            Unmatched Speed & Reliability
+                            Unmatched <Highlighter isView color="hsl(var(--foreground) / 0.2)">Speed & Reliability</Highlighter>
                         </h2>
-                        <p className="text-muted-foreground text-lg sm:text-xl max-w-xl mx-auto lg:mx-0">
+                        <p className="text-muted-foreground text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 font-inter font-medium">
                             Our infrastructure helps you pass Core Web Vitals instantly, boosting SEO and user retention.
                         </p>
                     </div>
@@ -17,15 +18,15 @@ export function Stats() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full lg:w-auto">
                         <div className="flex flex-col items-center lg:items-start p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 sm:bg-transparent sm:dark:bg-transparent lg:border-l-2 lg:border-zinc-200 lg:dark:border-zinc-800 lg:pl-6 lg:rounded-none">
                             <span className="text-4xl sm:text-5xl font-bold text-foreground tracking-tighter">99+</span>
-                            <span className="text-sm sm:text-base text-muted-foreground mt-1 font-medium">PageSpeed Score</span>
+                            <span className="text-sm sm:text-base text-muted-foreground mt-1 font-semibold font-inter">PageSpeed Score</span>
                         </div>
                         <div className="flex flex-col items-center lg:items-start p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 sm:bg-transparent sm:dark:bg-transparent lg:border-l-2 lg:border-zinc-200 lg:dark:border-zinc-800 lg:pl-6 lg:rounded-none">
                             <span className="text-4xl sm:text-5xl font-bold text-foreground tracking-tighter">&lt;100ms</span>
-                            <span className="text-sm sm:text-base text-muted-foreground mt-1 font-medium">Time to First Byte</span>
+                            <span className="text-sm sm:text-base text-muted-foreground mt-1 font-semibold font-inter">Time to First Byte</span>
                         </div>
                         <div className="flex flex-col items-center lg:items-start p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 sm:bg-transparent sm:dark:bg-transparent lg:border-l-2 lg:border-zinc-200 lg:dark:border-zinc-800 lg:pl-6 lg:rounded-none">
                             <span className="text-4xl sm:text-5xl font-bold text-foreground tracking-tighter">100%</span>
-                            <span className="text-sm sm:text-base text-muted-foreground mt-1 font-medium">Indexation Rate</span>
+                            <span className="text-sm sm:text-base text-muted-foreground mt-1 font-semibold font-inter">Indexation Rate</span>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ export function LinkItem({
 }: React.ComponentProps<"a"> & LinkItemType) {
 	return (
 		<a
-			className={cn("flex gap-x-2 rounded-md p-2 hover:bg-accent", className)}
+			className={cn("flex gap-x-2 rounded-md p-2 hover:bg-accent font-inter font-medium", className)}
 			href={href}
 			{...props}
 		>
@@ -26,8 +26,8 @@ export function LinkItem({
 				<Icon className="size-5 text-foreground" />
 			</div>
 			<div className="flex flex-col items-start justify-center">
-				<span className="font-medium">{label}</span>
-				<span className="line-clamp-2 text-muted-foreground text-xs">
+				<span className="font-semibold font-inter">{label}</span>
+				<span className="line-clamp-2 text-muted-foreground text-xs font-inter font-medium">
 					{description}
 				</span>
 			</div>

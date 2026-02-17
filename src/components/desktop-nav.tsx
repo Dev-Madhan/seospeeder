@@ -15,13 +15,13 @@ export function DesktopNav() {
 			<NavigationMenuList className="gap-2 lg:gap-5 space-x-0">
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
-						<a className="rounded-md p-2 hover:bg-accent" href="#about">
+						<a className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="#about">
 							About
 						</a>
 					</NavigationMenuLink>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold">
+					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold font-inter">
 						Products
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
@@ -36,7 +36,7 @@ export function DesktopNav() {
 							))}
 						</ul>
 						<div className="border-t p-4">
-							<p className="text-muted-foreground text-sm">
+							<p className="text-muted-foreground text-sm font-inter font-medium">
 								Need help optimizing?{" "}
 								<a
 									className="font-medium text-foreground hover:underline"
@@ -49,13 +49,13 @@ export function DesktopNav() {
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold">
+					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold font-inter">
 						Digital Marketing
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid w-[500px] gap-3 p-4 md:w-[600px] md:grid-cols-3 lg:w-[700px]">
 							<div className="space-y-3 col-span-3">
-								<h4 className="text-sm font-medium leading-none px-2">SEO Services</h4>
+								<h4 className="text-sm font-semibold leading-none px-2 font-inter">SEO Services</h4>
 							</div>
 							{companyLinks.map((item, i) => (
 								<NavigationMenuLink
@@ -66,16 +66,16 @@ export function DesktopNav() {
 								</NavigationMenuLink>
 							))}
 							<div className="space-y-3 col-span-3 border-t pt-3">
-								<h4 className="text-sm font-medium leading-none px-2">Quick Links</h4>
+								<h4 className="text-sm font-semibold leading-none px-2 font-inter">Quick Links</h4>
 							</div>
 							{companyLinks2.map((item, i) => (
 								<NavigationMenuLink
-									className="flex flex-row items-center gap-2 rounded-md p-2 hover:bg-accent border-2 border-border"
+									className="flex flex-row items-center gap-2 rounded-md p-2 hover:bg-accent border-2 border-border font-inter font-medium"
 									href={item.href}
 									key={`item-${item.label}-${i}`}
 								>
 									<item.icon className="size-4 text-foreground" />
-									<span className="font-medium text-sm">{item.label}</span>
+									<span className="font-semibold text-sm font-inter">{item.label}</span>
 								</NavigationMenuLink>
 							))}
 						</ul>
@@ -83,7 +83,7 @@ export function DesktopNav() {
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
-						<a className="rounded-md p-2 hover:bg-accent" href="#contact">
+						<a className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="#contact">
 							Contact
 						</a>
 					</NavigationMenuLink>

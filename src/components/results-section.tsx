@@ -52,7 +52,7 @@ export function ResultsSection() {
           <h2 className="gsap-fade-up text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Engineered for instant rankings.
           </h2>
-          <p className="gsap-fade-up text-lg md:text-xl text-zinc-600 dark:text-zinc-400">
+          <p className="gsap-fade-up text-lg md:text-xl text-zinc-600 dark:text-zinc-400 font-inter font-medium">
             Performance is the new SEO. See how we transform sluggish sites into lightning-fast experiences that Google loves.
           </p>
         </div>
@@ -79,7 +79,7 @@ export function ResultsSection() {
                 />
                 <ImageComparisonSlider className="w-0.5 bg-white/30 backdrop-blur-sm" />
               </ImageComparison>
-              <p className="text-center text-sm text-zinc-500 font-medium font-primary">
+              <p className="text-center text-sm text-zinc-500 font-semibold font-inter">
                 Drag the slider to compare standard optimization vs. SEO Speeder
               </p>
             </div>
@@ -131,7 +131,7 @@ export function ResultsSection() {
                   <span className="font-semibold text-zinc-900 dark:text-zinc-100">DevScale Migration</span>
                   <span className="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">Verified</span>
                 </div>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed relative z-10">
+                <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed relative z-10 font-inter font-medium">
                   "After switching to SEO Speeder, DevScale saw their indexation rate hit 100% in 48 hours. The drop in latency directly correlated with a 20% boost in time-on-page."
                 </p>
               </motion.div>
@@ -140,7 +140,7 @@ export function ResultsSection() {
               <div className="gsap-fade-up flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                 <div className="space-y-1">
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Stop losing traffic to slower competitors.</h3>
-                  <p className="text-sm text-zinc-500">No credit card required for audit.</p>
+                  <p className="text-sm text-zinc-500 font-inter font-medium">No credit card required for audit.</p>
                 </div>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
@@ -211,12 +211,12 @@ function MetricItem({
         <div className="p-2 rounded-lg bg-white dark:bg-zinc-900/50 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800">
            {icon}
         </div>
-        <span className="text-xs sm:text-sm font-medium text-zinc-500 uppercase tracking-wider leading-tight">{label}</span>
+        <span className="text-xs sm:text-sm font-semibold text-zinc-500 uppercase tracking-wider leading-tight font-inter">{label}</span>
       </div>
       <div className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight text-center sm:text-left flex items-center justify-center sm:justify-start">
         {prefix}<span ref={ref}>0</span>{suffix}
       </div>
-      <p className="text-sm text-zinc-500 leading-snug hidden sm:block">{description}</p>
+      <p className="text-sm text-zinc-500 leading-snug hidden sm:block font-inter font-medium">{description}</p>
     </motion.div>
   );
 }

@@ -51,7 +51,7 @@ export default function HeroSection() {
                                     <Link
                                         href="#audit"
                                         className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-3 rounded-full border px-4 py-2 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950">
-                                        <span className="text-foreground text-xs md:text-sm font-medium">Boost Rankings with AI SEO</span>
+                                        <span className="text-foreground text-xs md:text-sm font-semibold font-inter">Boost Rankings with AI SEO</span>
                                         <span className="dark:border-background block h-4 w-px bg-zinc-300 dark:bg-zinc-700"></span>
 
                                         <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
@@ -80,7 +80,7 @@ export default function HeroSection() {
                                     speedSegment={0.3}
                                     delay={0.5}
                                     as="p"
-                                    className="mx-auto mt-6 md:mt-8 max-w-2xl text-balance text-sm md:text-lg text-muted-foreground opacity-90">
+                                    className="mx-auto mt-6 md:mt-8 max-w-2xl text-balance text-sm md:text-lg text-muted-foreground opacity-90 font-inter font-medium">
                                     Data-driven SEO strategies designed to outpace your competition, drive qualified leads, and maximize your digital growth.
                                 </TextEffect>
 
@@ -101,7 +101,7 @@ export default function HeroSection() {
                                         key={1}
                                         asChild
                                         size="lg"
-                                        className="w-full sm:w-auto rounded-xl px-8 text-base font-semibold">
+                                        className="w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter">
                                         <Link href="#audit">
                                             <span className="text-nowrap">Test Your Website</span>
                                         </Link>
@@ -111,7 +111,7 @@ export default function HeroSection() {
                                         asChild
                                         size="lg"
                                         variant="outline"
-                                        className="w-full sm:w-auto rounded-xl px-8 text-base">
+                                        className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold">
                                         <Link href="#services">
                                             <span className="text-nowrap">Explore Services</span>
                                         </Link>

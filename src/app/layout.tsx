@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Poppins } from "next/font/google";
+import { Bricolage_Grotesque, Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -16,6 +16,12 @@ const poppins = Poppins({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "seospeeder | AI-Powered SEO Services",
   description: "Skyrocket your search visibility and traffic with data-driven SEO strategies from seospeeder.",
@@ -28,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${bricolageGrotesque.variable} ${poppins.variable} font-primary antialiased`}>
+      <body className={`${bricolageGrotesque.variable} ${poppins.variable} ${inter.variable} font-primary antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

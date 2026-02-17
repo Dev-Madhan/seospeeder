@@ -69,7 +69,7 @@ export function Navbar() {
                   asChild 
                   className="hidden lg:flex rounded-xl font-semibold h-9 px-6 shadow-lg shadow-zinc-950/10"
                 >
-                  <Link href="#audit">
+                  <Link href="#audit" className="font-inter font-semibold">
                     Test Your Website
                   </Link>
                 </Button>

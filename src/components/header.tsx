@@ -25,8 +25,8 @@ export function Header() {
 					<DesktopNav />
 				</div>
 				<div className="hidden items-center gap-2 md:flex">
-					<Button variant="outline">Sign In</Button>
-					<Button>Get Started</Button>
+					<Button variant="outline" className="font-inter font-semibold">Sign In</Button>
+					<Button className="font-inter font-semibold">Get Started</Button>
 				</div>
 				<MobileNav />
 			</nav>

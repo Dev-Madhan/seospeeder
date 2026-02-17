@@ -189,7 +189,7 @@ function FeatureDescription({
 	...props
 }: React.ComponentProps<"p">) {
 	return (
-		<p className={cn("text-muted-foreground text-sm", className)} {...props} />
+		<p className={cn("text-muted-foreground text-sm font-inter font-medium", className)} {...props} />
 	);
 }
 
@@ -366,7 +366,7 @@ function ReportsVisual() {
 					<div className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-primary">
 						<TrendingUp className="size-3" />
 					</div>
-					<div className="font-bold text-foreground text-[10px] md:text-xs">Goal: Top 3</div>
+					<div className="font-bold text-foreground text-[10px] md:text-xs font-inter">Goal: Top 3</div>
 				</div>
 				
 				{mounted ? (
