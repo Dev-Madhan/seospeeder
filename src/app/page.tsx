@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import HeroSection from "@/components/hero-section"
+import LogoCloud from "@/components/logo-cloud-2"
 import { FeatureSection } from "@/components/feature-section"
 import { ResultsSection } from "@/components/results-section"
 import { Stats } from "@/components/stats-2"
@@ -12,10 +13,11 @@ export default function Home() {
     <div className="min-h-svh w-full">
       <Navbar />
       <HeroSection />
-      <Stats />
-      <FeatureSection />
+      <LogoCloud />
       <ResultsSection />
+      <FeatureSection />
       <ProvenSection />
+      <Stats />
       <TestimonialSection />
       <FaqsSection />
     </div>

@@ -168,7 +168,6 @@ export default function HeroSection() {
                         </AnimatedGroup>
                     </div>
                 </section>
-                <LogoCloud />
             </main>
         </>
     )
