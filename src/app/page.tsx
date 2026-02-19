@@ -7,6 +7,7 @@ import { Stats } from "@/components/stats-2"
 import { ProvenSection } from "@/components/proven-section"
 import { TestimonialSection } from "@/components/shake-testimonial-card"
 import { FaqsSection } from "@/components/faqs"
+import FooterSection from "@/components/footer"
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Stats />
       <TestimonialSection />
       <FaqsSection />
+      <FooterSection />
     </div>
   )
 }

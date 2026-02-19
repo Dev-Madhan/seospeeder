@@ -11,7 +11,7 @@ import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 
-const INITIAL_WIDTH = "70rem"
+const INITIAL_WIDTH = "72rem"
 const MAX_WIDTH = "1000px"
 
 export function Navbar() {
@@ -54,9 +54,9 @@ export function Navbar() {
           )}
         >
           <div className="flex h-[56px] items-center justify-between p-2 md:px-8">
-            <Link href="/" className="flex items-center gap-3">
-              <Icons.logo className="-mt-1 size-4 md:size-6" />
-              <p className="text-primary ml-1 text-lg font-bold tracking-tight">
+            <Link href="/" className="flex items-center gap-2 group transition-opacity hover:opacity-80">
+              <Icons.logo className="-mt-1 size-5 md:size-6 text-primary" />
+              <p className="text-primary text-lg font-bold tracking-tight">
                 SEO Speeder
               </p>
             </Link>

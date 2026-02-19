@@ -12,7 +12,7 @@ import { LinkItem } from "@/components/sheard";
 export function DesktopNav() {
 	return (
 		<NavigationMenu className="hidden lg:flex">
-			<NavigationMenuList className="gap-2 lg:gap-5 space-x-0">
+			<NavigationMenuList className="gap-2 lg:gap-1 space-x-0">
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
 						<a className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="#about">
@@ -22,7 +22,7 @@ export function DesktopNav() {
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold font-inter">
-						Products
+						Optimization
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid w-[500px] gap-3 p-4 md:w-[600px] md:grid-cols-3 lg:w-[700px]">

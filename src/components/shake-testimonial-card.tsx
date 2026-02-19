@@ -68,8 +68,6 @@ export function TestimonialSection() {
   const container = useRef<HTMLDivElement>(null);
   const [cards, setCards] = useState(testimonials);
   const [isAnimating, setIsAnimating] = useState(false);
-  const cursorRef = useRef<HTMLDivElement>(null);
-
   const [isIntroComplete, setIsIntroComplete] = useState(false);
 
   // Auto-rotate testimonials - Only start after intro is complete
@@ -95,7 +93,7 @@ export function TestimonialSection() {
     return () => clearInterval(interval);
   }, [handleNext, isIntroComplete]);
 
-  // GSAP Entrance Animations & Mouse Interaction
+  // GSAP Entrance Animations
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -157,27 +155,6 @@ export function TestimonialSection() {
         "-=0.4"
       );
 
-      // Mouse Move Effect
-      const handleMouseMove = (e: MouseEvent) => {
-          if (!container.current || !cursorRef.current) return;
-          const rect = container.current.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-
-          gsap.to(cursorRef.current, {
-              x: x,
-              y: y,
-              duration: 0.8,
-              ease: "power2.out"
-          });
-      };
-
-      container.current?.addEventListener("mousemove", handleMouseMove);
-      
-      return () => {
-          container.current?.removeEventListener("mousemove", handleMouseMove);
-      }
-
   }, { scope: container });
 
   return (
@@ -194,11 +171,9 @@ export function TestimonialSection() {
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
       
-      {/* Interactive Cursor Spotlight */}
+      {/* Static Ambient Glow */}
       <div 
-        ref={cursorRef} 
-        className="absolute w-96 h-96 bg-primary/20 blur-[100px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2 mix-blend-screen"
-        style={{ left: "50%", top: "50%" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none opacity-40 dark:opacity-60"
       />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">

@@ -150,13 +150,13 @@ export function MobileNav() {
 											<ChevronRight className="size-5" />
 										</motion.a>
 
-										{/* Product Section */}
+										{/* Optimization Section */}
 										<motion.div variants={itemVariants}>
 											<button
 												onClick={() => toggleSection("product")}
 												className="flex w-full items-center justify-between rounded-lg border-2 border-border bg-card p-3 text-left font-medium transition-colors hover:bg-accent"
 											>
-												<span className="font-inter font-semibold">Products</span>
+												<span className="font-inter font-semibold">Optimization</span>
 												<ChevronRight
 													className={cn(
 														"size-5 transition-transform duration-300",
