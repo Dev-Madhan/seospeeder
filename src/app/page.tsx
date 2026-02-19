@@ -4,6 +4,7 @@ import { FeatureSection } from "@/components/feature-section"
 import { ResultsSection } from "@/components/results-section"
 import { Stats } from "@/components/stats-2"
 import { ProvenSection } from "@/components/proven-section"
+import { TestimonialSection } from "@/components/shake-testimonial-card"
 import { FaqsSection } from "@/components/faqs"
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <FeatureSection />
       <ResultsSection />
       <ProvenSection />
+      <TestimonialSection />
       <FaqsSection />
     </div>
   )
