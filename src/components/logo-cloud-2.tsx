@@ -13,60 +13,60 @@ import { Spotify } from '@/components/ui/svgs/spotify'
 const searchLogos: React.ReactNode[] = [
     <Bolt
         key="bolt"
-        className="h-3.5 w-full"
+        className="h-3.5 lg:h-5 w-full"
     />,
     <Beacon
         key="beacon"
-        className="h-3.5 w-full"
+        className="h-3.5 lg:h-5 w-full"
     />,
     <Hulu
         key="hulu"
-        className="h-3.5 w-full"
+        className="h-3.5 lg:h-5 w-full"
     />,
 ]
 
 const performanceLogos: React.ReactNode[] = [
     <Supabase
         key="supabase"
-        className="size-5"
+        className="size-5 lg:size-7"
     />,
     <Spotify
         key="spotify"
-        className="h-5 w-full"
+        className="h-5 lg:h-7 w-full"
     />,
     <VercelFull
         key="vercel"
-        className="h-3.5 w-full"
+        className="h-3.5 lg:h-5 w-full"
     />,
 ]
 
 const aiToolsLogos: React.ReactNode[] = [
     <Hulu
         key="hulu"
-        className="h-3.5 w-full"
+        className="h-3.5 lg:h-5 w-full"
     />,
     <VercelFull
         key="vercel"
-        className="h-3.5 w-full"
+        className="h-3.5 lg:h-5 w-full"
     />,
     <Spotify
         key="spotify"
-        className="h-5 w-full"
+        className="h-5 lg:h-7 w-full"
     />,
 ]
 
 const analyticsLogos: React.ReactNode[] = [
     <Cisco
         key="cisco"
-        className="h-5 w-full"
+        className="h-5 lg:h-7 w-full"
     />,
     <Hulu
         key="hulu"
-        className="h-3.5 w-full"
+        className="h-3.5 lg:h-5 w-full"
     />,
     <Spotify
         key="spotify"
-        className="h-5 w-full"
+        className="h-5 lg:h-7 w-full"
     />,
 ]
 
