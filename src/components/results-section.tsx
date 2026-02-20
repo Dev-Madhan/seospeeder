@@ -12,12 +12,19 @@ import { motion, useInView, useSpring, useMotionValue, useTransform, animate } f
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from 'next-themes';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function ResultsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const metricsRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -61,21 +68,23 @@ export function ResultsSection() {
           {/* Left Column: Image Comparison */}
             <div className="gsap-image-reveal space-y-4">
               <ImageComparison
-                className="aspect-[16/10] w-full rounded-lg border border-zinc-200 dark:border-zinc-800"
+                className="aspect-[1905/1080] w-full rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
                 enableHover
                 springOptions={{
                   bounce: 0.3,
                 }}
               >
                 <ImageComparisonImage
-                  src="/assets/images/mp_dark.png"
+                  src={mounted && resolvedTheme !== 'dark' ? "/assets/images/failure-light.png" : "/assets/images/failure-dark.png"}
                   alt="Standard Optimization"
-                  position="left"
+                  position="right"
+                  className="object-contain"
                 />
                 <ImageComparisonImage
-                  src="/assets/images/mp_light.png"
+                  src={mounted && resolvedTheme !== 'dark' ? "/assets/images/success-light.png" : "/assets/images/success-dark.png"}
                   alt="SEO Speeder Optimization"
-                  position="right"
+                  position="left"
+                  className="object-contain"
                 />
                 <ImageComparisonSlider className="w-0.5 bg-white/30 backdrop-blur-sm" />
               </ImageComparison>
