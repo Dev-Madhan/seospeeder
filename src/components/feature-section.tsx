@@ -10,9 +10,6 @@ import {
 	LayoutDashboard, 
 	Globe,
 } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import {
 	CartesianGrid,
@@ -28,7 +25,7 @@ import {
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 const rankingData = [
 	{ month: "Jan", google: 45, bing: 52 },
@@ -83,67 +80,7 @@ const features = [
 export function FeatureSection() {
 	const container = useRef<HTMLDivElement>(null);
 
-	useGSAP(() => {
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: container.current,
-				start: "top 80%",
-				toggleActions: "play none none reverse",
-			},
-		});
-
-		// 1. Entrance for the cards themselves
-		tl.from(".feature-card", {
-			y: 40,
-			opacity: 0,
-			duration: 0.6,
-			stagger: 0.1,
-			ease: "power2.out",
-		});
-
-		// 2. Setup Visual Animation (Zap)
-		tl.from(".visual-zap", {
-			scale: 0.5,
-			rotate: -20,
-			opacity: 0,
-			duration: 0.8,
-			ease: "back.out(2)",
-		}, "-=0.3");
-
-		// 3. AI Intelligence Animation (Sparkles)
-		tl.from(".visual-sparkles", {
-			y: 20,
-			opacity: 0,
-			duration: 0.8,
-			ease: "power3.out",
-		}, "-=0.6");
-
-		// 4. Rankings Animation (Chart Container)
-		tl.from(".visual-rankings", {
-			x: -20,
-			opacity: 0,
-			duration: 1,
-			ease: "power2.out",
-		}, "-=0.8");
-
-		// 5. Dashboard Animation (Image Slide)
-		tl.from(".visual-dashboard-mock", {
-			x: 100,
-			y: 50,
-			opacity: 0,
-			duration: 1,
-			ease: "power4.out",
-		}, "-=1");
-
-		// 6. Globe Animation
-		tl.from(".visual-globe", {
-			scale: 0.8,
-			opacity: 0,
-			duration: 1.2,
-			ease: "expo.out",
-		}, "-=1");
-
-	}, { scope: container });
+	// Removed intro animations as per user request
 
 	return (
 		<div ref={container} className="relative mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6 px-6 md:px-8 lg:px-4 py-16 md:py-24 overflow-hidden md:overflow-visible">

@@ -5,8 +5,6 @@ import { cn } from "@/lib/utils";
 import { SearchIcon, X, Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Highlighter } from "@/components/ui/highlighter";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 export function FaqsSection() {
 	const [searchTerm, setSearchTerm] = React.useState("");
@@ -32,33 +30,7 @@ export function FaqsSection() {
 		return matchesCategory && matchesSearch;
 	});
 
-	useGSAP(() => {
-		const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-
-		tl.fromTo(
-			titleRef.current,
-			{ y: 30, opacity: 0 },
-			{ y: 0, opacity: 1, duration: 1.2 }
-		)
-			.fromTo(
-				".faq-search-bar",
-				{ y: 20, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 1 },
-				"-=0.8"
-			)
-			.fromTo(
-				".faq-category-btn",
-				{ y: 20, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.8, stagger: 0.08 },
-				"-=0.6"
-			)
-			.fromTo(
-				".faq-item",
-				{ y: 20, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
-				"-=0.4"
-			);
-	}, { scope: containerRef });
+	// Removed intro animations as per user request
 
 	return (
 		<section ref={containerRef} className="py-16 md:py-24 bg-background w-full overflow-hidden">

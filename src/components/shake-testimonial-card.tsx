@@ -3,13 +3,11 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CheckCircle2, Star, Zap, Shield, TrendingUp } from "lucide-react";
+import { CheckCircle2, Star, Zap, Shield, TrendingUp, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { AvatarStack } from "@/components/ui/avatar-stack";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 interface Testimonial {
   id: number;
@@ -93,69 +91,10 @@ export function TestimonialSection() {
     return () => clearInterval(interval);
   }, [handleNext, isIntroComplete]);
 
-  // GSAP Entrance Animations
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top 80%",
-        toggleActions: "play none none none", // Changed to not reverse for stability
-      },
-      onComplete: () => setIsIntroComplete(true),
-    });
-
-    // Staggered text reveal for title
-    const titleWords = document.querySelectorAll(".section-title-word");
-    tl.from(titleWords, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-    })
-      .from(
-        ".section-desc",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        "-=0.4"
-      )
-      .from(
-        ".feature-badge",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "power2.out",
-        },
-        "-=0.6"
-      )
-      .from(
-        ".testimonial-card-container",
-        {
-          opacity: 0,
-          y: 40,
-          duration: 1,
-          ease: "power3.out", // Smoother ease without overshoot
-        },
-        "-=0.6"
-      )
-      .from(
-        ".trust-stats",
-        {
-           y: 20,
-           opacity: 0,
-           duration: 0.6,
-           ease: "power2.out"
-        },
-        "-=0.4"
-      );
-
-  }, { scope: container });
+  // Intro animations removed as per user request
+  useEffect(() => {
+    setIsIntroComplete(true);
+  }, []);
 
   return (
     <section ref={container} className="relative w-full py-16 md:py-24 overflow-hidden bg-background">
@@ -180,30 +119,6 @@ export function TestimonialSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left Content */}
           <div className="flex flex-col gap-8 max-w-2xl">
-             <div className="flex flex-wrap gap-4">
-                {[
-                  { icon: Zap, text: "Lightning Fast", color: "text-amber-500", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-                  { icon: Shield, text: "Enterprise Security", color: "text-blue-500", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-                  { icon: TrendingUp, text: "Proven Growth", color: "text-emerald-500", bg: "bg-emerald-500/10", border: "border-emerald-500/20" }
-                ].map((badge, i) => (
-                  <motion.div
-                    key={i}
-                    className={cn(
-                      "feature-badge flex items-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border-2 cursor-default",
-                      "bg-background/50 backdrop-blur-md shadow-sm transition-all duration-300",
-                      "hover:shadow-md hover:bg-background/80 hover:scale-105",
-                      badge.color, badge.border
-                    )}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                     <div className={cn("p-1 rounded-full", badge.bg)}>
-                       <badge.icon className="w-3.5 h-3.5" />
-                     </div>
-                     <span className="text-xs font-semibold font-inter text-foreground/80">{badge.text}</span>
-                  </motion.div>
-                ))}
-             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
               <span className="section-title-word inline-block mr-2 md:mr-3">Trusted</span>
@@ -217,22 +132,11 @@ export function TestimonialSection() {
             </p>
             
              <div className="trust-stats flex items-center gap-6 pt-4 border-t border-border/50">
-                <div className="flex -space-x-4">
-                   {["male-3.png", "female-3.png", "male-1.png", "female-1.png"].map((img, i) => (
-                     <div key={i} className="relative w-12 h-12 rounded-full border-4 border-background bg-muted overflow-hidden shadow-sm relative z-0 transition-transform hover:scale-110 hover:z-10 duration-300">
-                        <Image 
-                          src={`/assets/avatars/${img}`} 
-                          alt="User" 
-                          fill
-                          className="object-cover"
-                          sizes="48px"
-                        />
-                     </div>
-                   ))}
-                   <div className="w-12 h-12 rounded-full border-4 border-background bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-0">
-                       +2k
-                   </div>
-                </div>
+                <AvatarStack 
+                  avatars={["male-3.png", "female-3.png", "male-1.png", "female-1.png"]}
+                  totalCount="+2k"
+                  size="lg"
+                />
                 <div className="flex flex-col">
                    <div className="flex items-center gap-1 text-yellow-500">
                       {[1, 2, 3, 4, 5].map((s) => (

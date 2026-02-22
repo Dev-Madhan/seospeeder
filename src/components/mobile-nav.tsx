@@ -8,6 +8,9 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { companyLinks, companyLinks2, productLinks } from "@/components/nav-links";
 import { motion, AnimatePresence } from "motion/react";
+import Link from "next/link";
+
+const MotionLink = motion.create(Link);
 
 export function MobileNav() {
 	const [open, setOpen] = React.useState(false);
@@ -140,15 +143,15 @@ export function MobileNav() {
 								>
 									<div className="space-y-4">
 										{/* About Link */}
-										<motion.a
+										<MotionLink
 											variants={itemVariants}
-											href="#about"
+											href="/about"
 											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
 											onClick={() => setOpen(false)}
 										>
 											<span className="font-inter font-semibold">About</span>
 											<ChevronRight className="size-5" />
-										</motion.a>
+										</MotionLink>
 
 										{/* Optimization Section */}
 										<motion.div variants={itemVariants}>
@@ -175,13 +178,14 @@ export function MobileNav() {
 													>
 														<div className="mt-2 space-y-2 pl-2">
 															{productLinks.map((link, i) => (
-																<motion.a
+																<MotionLink
 																	key={i}
 																	href={link.href}
 																	initial={{ opacity: 0, x: -10 }}
 																	animate={{ opacity: 1, x: 0 }}
 																	transition={{ delay: i * 0.05 }}
 																	className="flex items-start gap-3 rounded-lg border-2 border-border bg-card p-3 transition-all hover:bg-accent hover:border-accent-foreground/20"
+																	onClick={() => setOpen(false)}
 																>
 																	<div className="flex size-10 shrink-0 items-center justify-center rounded-md border-2 bg-background">
 																		<link.icon className="size-5" />
@@ -192,7 +196,7 @@ export function MobileNav() {
 																			{link.description}
 																		</p>
 																	</div>
-																</motion.a>
+																</MotionLink>
 															))}
 														</div>
 													</motion.div>
@@ -225,13 +229,14 @@ export function MobileNav() {
 													>
 														<div className="mt-2 space-y-2 pl-2">
 															{[...companyLinks, ...companyLinks2].map((link, i) => (
-																<motion.a
+																<MotionLink
 																	key={i}
 																	href={link.href}
 																	initial={{ opacity: 0, x: -10 }}
 																	animate={{ opacity: 1, x: 0 }}
 																	transition={{ delay: i * 0.05 }}
 																	className="flex items-center gap-3 rounded-lg border-2 border-border bg-card p-3 transition-all hover:bg-accent hover:border-accent-foreground/20"
+																	onClick={() => setOpen(false)}
 																>
 																	<div className="flex size-10 shrink-0 items-center justify-center rounded-md border-2 bg-background">
 																		<link.icon className="size-5" />
@@ -244,7 +249,7 @@ export function MobileNav() {
 																			</p>
 																		)}
 																	</div>
-																</motion.a>
+																</MotionLink>
 															))}
 														</div>
 													</motion.div>
@@ -253,25 +258,25 @@ export function MobileNav() {
 										</motion.div>
 
 										{/* Contact Link */}
-										<motion.a
+										<MotionLink
 											variants={itemVariants}
-											href="#contact"
+											href="/contact"
 											className="flex items-center justify-between rounded-lg border-2 border-border bg-card p-3 font-medium transition-colors hover:bg-accent"
 											onClick={() => setOpen(false)}
 										>
 											<span className="font-inter font-semibold">Contact</span>
 											<ChevronRight className="size-5" />
-										</motion.a>
+										</MotionLink>
 									</div>
 								</motion.div>
 
 								{/* Footer Actions */}
 								<div className="border-t-2 border-border p-4 space-y-3">
 									<Button className="w-full border-2" variant="outline" size="lg" asChild>
-										<a href="#services" className="font-inter font-semibold">Explore Services</a>
+										<Link href="/services/seo" className="font-inter font-semibold" onClick={() => setOpen(false)}>Explore Services</Link>
 									</Button>
 									<Button className="w-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity" size="lg" asChild>
-										<a href="#audit" className="font-inter font-semibold">Test Your Website</a>
+										<Link href="/contact" className="font-inter font-semibold" onClick={() => setOpen(false)}>Test Your Website</Link>
 									</Button>
 								</div>
 							</div>

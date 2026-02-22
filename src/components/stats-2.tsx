@@ -1,5 +1,9 @@
+'use client';
 import { CSSProperties } from 'react'
 import { Highlighter } from "@/components/ui/highlighter"
+import { Area, AreaChart, CartesianGrid } from 'recharts'
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import { motion } from 'motion/react'
 
 export function Stats() {
     return (
@@ -8,7 +12,7 @@ export function Stats() {
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16">
                     <div className="max-w-2xl space-y-4 text-center lg:text-left mx-auto lg:mx-0">
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground">
-                            Unmatched <Highlighter isView color="hsl(var(--foreground) / 0.2)">Speed & Reliability</Highlighter>
+                            Unmatched <Highlighter color="hsl(var(--foreground) / 0.1)" padding={0} strokeWidth={1} iterations={1}>Speed & Reliability</Highlighter>
                         </h2>
                         <p className="text-muted-foreground text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 font-inter font-medium">
                             Our infrastructure helps you pass Core Web Vitals instantly, boosting SEO and user retention.
@@ -32,24 +36,150 @@ export function Stats() {
                 </div>
             </div>
 
-            <div
-                aria-hidden
-                className="mt-12 sm:mt-20 mx-auto flex h-48 sm:h-64 lg:h-80 w-full max-w-7xl items-end justify-between gap-px px-4 sm:px-6 lg:px-8 opacity-90"
+            <motion.div
+                className="mt-12 sm:mt-20 mx-auto h-[300px] sm:h-[400px] w-full max-w-7xl px-4 sm:px-6 lg:px-8"
             >
-                {Array.from({ length: 80 }, (_, i) => {
-                    const progress = i / 79
-                    const base = Math.pow(progress, 2.2)
-                    const noise = Math.sin(i * 0.7) * 0.08 + Math.sin(i * 1.3) * 0.05
-                    const height = Math.min(1, Math.max(0.05, base + noise * (0.3 + progress * 0.7)))
-                    return (
-                        <div
-                            key={i}
-                            className="after:h-[var(--line-height)] after:bg-foreground/20 hover:after:bg-primary relative h-full w-full max-w-[6px] rounded-t-sm duration-300 ease-out before:absolute before:inset-0 before:-inset-x-2 after:absolute after:bottom-0 after:left-0 after:right-0 after:rounded-t-sm after:transition-colors"
-                            style={{ '--line-height': `${height * 100}%` } as CSSProperties}
-                        />
-                    )
-                })}
-            </div>
+                <div className="h-full w-full rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/30 p-4 sm:p-8 backdrop-blur-xl overflow-hidden shadow-2xl relative group">
+                    <div className="absolute top-8 left-8 z-10">
+                      <div className="flex items-center gap-2 w-fit">
+                        <div className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 font-inter tracking-tight">Real-time Performance Metrics</span>
+                      </div>
+                    </div>
+                    <MonitoringChart />
+                </div>
+            </motion.div>
         </section>
     )
+}
+
+const chartConfig = {
+  active: {
+      label: 'Performance',
+      color: 'hsl(var(--primary))',
+  },
+  baseline: {
+      label: 'Baseline',
+      color: 'hsl(var(--muted-foreground))',
+  },
+} satisfies ChartConfig
+
+const chartData = [
+  { month: 'May 1', baseline: 120, active: 180 },
+  { month: 'May 8', baseline: 126, active: 240 },
+  { month: 'May 15', baseline: 132, active: 210 },
+  { month: 'May 22', baseline: 138, active: 290 },
+  { month: 'Jun 1', baseline: 144, active: 240 },
+  { month: 'Jun 8', baseline: 150, active: 340 },
+  { month: 'Jun 15', baseline: 156, active: 270 },
+  { month: 'Jun 22', baseline: 162, active: 410 },
+  { month: 'Jul 1', baseline: 168, active: 310 },
+  { month: 'Jul 8', baseline: 174, active: 480 },
+  { month: 'Jul 15', baseline: 180, active: 360 },
+  { month: 'Jul 22', baseline: 186, active: 590 },
+  { month: 'Aug 1', baseline: 192, active: 420 },
+  { month: 'Aug 8', baseline: 198, active: 680 },
+  { month: 'Aug 15', baseline: 204, active: 480 },
+  { month: 'Aug 22', baseline: 210, active: 820 },
+  { month: 'Sep 1', baseline: 216, active: 560 },
+  { month: 'Sep 8', baseline: 222, active: 940 },
+  { month: 'Sep 15', baseline: 228, active: 750 },
+  { month: 'Sep 22', baseline: 234, active: 1100 },
+  { month: 'Sep 29', baseline: 237, active: 1050 },
+  { month: 'Oct 8', baseline: 240, active: 1540 },
+]
+
+const MonitoringChart = () => {
+  return (
+      <ChartContainer
+          className="h-full w-full"
+          config={chartConfig}>
+          <AreaChart
+              accessibilityLayer
+              data={chartData}
+              margin={{
+                  left: -20,
+                  right: 0,
+                  top: 40,
+                  bottom: 0
+              }}>
+              <defs>
+                  <linearGradient
+                      id="fillActive"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1">
+                      <stop
+                          offset="0%"
+                          stopColor="var(--color-active)"
+                          stopOpacity={0.4}
+                      />
+                      <stop
+                          offset="80%"
+                          stopColor="var(--color-active)"
+                          stopOpacity={0}
+                      />
+                  </linearGradient>
+                  <linearGradient
+                      id="fillBaseline"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1">
+                      <stop
+                          offset="0%"
+                          stopColor="var(--color-baseline)"
+                          stopOpacity={0.2}
+                      />
+                      <stop
+                          offset="80%"
+                          stopColor="var(--color-baseline)"
+                          stopOpacity={0}
+                      />
+                  </linearGradient>
+              </defs>
+              <CartesianGrid 
+                vertical={false} 
+                strokeDasharray="3 3" 
+                stroke="rgba(161, 161, 170, 0.1)" 
+              />
+              <ChartTooltip
+                  animationDuration={300}
+                  animationEasing="ease-out"
+                  cursor={{ stroke: 'rgba(161, 161, 170, 0.2)', strokeWidth: 1 }}
+                  content={
+                    <ChartTooltipContent 
+                      className="bg-white dark:bg-zinc-950 border-zinc-200 dark:border-zinc-800 shadow-2xl [&_.text-muted-foreground]:text-zinc-500 dark:[&_.text-muted-foreground]:text-zinc-400" 
+                      labelClassName="text-zinc-900 dark:text-zinc-50 font-bold mb-1"
+                    />
+                  }
+              />
+              <Area
+                  strokeWidth={2}
+                  dataKey="baseline"
+                  type="linear"
+                  fill="url(#fillBaseline)"
+                  stroke="var(--color-baseline)"
+                  strokeDasharray="5 5"
+                  activeDot={{ r: 3, fill: "var(--color-baseline)", strokeWidth: 0 }}
+              />
+              <Area
+                  strokeWidth={4}
+                  dataKey="active"
+                  type="monotone"
+                  fill="url(#fillActive)"
+                  stroke="var(--color-active)"
+                  animationDuration={2500}
+                  activeDot={{ 
+                    r: 6, 
+                    fill: "var(--color-active)", 
+                    stroke: "hsl(var(--background))", 
+                    strokeWidth: 2,
+                    className: "shadow-lg shadow-primary/50"
+                  }}
+              />
+          </AreaChart>
+      </ChartContainer>
+  )
 }

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
+import Link from "next/link";
 
 export type LinkItemType = {
 	label: string;
@@ -15,12 +16,12 @@ export function LinkItem({
 	className,
 	href,
 	...props
-}: React.ComponentProps<"a"> & LinkItemType) {
+}: React.ComponentProps<typeof Link> & LinkItemType) {
 	return (
-		<a
+		<Link
 			className={cn("flex gap-x-2 rounded-md p-2 hover:bg-accent font-inter font-medium", className)}
 			href={href}
-			{...props}
+			{...(props as any)}
 		>
 			<div className="flex aspect-square size-12 items-center justify-center rounded-md border-2 bg-card text-sm shadow-sm">
 				<Icon className="size-5 text-foreground" />
@@ -31,6 +32,6 @@ export function LinkItem({
 					{description}
 				</span>
 			</div>
-		</a>
+		</Link>
 	);
 }

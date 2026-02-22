@@ -6,15 +6,12 @@ import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { ArrowUpRight, Mail, Instagram, Facebook, Loader2, Check } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { TwitterIcon } from "@/components/ui/twitter";
 import { cn } from "@/lib/utils";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 const footerLinks = [
 	{
@@ -87,43 +84,7 @@ export default function FooterSection() {
 	const containerRef = useRef<HTMLElement>(null);
 	const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-	useGSAP(
-		() => {
-			const tl = gsap.timeline({
-				defaults: { ease: "power2.out" },
-				scrollTrigger: {
-					trigger: containerRef.current,
-					start: "top bottom-=50",
-					toggleActions: "play none none none",
-				},
-			});
-
-			tl.fromTo(
-				".footer-brand",
-				{ y: 30, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 1 }
-			)
-				.fromTo(
-					".footer-col",
-					{ y: 25, opacity: 0 },
-					{ y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
-					"-=0.6"
-				)
-				.fromTo(
-					".footer-newsletter",
-					{ y: 25, opacity: 0 },
-					{ y: 0, opacity: 1, duration: 0.8 },
-					"-=0.5"
-				)
-				.fromTo(
-					".footer-bottom",
-					{ y: 15, opacity: 0 },
-					{ y: 0, opacity: 1, duration: 0.8 },
-					"-=0.4"
-				);
-		},
-		{ scope: containerRef }
-	);
+	// Removed intro animations as per user request
 
 	return (
 		<footer
@@ -283,10 +244,6 @@ export default function FooterSection() {
 				{/* Bottom Bar */}
 				<div className="footer-bottom mt-20 pt-10 pb-12">
 					<motion.div 
-						initial={{ scaleX: 0, opacity: 0 }}
-						whileInView={{ scaleX: 1, opacity: 1 }}
-						transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
-						viewport={{ once: true }}
 						className="w-full h-[1px] bg-gradient-to-r from-transparent via-border to-transparent mb-10 origin-center" 
 					/>
 					<div className="flex flex-col md:flex-row items-center justify-between gap-6">

@@ -8,20 +8,25 @@ import {
 } from "@/components/ui/navigation-menu";
 import { companyLinks, companyLinks2, productLinks } from "@/components/nav-links";
 import { LinkItem } from "@/components/sheard";
+import Link from "next/link";
+import React from "react";
+import { Highlighter } from "@/components/ui/highlighter";
 
 export function DesktopNav() {
+	const [isAuditHovered, setIsAuditHovered] = React.useState(false);
+
 	return (
 		<NavigationMenu className="hidden lg:flex">
 			<NavigationMenuList className="gap-2 lg:gap-1 space-x-0">
 				<NavigationMenuItem>
-					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
-						<a className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="#about">
+					<NavigationMenuLink asChild className="px-4 text-base font-semibold">
+						<Link className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="/about">
 							About
-						</a>
+						</Link>
 					</NavigationMenuLink>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold font-inter">
+					<NavigationMenuTrigger className="bg-transparent text-base font-semibold font-inter">
 						Optimization
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
@@ -36,20 +41,30 @@ export function DesktopNav() {
 							))}
 						</ul>
 						<div className="border-t p-4">
-							<p className="text-muted-foreground text-sm font-inter font-medium">
+							<p className="text-muted-foreground text-sm font-inter font-medium leading-relaxed">
 								Need help optimizing?{" "}
-								<a
-									className="font-medium text-foreground hover:underline"
-									href="#"
+								<Link 
+									href="/contact" 
+									className="font-medium text-foreground inline-block"
+									onMouseEnter={() => setIsAuditHovered(true)}
+									onMouseLeave={() => setIsAuditHovered(false)}
 								>
-									Get a free audit
-								</a>
+									<span className="relative">
+										{isAuditHovered ? (
+											<Highlighter action="underline" color="hsl(var(--primary))" padding={2}>
+												Get a free audit
+											</Highlighter>
+										) : (
+											"Get a free audit"
+										)}
+									</span>
+								</Link>
 							</p>
 						</div>
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent text-[15px] font-semibold font-inter">
+					<NavigationMenuTrigger className="bg-transparent text-base font-semibold font-inter">
 						Digital Marketing
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
@@ -82,10 +97,10 @@ export function DesktopNav() {
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuLink asChild className="px-4 text-[15px] font-semibold">
-						<a className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="#contact">
+					<NavigationMenuLink asChild className="px-4 text-base font-semibold">
+						<Link className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="/contact">
 							Contact
-						</a>
+						</Link>
 					</NavigationMenuLink>
 				</NavigationMenuItem>
 			</NavigationMenuList>

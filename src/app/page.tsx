@@ -1,18 +1,14 @@
-import { Navbar } from "@/components/navbar"
 import HeroSection from "@/components/hero-section"
 import LogoCloud from "@/components/logo-cloud-2"
-import { FeatureSection } from "@/components/feature-section"
 import { ResultsSection } from "@/components/results-section"
-import { Stats } from "@/components/stats-2"
 import { ProvenSection } from "@/components/proven-section"
 import { TestimonialSection } from "@/components/shake-testimonial-card"
 import { FaqsSection } from "@/components/faqs"
-import FooterSection from "@/components/footer"
+import { Stats, FeatureSection } from "@/components/landing-lazy-sections"
 
 export default function Home() {
   return (
-    <div className="min-h-svh w-full">
-      <Navbar />
+    <div className="w-full">
       <HeroSection />
       <LogoCloud />
       <ResultsSection />
@@ -21,7 +17,6 @@ export default function Home() {
       <Stats />
       <TestimonialSection />
       <FaqsSection />
-      <FooterSection />
     </div>
   )
 }

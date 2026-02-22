@@ -6,15 +6,12 @@ import {
   ImageComparison,
   ImageComparisonImage,
   ImageComparisonSlider,
-} from '@/components/ui/image-comparison';
+} from '@/components/core/image-comparison';
 import { ArrowUpRight, Zap, Trophy, Activity, Search } from 'lucide-react';
-import { motion, useInView, useSpring, useMotionValue, useTransform, animate } from 'motion/react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, useSpring, useMotionValue } from 'motion/react';
 import { useTheme } from 'next-themes';
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 export function ResultsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,70 +23,48 @@ export function ResultsSection() {
     setMounted(true);
   }, []);
 
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top 60%',
-        toggleActions: 'play none none none',
-      },
-    });
-
-    tl.from('.gsap-fade-up', {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.15,
-      ease: 'power3.out',
-    })
-    .from('.gsap-image-reveal', {
-      scale: 0.92,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'expo.out',
-    }, '-=0.8');
-
-  }, { scope: containerRef });
-
+  // Removed intro animations as per user request
+  
   return (
     <section ref={containerRef} className="py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* 1. Section Headline & Subheading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <h2 className="gsap-fade-up text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Engineered for instant rankings.
           </h2>
-          <p className="gsap-fade-up text-lg md:text-xl text-zinc-600 dark:text-zinc-400 font-inter font-medium">
+          <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 font-inter font-medium">
             Performance is the new SEO. See how we transform sluggish sites into lightning-fast experiences that Google loves.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Image Comparison */}
-            <div className="gsap-image-reveal space-y-4">
+            <div className="space-y-4">
               <ImageComparison
                 className="aspect-[1905/1080] w-full rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
                 enableHover
                 springOptions={{
-                  bounce: 0.3,
+                  stiffness: 160,
+                  damping: 25
                 }}
               >
-                <ImageComparisonImage
-                  src={mounted && resolvedTheme !== 'dark' ? "/assets/images/failure-light.png" : "/assets/images/failure-dark.png"}
-                  alt="Standard Optimization"
-                  position="right"
-                  className="object-contain"
-                />
                 <ImageComparisonImage
                   src={mounted && resolvedTheme !== 'dark' ? "/assets/images/success-light.png" : "/assets/images/success-dark.png"}
                   alt="SEO Speeder Optimization"
                   position="left"
-                  className="object-contain"
+                  className="object-cover"
                 />
-                <ImageComparisonSlider className="w-0.5 bg-white/30 backdrop-blur-sm" />
+                <ImageComparisonImage
+                  src={mounted && resolvedTheme !== 'dark' ? "/assets/images/failure-light.png" : "/assets/images/failure-dark.png"}
+                  alt="Standard Optimization"
+                  position="right"
+                  className="object-cover"
+                />
+                <ImageComparisonSlider className="w-0.5 bg-white/30" />
               </ImageComparison>
               <p className="text-center text-sm text-zinc-500 font-semibold font-inter">
-                Drag the slider to compare standard optimization vs. SEO Speeder
+                Drag the slider to compare standard optimization vs SEO Speeder
               </p>
             </div>
 
@@ -131,22 +106,17 @@ export function ResultsSection() {
 
             <div className="border-t border-zinc-200 dark:border-zinc-800 pt-8 space-y-8">
               {/* 5. Mini Case Study */}
-              <motion.div 
-                className="gsap-fade-up bg-zinc-100 dark:bg-zinc-900/50 rounded-xl p-6 border-2 border-zinc-200 dark:border-zinc-800 cursor-default relative overflow-hidden"
-                whileHover={{ y: -5 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
-                <div className="flex items-center gap-2 mb-3">
+              <div className="bg-zinc-100 dark:bg-zinc-900/50 rounded-xl p-6 border-2 border-zinc-200 dark:border-zinc-800 cursor-default relative overflow-hidden">
+                <div className="flex items-center gap-2 mb-2">
                   <span className="font-semibold text-zinc-900 dark:text-zinc-100">DevScale Migration</span>
-                  <span className="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">Verified</span>
                 </div>
                 <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed relative z-10 font-inter font-medium">
                   "After switching to SEO Speeder, DevScale saw their indexation rate hit 100% in 48 hours. The drop in latency directly correlated with a 20% boost in time-on-page."
                 </p>
-              </motion.div>
+              </div>
 
               {/* 6. CTA */}
-              <div className="gsap-fade-up flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                 <div className="space-y-1">
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Stop losing traffic to slower competitors.</h3>
                   <p className="text-sm text-zinc-500 font-inter font-medium">No credit card required for audit.</p>
@@ -167,6 +137,40 @@ export function ResultsSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function ImageComparisonSpring() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <ImageComparison
+      className='aspect-[1905/1080] w-full rounded-lg border border-zinc-200 dark:border-zinc-800'
+      enableHover
+      springOptions={{
+        stiffness: 160,
+        damping: 25
+      }}
+    >
+      <ImageComparisonImage
+        src={mounted && resolvedTheme !== 'dark' ? "/assets/images/success-light.png" : "/assets/images/success-dark.png"}
+        alt='SEO Comparison After (Success)'
+        position='left'
+        className="object-cover"
+      />
+      <ImageComparisonImage
+        src={mounted && resolvedTheme !== 'dark' ? "/assets/images/failure-light.png" : "/assets/images/failure-dark.png"}
+        alt='SEO Comparison Before (Failure)'
+        position='right'
+        className="object-cover"
+      />
+      <ImageComparisonSlider className='w-0.5 bg-white/30' />
+    </ImageComparison>
   );
 }
 
@@ -193,28 +197,23 @@ function MetricItem({
     damping: 30,
     stiffness: 100,
   });
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, value, motionValue]);
+    motionValue.set(value);
+  }, [value, motionValue]);
 
   useEffect(() => {
-    springValue.on("change", (latest) => {
+    const unsub = springValue.on("change", (latest) => {
       if (ref.current) {
         ref.current.textContent = latest.toFixed(decimals);
       }
     });
+    return () => unsub();
   }, [springValue, decimals]);
 
   return (
-    <motion.div 
+    <div 
       className="p-4 rounded-2xl transition-all duration-200 sm:hover:bg-zinc-100 dark:sm:hover:bg-zinc-800/50 active:scale-[0.98] sm:active:scale-100 cursor-default"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
     >
       <div className="flex items-center gap-3 mb-3 min-h-[3rem]">
         <div className="p-2 rounded-lg bg-white dark:bg-zinc-900/50 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800">
@@ -226,6 +225,6 @@ function MetricItem({
         {prefix}<span ref={ref}>0</span>{suffix}
       </div>
       <p className="text-sm text-zinc-500 leading-snug hidden sm:block font-inter font-medium">{description}</p>
-    </motion.div>
+    </div>
   );
 }
