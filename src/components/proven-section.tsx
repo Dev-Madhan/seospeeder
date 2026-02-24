@@ -3,21 +3,13 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 import {
-  LayoutDashboard,
   Users,
-  MessageSquare,
-  Folder,
-  Plus,
   ArrowUpRight,
   Search,
-  BarChart2,
   Check,
-  Settings,
+  BarChart2,
   Info,
   Database,
-  Mail,
-  List,
-  User,
   Rocket,
   Globe,
   FileText,
@@ -28,7 +20,7 @@ import { cn } from "@/lib/utils";
 interface TabConfig {
   id: string;
   label: string;
-  icon: any;
+  icon: React.ElementType;
   badge?: string;
   header: string;
   description: string;
@@ -93,7 +85,7 @@ export function ProvenSection() {
             Data-Driven Results
           </h2>
           <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 font-inter font-medium">
-            See exactly how Seospeeder transforms your site's performance and search visibility.
+            See exactly how Seospeeder transforms your site&apos;s performance and search visibility.
           </p>
         </div>
 

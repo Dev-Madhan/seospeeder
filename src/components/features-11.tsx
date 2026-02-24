@@ -2,25 +2,17 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-    Globe, 
-    TrendingUp, 
     Zap, 
-    Target, 
-    ArrowUpRight, 
-    BarChart3, 
     Clock, 
-    MousePointerClick,
     Search,
-    ShoppingBag,
     Users,
     ShoppingCart,
-    ShieldCheck,
     Cpu
 } from 'lucide-react';
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
-import { Area, AreaChart, Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts";
+import { Bar, BarChart, Line, LineChart } from "recharts";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -72,6 +64,7 @@ export default function FeaturesGrid11() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
@@ -358,8 +351,7 @@ export default function FeaturesGrid11() {
 
 function PremiumCard({ children, className }: { children: React.ReactNode; className?: string }) {
     const cardRef = useRef<HTMLDivElement>(null);
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
+
 
     // Interactive Light Shimmer
     const shimmerX = useSpring(0, { stiffness: 250, damping: 50 });
@@ -413,7 +405,7 @@ function IconBox({
     icon: Icon, 
     shiny = false 
 }: { 
-    icon: any; 
+    icon: React.ElementType; 
     shiny?: boolean;
 }) {
     return (
@@ -435,47 +427,12 @@ function MetricBox({ label, value }: { label: string; value: string }) {
     );
 }
 
-function Badge({ icon: Icon, text }: { icon: any; text: string }) {
+function Badge({ icon: Icon, text }: { icon: React.ElementType; text: string }) {
     return (
         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-primary/10 border-2 border-primary/20">
             <Icon className="size-4 text-primary animate-pulse" />
             <span className="text-xs font-black uppercase tracking-[0.15em] text-primary">{text}</span>
         </div>
-    );
-}
-
-function MagneticContainer({ children }: { children: React.ReactNode }) {
-    const ref = useRef<HTMLDivElement>(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-    const springConfig = { stiffness: 150, damping: 15 };
-    const springX = useSpring(x, springConfig);
-    const springY = useSpring(y, springConfig);
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!ref.current) return;
-        const { clientX, clientY } = e;
-        const { left, top, width, height } = ref.current.getBoundingClientRect();
-        const centerX = left + width / 2;
-        const centerY = top + height / 2;
-        x.set(clientX - centerX);
-        y.set(clientY - centerY);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    return (
-        <motion.div
-            ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ x: springX, y: springY }}
-        >
-            {children}
-        </motion.div>
     );
 }
 

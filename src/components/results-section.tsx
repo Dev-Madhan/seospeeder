@@ -20,6 +20,7 @@ export function ResultsSection() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -111,7 +112,7 @@ export function ResultsSection() {
                   <span className="font-semibold text-zinc-900 dark:text-zinc-100">DevScale Migration</span>
                 </div>
                 <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed relative z-10 font-inter font-medium">
-                  "After switching to SEO Speeder, DevScale saw their indexation rate hit 100% in 48 hours. The drop in latency directly correlated with a 20% boost in time-on-page."
+                  &quot;After switching to SEO Speeder, DevScale saw their indexation rate hit 100% in 48 hours. The drop in latency directly correlated with a 20% boost in time-on-page.&quot;
                 </p>
               </div>
 
@@ -145,6 +146,7 @@ export function ImageComparisonSpring() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

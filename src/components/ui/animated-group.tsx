@@ -100,6 +100,17 @@ const addDefaultVariants = (variants: Variants) => ({
   visible: { ...defaultItemVariants.visible, ...variants.visible },
 });
 
+// Cache for motion components to avoid creating them during render
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const motionComponentCache = new Map<React.ElementType, any>();
+
+function getMotionComponent(as: React.ElementType) {
+  if (!motionComponentCache.has(as)) {
+    motionComponentCache.set(as, motion.create(as as string | React.ComponentType));
+  }
+  return motionComponentCache.get(as);
+}
+
 function AnimatedGroup({
   children,
   className,
@@ -115,10 +126,11 @@ function AnimatedGroup({
   const containerVariants = variants?.container || selectedVariants.container;
   const itemVariants = variants?.item || selectedVariants.item;
 
-  const MotionComponent = (motion[as as keyof typeof motion] || motion.div) as any;
-  const MotionChild = (motion[asChild as keyof typeof motion] || motion.div) as any;
+  const MotionComponent = getMotionComponent(as);
+  const MotionChild = getMotionComponent(asChild);
 
   return (
+    // eslint-disable-next-line react-hooks/static-components
     <MotionComponent
       initial='hidden'
       animate='visible'

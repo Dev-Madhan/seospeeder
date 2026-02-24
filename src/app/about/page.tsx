@@ -2,8 +2,7 @@ import React from 'react';
 import { TextEffect } from '@/components/motion-primitives/text-effect';
 import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 import { 
-  Target, 
-  CheckCircle2
+  Target
 } from 'lucide-react';
 import FeaturesGrid11 from "@/components/features-11";
 import { CallToAction } from "@/components/cta";
@@ -23,14 +22,27 @@ export default function AboutPage() {
             About SEO Speeder
           </TextEffect>
           
-          <p 
-            className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 fill-mode-both"
-          >
-            Founded with a vision to democratize high-performance web engineering, SEO Speeder is more than just an optimization tool. We are a team of performance-obsessed engineers and SEO strategists dedicated to helping modern businesses thrive in an era where{" "}
-            <TextHighlighter triggerType="auto" highlightColor="hsl(var(--primary) / 0.15)" className="text-foreground font-semibold">
-              speed is the ultimate competitive advantage
-            </TextHighlighter>.
-          </p>
+          <div className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed max-w-3xl">
+            <TextEffect per='char' preset='fade' as='span'>
+              {"Founded with a vision to democratize "}
+            </TextEffect>
+            <TextHighlighter 
+              triggerType="auto" 
+              highlightColor="hsl(var(--primary) / 0.15)" 
+              className="text-foreground font-semibold"
+              transition={{ delay: 1.0, duration: 1 }}
+            >
+              <TextEffect per='char' preset='fade' as='span' delay={1.0}>
+                high-performance web engineering
+              </TextEffect>
+            </TextHighlighter>
+            <TextEffect per='char' preset='fade' as='span' delay={2.2}>
+              {", SEO Speeder is more than just an optimization tool. We are a team of performance-obsessed engineers and SEO strategists dedicated to helping modern businesses thrive in an era where "}
+            </TextEffect>
+            <TextEffect per='char' preset='fade' as='span' delay={7.8}>
+              speed is the ultimate competitive advantage.
+            </TextEffect>
+          </div>
         </section>
 
         {/* Philosophy & Stats Section */}

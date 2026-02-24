@@ -10,6 +10,7 @@ import {
 	LayoutDashboard, 
 	Globe,
 } from "lucide-react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import {
 	CartesianGrid,
@@ -430,14 +431,14 @@ function DashboardVisual() {
 					className="relative sm:absolute sm:-right-1 sm:-bottom-1 aspect-video max-h-60 sm:max-h-42 md:aspect-square md:max-h-50 lg:aspect-16/12 rounded-xl sm:rounded-none sm:rounded-tl-md border-2 bg-card p-1 shadow-2xl transition-shadow duration-500 group-hover:shadow-primary/10"
 				>
 					<div className="aspect-video h-full overflow-hidden rounded-lg sm:rounded-none sm:rounded-tl-sm border-2 *:pointer-events-none *:size-full *:shrink-0 *:select-none">
-						<img
+						<Image
 							alt="Dashboard preview"
 							className="dark:hidden"
 							height={360}
 							src="https://storage.efferd.com/screen/dashboard-light.webp"
 							width={640}
 						/>
-						<img
+						<Image
 							alt="Dashboard preview"
 							className="hidden dark:block"
 							height={360}

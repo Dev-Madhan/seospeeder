@@ -15,31 +15,31 @@ gsap.registerPlugin(ScrollTrigger);
 const values = [
   {
     title: "Transparency First",
-    description: "Honest reporting, clear metrics, and no black-box solutions. We build trust by giving you full visibility into the optimizations driving your business.",
+    description: "Honest reporting and clear metrics. We give you full visibility into every optimization.",
     icon: Eye
   },
   {
     title: "Innovation Always",
-    description: "The web moves fast, and we move faster. Constant iteration is at the core of our philosophy to keep you ahead of algorithmic and technological shifts.",
+    description: "Constant iteration is our core. We keep you ahead of every technological shift.",
     icon: Lightbulb
   },
   {
     title: "Results Driven",
-    description: "Traffic, speed, and impressions are great, but revenue is what matters. Every optimization we deploy is designed directly to improve your bottom line ROI.",
+    description: "Revenue is what matters. Every optimization is designed to improve your bottom line.",
     icon: TrendingUp
   },
   {
     title: "Human Centric",
-    description: "Despite our obsession with AI and automation, we engineer software for people. Your team's ease of use and your users' experience are uncompromisable.",
+    description: "We engineer for people. Your team's ease and users' experience are uncompromisable.",
     icon: Users
   }
 ];
 
 function InteractiveCard({ value }: { value: typeof values[0] }) {
   return (
-    <div className="core-value-card opacity-0 translate-y-8">
+    <div className="core-value-card opacity-0 translate-y-8 h-full">
       {/* Outer wrapper — handles the spinning border via padding-trick */}
-      <div className="relative group/card rounded-2xl p-[2px] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-shadow duration-500 ease-in-out cursor-default">
+      <div className="relative group/card rounded-2xl p-[2px] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-shadow duration-500 ease-in-out cursor-default h-full">
 
         {/* Outer base border color when not hovered */}
         <div className="absolute inset-0 bg-border/40 transition-opacity duration-500 ease-in-out group-hover/card:opacity-0" />
@@ -50,20 +50,25 @@ function InteractiveCard({ value }: { value: typeof values[0] }) {
         </div>
 
         {/* Core Inner Card */}
-        <div className="relative w-full bg-card/90 backdrop-blur-xl rounded-[calc(1rem-2px)] px-3 py-3 sm:px-4 sm:py-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 z-10 transition-colors duration-500 ease-in-out text-center sm:text-left">
-
+        <div className="relative w-full h-full bg-card/90 backdrop-blur-xl rounded-[calc(1rem-2px)] px-5 py-6 flex flex-row lg:flex-col items-start gap-4 z-10 transition-colors duration-500 ease-in-out text-left">
+          
           {/* Soft interior glow on hover */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none rounded-[calc(1rem-2px)]" />
 
           {/* Icon */}
-          <div className="flex items-center justify-center size-8 sm:size-9 rounded-xl bg-muted border-2 border-border/50 text-foreground group-hover/card:bg-primary group-hover/card:text-primary-foreground group-hover/card:border-primary transition-all duration-500 ease-in-out shrink-0 relative z-10">
-            <value.icon className="size-3.5 sm:size-4 transition-transform duration-500 ease-in-out group-hover/card:scale-110" strokeWidth={1.5} />
+          <div className="flex items-center justify-center size-10 rounded-xl bg-muted border-2 border-border/50 text-foreground group-hover/card:bg-primary group-hover/card:text-primary-foreground group-hover/card:border-primary transition-all duration-500 ease-in-out shrink-0 relative z-10">
+            <value.icon className="size-5 transition-transform duration-500 ease-in-out group-hover/card:scale-110" strokeWidth={1.5} />
           </div>
 
-          {/* Title */}
-          <span className="font-semibold text-xs sm:text-sm md:text-base tracking-tight text-foreground transition-colors duration-500 ease-in-out group-hover/card:text-primary leading-tight relative z-10">
-            {value.title}
-          </span>
+          {/* Content Container */}
+          <div className="flex flex-col gap-2 relative z-10">
+            <span className="font-bold text-lg sm:text-xl tracking-tight text-foreground transition-colors duration-500 ease-in-out group-hover/card:text-primary leading-tight">
+              {value.title}
+            </span>
+            <p className="text-sm text-muted-foreground leading-relaxed transition-colors duration-500 ease-in-out group-hover/card:text-foreground/80">
+              {value.description}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -99,7 +104,7 @@ export function CoreValues() {
           The foundational principles that guide every feature we ship and every partnership we build.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-4 relative z-10">
         {values.map((value, i) => (
           <InteractiveCard key={i} value={value} />
         ))}

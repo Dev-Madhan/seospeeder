@@ -200,5 +200,8 @@ D:\Madhan Kumar\Web Development Projects\seospeeder\src\hooks\use-scroll.ts:18:5
   20 |
   21 |   return scrolled;  react-hooks/set-state-in-effect
 
-✖ 74 problems (26 errors, 48 warnings)
+D:\Madhan Kumar\Web Development Projects\seospeeder\tailwind.config.ts
+  99:13  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+✖ 75 problems (27 errors, 48 warnings)
 

@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRightIcon } from "lucide-react";
+import Image from "next/image";
 
 type Integration = {
 	src: string;
@@ -60,7 +61,7 @@ export function Integrations() {
 					key={item.name}
 				>
 					<div className="flex items-center justify-between">
-						<img
+						<Image
 							alt={item.name}
 							className={cn(
 								"pointer-events-none size-8 shrink-0 select-none object-contain",

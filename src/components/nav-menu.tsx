@@ -11,7 +11,7 @@ interface NavItem {
   href: string
 }
 
-const navs: any[] = [...navLinks]
+const navs: NavItem[] = [...navLinks] as NavItem[]
 
 export function NavMenu() {
   const ref = useRef<HTMLUListElement>(null)
@@ -74,7 +74,7 @@ export function NavMenu() {
 
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    item: any
+    item: NavItem
   ) => {
     e.preventDefault()
 

@@ -3,6 +3,7 @@
 import {
   ElementType,
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -108,10 +109,8 @@ export const TextHighlighter = forwardRef<
       setCurrentDirection(direction)
     }, [direction])
 
-    const isInView =
-      triggerType === "inView"
-        ? useInView(componentRef, useInViewOptions)
-        : false
+    const inViewTrigger = useInView(componentRef, useInViewOptions)
+    const isInView = triggerType === "inView" ? inViewTrigger : false
 
     useImperativeHandle(ref, () => ({
       animate: (animationDirection?: HighlightDirection) => {
@@ -137,7 +136,7 @@ export const TextHighlighter = forwardRef<
     const ElementTag = as || "span"
 
     // Get background size based on direction
-    const getBackgroundSize = (animated: boolean) => {
+    const getBackgroundSize = useCallback((animated: boolean) => {
       switch (currentDirection) {
         case "ltr":
           return animated ? "100% 100%" : "0% 100%"
@@ -150,10 +149,10 @@ export const TextHighlighter = forwardRef<
         default:
           return animated ? "100% 100%" : "0% 100%"
       }
-    }
+    }, [currentDirection])
 
     // Get background position based on direction
-    const getBackgroundPosition = () => {
+    const getBackgroundPosition = useCallback(() => {
       switch (currentDirection) {
         case "ltr":
           return "0% 0%"
@@ -166,11 +165,11 @@ export const TextHighlighter = forwardRef<
         default:
           return "0% 0%"
       }
-    }
+    }, [currentDirection])
 
-    const animatedSize = useMemo(() => getBackgroundSize(shouldAnimate), [shouldAnimate, currentDirection])
-    const initialSize = useMemo(() => getBackgroundSize(false), [currentDirection])
-    const backgroundPosition = useMemo(() => getBackgroundPosition(), [currentDirection])
+    const animatedSize = useMemo(() => getBackgroundSize(shouldAnimate), [shouldAnimate, getBackgroundSize])
+    const initialSize = useMemo(() => getBackgroundSize(false), [getBackgroundSize])
+    const backgroundPosition = useMemo(() => getBackgroundPosition(), [getBackgroundPosition])
 
     const highlightStyle = {
       backgroundImage: `linear-gradient(${highlightColor}, ${highlightColor})`,

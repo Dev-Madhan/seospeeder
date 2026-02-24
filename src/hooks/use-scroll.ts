@@ -15,6 +15,7 @@ export function useScroll(threshold: number) {
 
   // also check on first load
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     onScroll();
   }, [onScroll]);
 

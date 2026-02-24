@@ -21,7 +21,7 @@ export function LinkItem({
 		<Link
 			className={cn("flex gap-x-2 rounded-md p-2 hover:bg-accent font-inter font-medium", className)}
 			href={href}
-			{...(props as any)}
+			{...props}
 		>
 			<div className="flex aspect-square size-12 items-center justify-center rounded-md border-2 bg-card text-sm shadow-sm">
 				<Icon className="size-5 text-foreground" />

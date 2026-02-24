@@ -56,11 +56,11 @@ export async function POST(request: Request) {
       { message: 'Successfully subscribed and welcome email sent!' },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error('Email sending failed:', error);
     
     // Check for specific Gmail authentication errors
-    if (error.code === 'EAUTH') {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'EAUTH') {
       return NextResponse.json(
         { error: 'Email authentication failed. Please check your App Password.' },
         { status: 500 }

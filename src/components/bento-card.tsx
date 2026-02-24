@@ -17,7 +17,6 @@ import {
   InformationCircleIcon,
   DatabaseIcon,
   Mail01Icon,
-  LeftToRightListDashIcon,
   UserIcon,
 } from "@hugeicons/core-free-icons";
 import { cn } from "@/lib/utils";
@@ -25,6 +24,7 @@ import { cn } from "@/lib/utils";
 interface TabConfig {
   id: string;
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: any;
   badge?: string;
   header: string;

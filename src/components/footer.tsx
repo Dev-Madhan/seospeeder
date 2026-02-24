@@ -9,7 +9,6 @@ import { motion } from "motion/react";
 import { ArrowUpRight, Mail, Instagram, Facebook, Loader2, Check } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { TwitterIcon } from "@/components/ui/twitter";
-import { cn } from "@/lib/utils";
 
 
 
@@ -47,7 +46,7 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-	{ icon: (props: any) => <TwitterIcon {...props} size={18} />, href: "#", label: "X" },
+	{ icon: (props: React.HTMLAttributes<HTMLDivElement>) => <TwitterIcon {...props} size={18} />, href: "#", label: "X" },
 	{ icon: Instagram, href: "#", label: "Instagram" },
 	{ icon: Facebook, href: "#", label: "Facebook" },
 ];

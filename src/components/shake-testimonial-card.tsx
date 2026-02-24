@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { CheckCircle2, Star, Zap, Shield, TrendingUp, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle2, Star } from "lucide-react";
 import Image from "next/image";
 import { AvatarStack } from "@/components/ui/avatar-stack";
 
@@ -93,6 +93,7 @@ export function TestimonialSection() {
 
   // Intro animations removed as per user request
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsIntroComplete(true);
   }, []);
 

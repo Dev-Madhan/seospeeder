@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { AnimatePresence, motion, useScroll } from "motion/react"
+import { motion, useScroll } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"

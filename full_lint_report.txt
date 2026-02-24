@@ -1,8 +1,4 @@
 
-> seospeeder@0.1.0 lint
-> eslint
-
-
 D:\Madhan Kumar\Web Development Projects\seospeeder\src\app\about\page.tsx
   6:3  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
 
