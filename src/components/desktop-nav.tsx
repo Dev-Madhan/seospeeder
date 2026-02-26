@@ -30,13 +30,13 @@ export function DesktopNav() {
 						Optimization
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
-						<ul className="grid w-[500px] gap-3 p-4 md:w-[600px] md:grid-cols-3 lg:w-[700px]">
+						<ul className="grid w-[400px] gap-2 p-4 md:w-[650px] md:grid-cols-2 lg:w-[950px] lg:grid-cols-3">
 							{productLinks.map((item, i) => (
 								<NavigationMenuLink
 									asChild
 									key={`item-${item.label}-${i}`}
 								>
-									<LinkItem {...item} />
+									<LinkItem {...item} className="p-2" />
 								</NavigationMenuLink>
 							))}
 						</ul>

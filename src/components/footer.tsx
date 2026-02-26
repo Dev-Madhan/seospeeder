@@ -9,6 +9,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight, Mail, Instagram, Facebook, Loader2, Check } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { TwitterIcon } from "@/components/ui/twitter";
+import { toast } from "sonner";
 
 
 
@@ -168,9 +169,18 @@ export default function FooterSection() {
 								
 								const form = e.currentTarget;
 								const emailInput = form.elements.namedItem('email') as HTMLInputElement;
-								const email = emailInput.value;
+								const email = emailInput.value.trim();
 
-								if (!email) return;
+								if (!email) {
+									toast.error("Required Field Missing", { description: "Please enter your email address to subscribe." });
+									return;
+								}
+
+								const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+								if (!emailRegex.test(email)) {
+									toast.error("Invalid Email Format", { description: "Please enter a valid email address." });
+									return;
+								}
 
 								setStatus('loading');
 								try {
@@ -181,17 +191,16 @@ export default function FooterSection() {
 									});
 
 									if (response.ok) {
-										setStatus('success');
+										toast.success("Welcome aboard!", { description: "You've successfully subscribed to our newsletter." });
 										emailInput.value = '';
-										setTimeout(() => setStatus('idle'), 5000);
 									} else {
-										setStatus('error');
-										setTimeout(() => setStatus('idle'), 5000);
+										toast.error("Subscription Failed", { description: "There was an issue joining the newsletter. Please try again." });
 									}
 								} catch (error) {
 									console.error('Subscription failed', error);
-									setStatus('error');
-									setTimeout(() => setStatus('idle'), 5000);
+									toast.error("Network Error", { description: "Please check your internet connection and try again." });
+								} finally {
+									setStatus('idle');
 								}
 							}}
 							className="space-y-2.5"
@@ -208,24 +217,14 @@ export default function FooterSection() {
 							</div>
 							<Button 
 								type="submit"
-								className="w-full h-11 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-semibold font-inter transition-all duration-300"
+								disabled={status === 'loading'}
+								className="w-full h-11 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-semibold font-inter transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
 							>
 								{status === 'loading' ? (
 									<>
 										<Loader2 className="mr-2 h-4 w-4 animate-spin" />
 										Processing...
 									</>
-								) : status === 'success' ? (
-									<motion.div 
-										initial={{ scale: 0.9, opacity: 0 }}
-										animate={{ scale: 1, opacity: 1 }}
-										className="flex items-center gap-2"
-									>
-										<Check className="size-4" />
-										Success!
-									</motion.div>
-								) : status === 'error' ? (
-									'Failed! Try Again'
 								) : (
 									<>
 										Subscribe

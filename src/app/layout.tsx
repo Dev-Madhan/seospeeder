@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import FooterSection from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <FooterSection />
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

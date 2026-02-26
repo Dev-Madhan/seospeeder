@@ -66,8 +66,8 @@ export function CallToAction() {
 						Get free audit
 						{/* Double Arrow Fly-Through Effect */}
 						<div className="relative overflow-hidden flex items-center justify-center size-5 ml-1">
-							<ArrowRightIcon className="absolute inset-0 size-5 transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover/btn:translate-x-[200%]" />
-							<ArrowRightIcon className="absolute inset-0 size-5 -translate-x-[200%] transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover/btn:translate-x-0" />
+							<ArrowRightIcon className="absolute inset-0 size-5 transition-transform duration-500 ease-out group-hover/btn:translate-x-[200%]" />
+							<ArrowRightIcon className="absolute inset-0 size-5 -translate-x-[200%] transition-transform duration-500 ease-out group-hover/btn:translate-x-0" />
 						</div>
 					</span>
 				</Button>

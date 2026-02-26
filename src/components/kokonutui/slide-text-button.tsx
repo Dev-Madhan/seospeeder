@@ -38,7 +38,7 @@ export default function SlideTextButton({
       )}
       {...props}
     >
-      <div className="flex flex-col h-full w-full items-center transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:-translate-y-1/2">
+      <div className="flex flex-col h-full w-full items-center transition-transform duration-500 ease-out group-hover:-translate-y-1/2">
         <span className="flex h-full w-full shrink-0 flex-1 items-center justify-center transition-opacity duration-500 group-hover:opacity-0 px-8 py-3">
           {text}
         </span>

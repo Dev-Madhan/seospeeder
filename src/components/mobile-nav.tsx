@@ -184,15 +184,15 @@ export function MobileNav() {
 																	initial={{ opacity: 0, x: -10 }}
 																	animate={{ opacity: 1, x: 0 }}
 																	transition={{ delay: i * 0.05 }}
-																	className="flex items-start gap-3 rounded-lg border-2 border-border bg-card p-3 transition-all hover:bg-accent hover:border-accent-foreground/20"
+																	className="flex items-start gap-2 rounded-lg border-2 border-border bg-card p-2 transition-all hover:bg-accent hover:border-accent-foreground/20"
 																	onClick={() => setOpen(false)}
 																>
-																	<div className="flex size-10 shrink-0 items-center justify-center rounded-md border-2 bg-background">
-																		<link.icon className="size-5" />
+																	<div className="flex size-8 shrink-0 items-center justify-center rounded-md border-2 bg-background mt-0.5">
+																		<link.icon className="size-4" />
 																	</div>
 																	<div className="flex-1 min-w-0">
 																		<p className="font-semibold text-sm font-inter">{link.label}</p>
-																		<p className="text-xs text-muted-foreground line-clamp-2 font-inter font-medium">
+																		<p className="text-[11px] leading-tight text-muted-foreground line-clamp-2 font-inter font-medium">
 																			{link.description}
 																		</p>
 																	</div>

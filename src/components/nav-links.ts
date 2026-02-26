@@ -24,15 +24,15 @@ export const productLinks: LinkItemType[] = [
 		icon: Globe,
 	},
 	{
-		label: "Magento",
-		href: "/products/magento",
-		description: "E-commerce performance optimization",
-		icon: ShoppingBag,
-	},
-	{
 		label: "Shopify",
 		href: "/products/shopify",
 		description: "Boost your Shopify store speed",
+		icon: ShoppingBag,
+	},
+	{
+		label: "Magento",
+		href: "/products/magento",
+		description: "E-commerce performance optimization",
 		icon: ShoppingBag,
 	},
 	{
@@ -54,9 +54,27 @@ export const productLinks: LinkItemType[] = [
 		icon: Code2,
 	},
 	{
+		label: "React JS",
+		href: "/products/react-js",
+		description: "React application optimization",
+		icon: Code2,
+	},
+	{
+		label: ".Net",
+		href: "/products/dotnet",
+		description: ".Net application speed tuning",
+		icon: Server,
+	},
+	{
 		label: "Wix",
 		href: "/products/wix",
 		description: "Website builder performance tuning",
+		icon: Layers,
+	},
+	{
+		label: "SquareSpace",
+		href: "/products/squarespace",
+		description: "SquareSpace site optimization",
 		icon: Layers,
 	},
 	{
@@ -76,6 +94,12 @@ export const productLinks: LinkItemType[] = [
 		href: "/products/server-side",
 		description: "Backend and server optimization",
 		icon: Server,
+	},
+	{
+		label: "HTML",
+		href: "/products/html",
+		description: "Static HTML performance",
+		icon: Code2,
 	},
 ];
 

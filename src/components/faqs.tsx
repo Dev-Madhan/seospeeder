@@ -118,7 +118,7 @@ export function FaqsSection() {
 											</span>
 											<span
 												className={cn(
-													"flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border-2 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
+													"flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border-2 transition-all duration-500 ease-out",
 													openId === faq.id
 														? "bg-primary border-primary text-primary-foreground rotate-180"
 														: "border-muted bg-muted/50 text-muted-foreground group-hover:border-primary/50 group-hover:text-primary"
