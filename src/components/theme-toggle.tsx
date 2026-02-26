@@ -6,10 +6,16 @@ import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "motion/react"
 
 import { Button } from "@/components/ui/button"
+import { useThemeToggle } from "@/components/ui/skiper-ui/skiper26"
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+  const { toggleTheme } = useThemeToggle({
+    variant: "circle-blur",
+    blur: true,
+    start: "top-right",
+  })
 
   React.useEffect(() => {
     setMounted(true)
@@ -27,7 +33,7 @@ export function ThemeToggle() {
     <Button
       variant="outline"
       size="icon"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={toggleTheme}
       className="h-8 w-8 cursor-pointer rounded-full border-2 relative overflow-hidden"
     >
       <AnimatePresence mode="wait" initial={false}>
