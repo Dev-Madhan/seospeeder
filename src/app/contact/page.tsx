@@ -122,7 +122,7 @@ export default function ContactPage() {
                     <div className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-3 rounded-full border-2 px-4 py-2 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950 mb-8 cursor-pointer">
                         <span className="text-foreground text-xs md:text-sm font-semibold font-inter">24/7 Support Available</span>
                         <span className="dark:border-background block h-4 w-px bg-zinc-300 dark:bg-zinc-700"></span>
-                        <span className="text-muted-foreground text-xs md:text-sm font-medium font-inter">Fast Response</span>
+                        {/* <span className="text-muted-foreground text-xs md:text-sm font-medium font-inter">Fast Response</span> */}
                         
                         <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500 ml-1">
                             <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
