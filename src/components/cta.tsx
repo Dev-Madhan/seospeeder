@@ -1,6 +1,7 @@
 import { DecorIcon } from "@/components/ui/decor-icon";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
 export function CallToAction() {
 	return (
@@ -55,8 +56,8 @@ export function CallToAction() {
 			</div>
 
 			<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 relative z-10 w-full sm:w-auto">
-				<Button variant="outline" className="h-14 px-8 w-full sm:w-auto rounded-xl font-bold text-lg border-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-colors">
-					Talk to Sales
+				<Button asChild variant="outline" className="h-14 px-8 w-full sm:w-auto rounded-xl font-bold text-lg border-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-colors">
+					<Link href="/contact">Talk to Sales</Link>
 				</Button>
 				<Button className="relative overflow-hidden h-14 px-10 w-full sm:w-auto rounded-xl font-bold text-lg shadow-[0_0_30px_-10px_rgba(var(--primary),0.4)] hover:shadow-[0_0_40px_-5px_rgba(var(--primary),0.6)] transition-all duration-500 group/btn">
 					{/* Premium Glossy Sweep Background */}

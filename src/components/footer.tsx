@@ -37,11 +37,11 @@ const footerLinks = [
 	{
 		title: "Company",
 		links: [
-			{ name: "About Us", href: "#" },
-			{ name: "Case Studies", href: "#" },
-			{ name: "Pricing", href: "#" },
-			{ name: "Careers", href: "#" },
-			{ name: "Contact", href: "#" },
+			{ name: "About Us", href: "/about" },
+			{ name: "Case Studies", href: "/case-studies" },
+			{ name: "Pricing", href: "/pricing" },
+			{ name: "Careers", href: "/careers" },
+			{ name: "Contact", href: "/contact" },
 		],
 	},
 ];
@@ -53,8 +53,8 @@ const socialLinks = [
 ];
 
 const legalLinks = [
-	{ name: "Privacy Policy", href: "#" },
-	{ name: "Terms of Service", href: "#" },
+	{ name: "Privacy Policy", href: "/privacy" },
+	{ name: "Terms of Service", href: "/terms" },
 ];
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {

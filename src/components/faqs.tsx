@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { SearchIcon, X, Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Highlighter } from "@/components/ui/highlighter";
+import Link from "next/link";
 
 export function FaqsSection() {
 	const [searchTerm, setSearchTerm] = React.useState("");
@@ -185,9 +186,9 @@ export function FaqsSection() {
 				<div className="mt-8 text-center">
 					<p className="text-muted-foreground">
 						Still have questions?{" "}
-						<a
+						<Link
 							className="text-primary font-medium transition-all inline-block"
-							href="#contact"
+							href="/contact"
 							onMouseEnter={() => setIsLinkHovered(true)}
 							onMouseLeave={() => setIsLinkHovered(false)}
 						>
@@ -200,7 +201,7 @@ export function FaqsSection() {
 									"Contact Support"
 								)}
 							</span>
-						</a>
+						</Link>
 					</p>
 				</div>
 			</div>
