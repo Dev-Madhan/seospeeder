@@ -55,6 +55,7 @@ const socialLinks = [
 const legalLinks = [
 	{ name: "Privacy Policy", href: "/privacy" },
 	{ name: "Terms of Service", href: "/terms" },
+	{ name: "Disclaimer", href: "/disclaimer" },
 ];
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {

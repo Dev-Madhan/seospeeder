@@ -36,6 +36,12 @@ export const productLinks: LinkItemType[] = [
 		icon: ShoppingBag,
 	},
 	{
+		label: "BigCommerce",
+		href: "/products/bigcommerce",
+		description: "Optimise your BigCommerce store",
+		icon: ShoppingBag,
+	},
+	{
 		label: "Laravel",
 		href: "/products/laravel",
 		description: "Framework optimisation services",
@@ -66,16 +72,22 @@ export const productLinks: LinkItemType[] = [
 		icon: Server,
 	},
 	{
-		label: "Wix",
-		href: "/products/wix",
-		description: "Website builder performance tuning",
+		label: "HTML",
+		href: "/products/html",
+		description: "Static HTML performance",
+		icon: Code2,
+	},
+	{
+		label: "Framer",
+		href: "/products/framer",
+		description: "Framer site speed optimisation",
 		icon: Layers,
 	},
 	{
-		label: "SquareSpace",
-		href: "/products/squarespace",
-		description: "SquareSpace site optimisation",
-		icon: Layers,
+		label: "HubSpot",
+		href: "/products/hubspot",
+		description: "HubSpot CMS performance tuning",
+		icon: Workflow,
 	},
 	{
 		label: "Webflow",
@@ -94,12 +106,6 @@ export const productLinks: LinkItemType[] = [
 		href: "/products/server-side",
 		description: "Backend and server optimisation",
 		icon: Server,
-	},
-	{
-		label: "HTML",
-		href: "/products/html",
-		description: "Static HTML performance",
-		icon: Code2,
 	},
 ];
 
@@ -172,9 +178,9 @@ export const companyLinks2: LinkItemType[] = [
 		icon: HelpCircle,
 	},
 	{
-		label: "Blog",
-		href: "/blog",
-		icon: Leaf,
+		label: "Test Your Website",
+		href: "#audit",
+		icon: Zap,
 	},
 	{
 		label: "Privacy Policy",
@@ -185,5 +191,10 @@ export const companyLinks2: LinkItemType[] = [
 		label: "Terms of Service",
 		href: "/terms",
 		icon: FileText,
+	},
+	{
+		label: "Disclaimer",
+		href: "/disclaimer",
+		icon: Shield,
 	},
 ];
