@@ -14,7 +14,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     }
     // Reset scroll instantly while content is faded-out (opacity: 0 at t=0)
     // so the user never sees the page jump position
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
 
   return (
