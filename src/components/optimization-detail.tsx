@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import { BoostRankingsBadge } from "@/components/boost-rankings-badge";
 
 interface OptimizationDetailProps {
 	title: string;
@@ -64,9 +65,10 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 				{/* Hero Section */}
 				<div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
 					<AnimatedGroup variants={transitionVariants}>
-						<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border-2 border-primary/20 text-primary text-sm font-semibold mb-6">
-							<Icon className="size-4" />
-							<span>{platform} Optimisation</span>
+						<div className="mb-6">
+							<BoostRankingsBadge icon={Icon}>
+								{platform} Optimisation
+							</BoostRankingsBadge>
 						</div>
 					</AnimatedGroup>
 
@@ -87,11 +89,25 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 					</TextEffect>
 
 					<AnimatedGroup variants={transitionVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-						<Button size="lg" className="rounded-xl h-12 px-6 font-bold text-base shadow-lg shadow-primary/20" asChild>
-							<Link href="/contact">Get Free Audit</Link>
+						<Button
+							asChild
+							variant="outline"
+							size="lg"
+							className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold"
+						>
+							<Link href="/contact">
+								<span className="text-nowrap">Get Free Audit</span>
+							</Link>
 						</Button>
-						<Button variant="outline" size="lg" className="rounded-xl h-12 px-6 font-semibold text-base" asChild>
-							<Link href="#features">See How It Works</Link>
+						<Button
+							asChild
+							size="lg"
+							className="group/btn w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
+						>
+							<Link href="#features">
+								<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+								<span className="relative z-10 text-nowrap">See How It Works</span>
+							</Link>
 						</Button>
 					</AnimatedGroup>
 				</div>
@@ -142,9 +158,16 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 					<p className="text-muted-foreground mb-8 font-inter">
 						Don&apos;t let slow load times kill your conversions. Get a free, detailed manual audit from our specialised engineers.
 					</p>
-					<Button size="lg" className="h-12 px-10 rounded-xl font-bold text-base" asChild>
+					<Button
+						asChild
+						size="lg"
+						className="group/btn rounded-xl px-10 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
+					>
 						<Link href="/contact" className="flex items-center gap-2">
-							Request Free Audit <ArrowRight className="size-5" />
+							<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+							<span className="relative z-10 flex items-center gap-2">
+								Request Free Audit <ArrowRight className="size-5" />
+							</span>
 						</Link>
 					</Button>
 				</div>

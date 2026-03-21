@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import Link from "next/link";
-import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
@@ -10,8 +9,8 @@ import { ArrowUpRight, Mail, Instagram, Facebook, Loader2 } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { TwitterIcon } from "@/components/ui/twitter";
 import { toast } from "sonner";
-
-
+import { useTheme } from "next-themes";
+import Image from "next/image";
 
 const footerLinks = [
 	{
@@ -84,6 +83,16 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 export default function FooterSection() {
 	const containerRef = useRef<HTMLElement>(null);
 	const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+	const { resolvedTheme } = useTheme();
+	const [mounted, setMounted] = React.useState(false);
+
+	React.useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	const logoSrc = resolvedTheme === "dark" 
+		? "/assets/logos/dark-theme-logo.svg" 
+		: "/assets/logos/light-theme-logo.svg"
 
 	// Removed intro animations as per user request
 
@@ -98,7 +107,20 @@ export default function FooterSection() {
 					{/* Brand */}
 					<div className="footer-brand lg:col-span-3 space-y-6">
 						<Link href="/" className="flex items-center gap-3 group">
-							<Icons.logo className="-mt-1 size-6 transition-opacity duration-300 group-hover:opacity-70 text-primary" />
+							<div className="-mt-1 h-6 w-auto flex items-center">
+								{mounted ? (
+									<Image
+										src={logoSrc}
+										alt="SEO SPEEDER Logo"
+										width={100}
+										height={24}
+										className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-70"
+										priority
+									/>
+								) : (
+									<div className="size-6" />
+								)}
+							</div>
 							<p className="text-primary ml-1 text-lg font-bold tracking-tight">
 								SEO SPEEDER
 							</p>

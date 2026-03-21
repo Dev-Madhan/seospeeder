@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import DashboardPage from '@/app/dashboard/page'
+import { BoostRankingsBadge } from '@/components/boost-rankings-badge'
 
 
 const transitionVariants = {
@@ -42,23 +43,7 @@ export default function HeroSection() {
                         <div className="mx-auto max-w-7xl px-6 flex-1 flex flex-col justify-center">
                             <div className="text-center mx-auto lg:mt-0">
                                 <AnimatedGroup variants={transitionVariants}>
-                                    <Link
-                                        href="#audit"
-                                        className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-3 rounded-full border px-4 py-2 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950">
-                                        <span className="text-foreground text-xs md:text-sm font-semibold font-inter">Boost Rankings with AI SEO</span>
-                                        <span className="dark:border-background block h-4 w-px bg-zinc-300 dark:bg-zinc-700"></span>
-
-                                        <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
-                                            <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-                                                <span className="flex size-6">
-                                                    <ArrowRight className="m-auto size-3" />
-                                                </span>
-                                                <span className="flex size-6">
-                                                    <ArrowRight className="m-auto size-3" />
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </Link>
+                                    <BoostRankingsBadge />
                                 </AnimatedGroup>
 
                                 <h1 className="mx-auto mt-6 md:mt-8 max-w-5xl text-balance text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] text-center">

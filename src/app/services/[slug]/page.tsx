@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { Globe2, Zap, Shield, Gauge, ArrowRight } from "lucide-react";
+import { BoostRankingsBadge } from "@/components/boost-rankings-badge";
+import { productLinks } from "@/components/nav-links";
 
 export async function generateStaticParams() {
   return SERVICES.map((service) => ({
@@ -58,13 +60,22 @@ export default async function ServicePage({
                <PlatformIcon className="size-16 md:size-20 text-neutral-800 dark:text-neutral-200 opacity-90" strokeWidth={1.5} />
             </div>
 
-            {/* Platform Badge - Matching Vercel's subtle slate pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-neutral-200/50 bg-neutral-100/50 backdrop-blur-sm animate-in fade-in slide-in-from-top-4 duration-1000 delay-100">
-              <PlatformIcon size={14} className="text-neutral-500" />
-              <span className="text-xs font-bold tracking-tight uppercase text-neutral-600">
-                {service.title} Optimisation
-              </span>
-            </div>
+
+            {/* Platform Badge - Replacing with BoostRankingsBadge for Optimization subpages */}
+            {productLinks.some((link) => link.href === `/services/${slug}`) ? (
+              <div className="animate-in fade-in slide-in-from-top-4 duration-1000 delay-100">
+                <BoostRankingsBadge icon={PlatformIcon}>
+                  {service.title} Optimisation
+                </BoostRankingsBadge>
+              </div>
+            ) : (
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-neutral-200/50 bg-neutral-100/50 backdrop-blur-sm animate-in fade-in slide-in-from-top-4 duration-1000 delay-100">
+                <PlatformIcon size={14} className="text-neutral-500" />
+                <span className="text-xs font-bold tracking-tight uppercase text-neutral-600">
+                  {service.title} Optimisation
+                </span>
+              </div>
+            )}
 
             {/* Main Headline - Exact 72px/700 styling with 1.0 line-height */}
             <h1 className="text-[48px] md:text-[80px] lg:text-[96px] font-bold tracking-tighter leading-[0.95] text-[#0A0A0A] dark:text-neutral-100 max-w-5xl">
@@ -78,13 +89,27 @@ export default async function ServicePage({
               {(service as any).heroDescription || `Speed optimisation for ${service.title} sites of all sizes. From complex e-commerce stores to high-traffic blogs, we make them fly. Our specialised ${service.title} speed optimisation service eliminates bottlenecks and supercharges your performance metrics.`}
             </p>
 
-            {/* Global Actions - Spaced and bold */}
+            {/* Global Actions - Swapped Variants */}
             <div className="flex flex-col sm:flex-row items-center gap-5 pt-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-              <Button asChild size="lg" className="h-[56px] px-10 rounded-xl font-bold text-[18px] bg-[#171717] hover:bg-[#171717]/90 text-[#FAFAFA] shadow-2xl shadow-[#171717]/20 transition-all hover:scale-[1.05]">
-                <Link href="#audit">Get Free Audit</Link>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold hover:scale-[1.05]"
+              >
+                <Link href="#audit">
+                  <span className="text-nowrap">Get Free Audit</span>
+                </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-[56px] px-10 rounded-xl font-bold text-[18px] border-2 border-neutral-200 hover:bg-neutral-50 transition-all hover:scale-[1.05]">
-                <Link href="#how-it-works">See How It Works</Link>
+              <Button
+                asChild
+                size="lg"
+                className="group/btn w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none hover:scale-[1.05]"
+              >
+                <Link href="#how-it-works">
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+                  <span className="relative z-10 text-nowrap">See How It Works</span>
+                </Link>
               </Button>
             </div>
           </div>
@@ -124,7 +149,7 @@ export default async function ServicePage({
         <div className="pt-2">
           <Link 
             href="#audit" 
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 py-2 relative overflow-hidden h-14 px-10 w-full sm:w-auto rounded-xl font-bold text-lg shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-500 group/btn"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 py-2 relative overflow-hidden h-11 px-8 w-full sm:w-auto rounded-xl font-bold text-base shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-500 group/btn"
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0"></div>
             <span className="relative z-10 flex items-center gap-2">
