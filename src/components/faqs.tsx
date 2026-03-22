@@ -38,10 +38,10 @@ export function FaqsSection() {
 		<section ref={containerRef} className="py-20 md:py-28 bg-background w-full overflow-hidden">
 			<div className="container px-4 md:px-6 mx-auto max-w-4xl">
 				<div ref={titleRef} className="text-center mb-8 md:mb-12">
-					<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+					<h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
 						Frequently Asked Questions
 					</h2>
-					<p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto font-inter">
+					<p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl font-inter font-medium leading-relaxed max-w-2xl mx-auto">
 						Everything you need to know about our SEO and speed optimisation services.
 					</p>
 				</div>

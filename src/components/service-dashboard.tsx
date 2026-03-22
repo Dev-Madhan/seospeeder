@@ -42,6 +42,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SERVICES } from "@/config/services";
+import { WPAcceleratedSection } from "./wp-accelerated-section";
 
 const MENU_ITEMS = [
   { id: "analytics", label: "Analytics", icon: BarChart3 },
@@ -602,7 +603,7 @@ function StandardDashboard({ slug, service }: any) {
                    <Monitor size={16} className="text-white dark:text-black" />
                </div>
             </div>
-         </div>
+          </div>
         </div>
 
         <div className="flex flex-1 overflow-hidden">
@@ -1004,16 +1005,19 @@ function WordPressDashboard({ slug, service }: any) {
                      icon={ShieldCheck}
                   />
                   <WPValueNode 
-                     title="Business Yield" 
-                     value="Better Results" 
-                     detail="Revenue Catalyst" 
-                     bullets={["Lower Bounce Rate", "Higher Engagement", "Maximized Conversions"]} 
-                     color={wpBlue}
-                     icon={TrendingUp}
-                  />
-               </div>
-            </div>
-        </div>
+                      title="Business Yield" 
+                      value="Better Results" 
+                      detail="Revenue Catalyst" 
+                      bullets={["Lower Bounce Rate", "Higher Engagement", "Maximized Conversions"]} 
+                      color={wpBlue}
+                      icon={TrendingUp}
+                   />
+                </div>
+             </div>
+
+            {/* TACTICAL PRICING ARCHITECTURE */}
+            <WPAcceleratedSection wpBlue={wpBlue} />
+         </div>
 
         {/* Bottom Technical Ticker */}
         <div className="h-12 border-t border-slate-200 dark:border-white/5 flex items-center justify-between px-10 bg-slate-50/50 dark:bg-black/40 relative z-20">
@@ -1133,3 +1137,4 @@ const WPValueNode = ({ title, value, detail, bullets, color, icon: Icon }: any) 
      </div>
   </div>
 );
+

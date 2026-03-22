@@ -844,11 +844,10 @@ export function InteractiveAiWorkflow() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-5 sm:space-y-6 mb-12 sm:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.15] sm:leading-[1.05]">
-            Elite Execution. <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>Flawless Delivery.
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+            Elite Execution. Flawless Delivery.
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-zinc-700 dark:text-zinc-300 font-inter font-medium leading-relaxed max-w-2xl mx-auto px-2">
+          <p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl font-inter font-medium leading-relaxed max-w-2xl mx-auto">
             We don&apos;t rely on guesswork. Our full-stack SEO execution is powered by <span className="font-jetbrains font-bold text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded-md text-[0.9em]">seospeeder.ai</span> — our proprietary software tool, mathematically structured and algorithmically perfect.
           </p>
 
@@ -868,13 +867,13 @@ export function InteractiveAiWorkflow() {
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <span className="text-emerald-500 shrink-0">▸</span>
                   <span className="text-zinc-400 dark:text-zinc-500 shrink-0">PID</span>
-                  <span className="text-zinc-700 dark:text-zinc-300 shrink-0">4821</span>
+                  <span className="text-zinc-600 dark:text-zinc-400 shrink-0">4821</span>
                   <span className="text-zinc-300 dark:text-zinc-700 mx-0.5 sm:mx-1 shrink-0">│</span>
                   <span className="text-zinc-400 dark:text-zinc-500 shrink-0">UPTIME</span>
-                  <span className="text-zinc-700 dark:text-zinc-300 shrink-0">99.99%</span>
+                  <span className="text-zinc-600 dark:text-zinc-400 shrink-0">99.99%</span>
                   <span className="text-zinc-300 dark:text-zinc-700 mx-0.5 sm:mx-1 shrink-0">│</span>
                   <span className="text-zinc-400 dark:text-zinc-500 shrink-0">MEM</span>
-                  <span className="text-zinc-700 dark:text-zinc-300 shrink-0">2.4GB</span>
+                  <span className="text-zinc-600 dark:text-zinc-400 shrink-0">2.4GB</span>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <span className="text-emerald-500 shrink-0">▸</span>

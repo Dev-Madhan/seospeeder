@@ -26,9 +26,9 @@ export function ResultsSection() {
 
   const headerVariants: Variants = {
     hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       filter: "blur(0.1px)",
       transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
     }
@@ -47,9 +47,9 @@ export function ResultsSection() {
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95, y: 20 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
+    visible: {
+      opacity: 1,
+      scale: 1,
       y: 0,
       transition: { type: "spring", stiffness: 100, damping: 20 }
     }
@@ -57,73 +57,73 @@ export function ResultsSection() {
 
   return (
     <section ref={containerRef} className="pt-20 pb-10 md:pt-32 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black overflow-hidden relative">
-      
+
       <div className="max-w-7xl mx-auto space-y-12 md:space-y-20 relative z-10">
         {/* 1. Section Headline & Subheading */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={headerVariants}
           className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1] md:leading-[1.05]">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
             Engineered for instant rankings.
           </h2>
-          <p className="text-base md:text-xl text-zinc-500 dark:text-zinc-400 font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
+          <p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl font-inter font-medium leading-relaxed max-w-2xl mx-auto">
             Performance is the new SEO. See how we transform sluggish sites into lightning-fast experiences that Google loves.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-8 md:gap-16 items-start">
           {/* Left Column: Image Comparison */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.4 }}
             className="lg:col-span-7 space-y-4 md:space-y-6"
           >
             <div className="relative group mx-auto max-w-[500px] lg:max-w-none">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                <ImageComparison
-                  className="aspect-[1905/1080] w-full rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-xl relative z-10"
-                  enableHover
-                  springOptions={{
-                    stiffness: 160,
-                    damping: 25
-                  }}
-                >
-                  <ImageComparisonImage
-                    src={mounted && resolvedTheme !== 'dark' ? "/assets/images/success-light.png" : "/assets/images/success-dark.png"}
-                    alt="SEO Speeder Optimisation"
-                    position="left"
-                    className="object-cover"
-                  />
-                  <ImageComparisonImage
-                    src={mounted && resolvedTheme !== 'dark' ? "/assets/images/failure-light.png" : "/assets/images/failure-dark.png"}
-                    alt="Standard Optimisation"
-                    position="right"
-                    className="object-cover"
-                  />
-                  <ImageComparisonSlider className="w-1 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
-                </ImageComparison>
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <ImageComparison
+                className="aspect-[1905/1080] w-full rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-xl relative z-10"
+                enableHover
+                springOptions={{
+                  stiffness: 160,
+                  damping: 25
+                }}
+              >
+                <ImageComparisonImage
+                  src={mounted && resolvedTheme !== 'dark' ? "/assets/images/success-light.png" : "/assets/images/success-dark.png"}
+                  alt="SEO Speeder Optimisation"
+                  position="left"
+                  className="object-cover"
+                />
+                <ImageComparisonImage
+                  src={mounted && resolvedTheme !== 'dark' ? "/assets/images/failure-light.png" : "/assets/images/failure-dark.png"}
+                  alt="Standard Optimisation"
+                  position="right"
+                  className="object-cover"
+                />
+                <ImageComparisonSlider className="w-[1px] bg-zinc-200/80 dark:bg-zinc-800/80 shadow-none border-none" />
+              </ImageComparison>
             </div>
-            <div 
-               className="text-center text-zinc-600 dark:text-zinc-400 font-bold text-[9px] md:text-[10px] uppercase tracking-[0.2em]"
+            <div
+              className="text-center text-zinc-600 dark:text-zinc-400 font-bold text-[9px] md:text-[10px] uppercase tracking-[0.2em]"
             >
-               Drag to compare speed impact
+              Drag to compare speed impact
             </div>
           </motion.div>
 
           {/* Right Column: Metrics Grid */}
           <div className="lg:col-span-5">
-            <motion.div 
+            <motion.div
               variants={containerVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6"
             >
-              <MetricItem 
-                icon={<Zap className="w-5 h-5" />}
+              <MetricItem
+                icon={<Zap size={22} strokeWidth={2.5} />}
                 value={99}
                 suffix="+"
                 label="Performance"
@@ -132,8 +132,8 @@ export function ResultsSection() {
                 variant={itemVariants}
                 inView={isInView}
               />
-              <MetricItem 
-                icon={<Activity className="w-5 h-5" />}
+              <MetricItem
+                icon={<Activity size={22} strokeWidth={2.5} />}
                 value={0.5}
                 suffix="s"
                 decimals={1}
@@ -143,8 +143,8 @@ export function ResultsSection() {
                 variant={itemVariants}
                 inView={isInView}
               />
-              <MetricItem 
-                icon={<Trophy className="w-5 h-5" />}
+              <MetricItem
+                icon={<Trophy size={22} strokeWidth={2.5} />}
                 value={100}
                 suffix="%"
                 label="SEO Health"
@@ -153,8 +153,8 @@ export function ResultsSection() {
                 variant={itemVariants}
                 inView={isInView}
               />
-              <MetricItem 
-                icon={<Search className="w-5 h-5" />}
+              <MetricItem
+                icon={<Search size={22} strokeWidth={2.5} />}
                 value={42}
                 prefix="+"
                 suffix="%"
@@ -183,7 +183,7 @@ export function ResultsSection() {
                 whileTap={{ scale: 0.98 }}
                 className="relative z-10 w-full sm:w-auto shrink-0"
               >
-                <Button 
+                <Button
                   className="w-full group/btn relative overflow-hidden rounded-xl font-bold h-12 px-8 text-base bg-white text-zinc-900 hover:bg-zinc-100 transition-all duration-300 shadow-xl border-none"
                 >
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-zinc-400/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
@@ -205,21 +205,21 @@ export function ResultsSection() {
 
 const MotionCard = motion.create(Card);
 
-function MetricItem({ 
-  icon, 
-  value, 
-  label, 
-  description, 
+function MetricItem({
+  icon,
+  value,
+  label,
+  description,
   color,
   variant,
   inView,
-  suffix = '', 
+  suffix = '',
   prefix = '',
-  decimals = 0 
-}: { 
-  icon: React.ReactNode, 
-  value: number, 
-  label: string, 
+  decimals = 0
+}: {
+  icon: React.ReactNode,
+  value: number,
+  label: string,
   description: string,
   color: string,
   variant: Variants,
@@ -251,18 +251,19 @@ function MetricItem({
   }, [springValue, decimals]);
 
   return (
-    <MotionCard 
+    <MotionCard
       variants={variant}
       className="p-6 rounded-2xl transition-all duration-300 bg-white dark:bg-zinc-900 border-2 border-zinc-100 dark:border-zinc-800/50 hover:shadow-xl hover:shadow-black/5 hover:border-zinc-300 dark:hover:border-zinc-700 group cursor-default"
     >
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-4 mb-5">
         <div className={cn(
-            "p-2 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 shadow-xs border-2 border-zinc-200 dark:border-zinc-800 transition-all duration-300 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-zinc-100 dark:group-hover:text-zinc-900 group-hover:border-zinc-900 dark:group-hover:border-zinc-100 group-hover:scale-110",
-            color
+          "size-12 rounded-full border-2 border-zinc-200 dark:border-zinc-800 bg-card flex items-center justify-center text-zinc-900 dark:text-zinc-50 shadow-sm outline outline-1 outline-zinc-200/80 dark:outline-zinc-800/80 outline-offset-2 group-hover:bg-primary/5 transition-all duration-500 shadow-xs",
         )}>
-           {icon}
+          <div className="group-hover:text-primary group-hover:scale-110 transition-all duration-500">
+            {icon}
+          </div>
         </div>
-        <span className="text-[11px] lg:text-[10px] font-black text-zinc-600 dark:text-zinc-300 uppercase tracking-[0.2em]">{label}</span>
+        <span className="text-[11px] lg:text-[10px] font-black text-zinc-600 dark:text-zinc-400 uppercase tracking-[0.2em]">{label}</span>
       </div>
       <div className="text-3xl font-black text-zinc-900 dark:text-zinc-50 tracking-tighter leading-none mb-2">
         {prefix}<span ref={ref}>0</span>{suffix}

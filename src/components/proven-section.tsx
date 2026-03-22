@@ -210,10 +210,10 @@ export function ProvenSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.05]">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
             Data-Driven Results
           </h2>
-          <p className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 font-inter font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl font-inter font-medium leading-relaxed max-w-2xl mx-auto">
             See exactly how Seospeeder transforms your site&apos;s performance and search visibility with precision analytics.
           </p>
         </motion.div>

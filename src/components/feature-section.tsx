@@ -89,9 +89,9 @@ export function FeatureSection() {
 		<div ref={container} className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible">
 			<div className="text-center space-y-4 max-w-3xl mx-auto">
 				<h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-					Next-Gen SEO <Highlighter color="hsl(var(--foreground) / 0.1)" padding={0} strokeWidth={1} iterations={1}>Infrastructure</Highlighter>
+					Next-Gen SEO Infrastructure
 				</h2>
-				<p className="text-muted-foreground text-lg sm:text-xl font-inter font-medium leading-relaxed">
+				<p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl font-inter font-medium leading-relaxed max-w-2xl mx-auto">
 					Scale your organic growth with a comprehensive suite of AI-driven performance and ranking tools designed for the modern web.
 				</p>
 			</div>
@@ -140,7 +140,7 @@ function FeatureDescription({
 	...props
 }: React.ComponentProps<"p">) {
 	return (
-		<p className={cn("text-muted-foreground text-sm font-inter font-medium", className)} {...props} />
+		<p className={cn("text-zinc-600 dark:text-zinc-400 text-sm font-inter font-medium", className)} {...props} />
 	);
 }
 

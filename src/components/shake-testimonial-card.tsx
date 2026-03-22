@@ -121,14 +121,10 @@ export function TestimonialSection() {
           {/* Left Content */}
           <div className="flex flex-col gap-8 max-w-2xl">
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
-              <span className="section-title-word inline-block mr-2 md:mr-3">Trusted</span>
-              <span className="section-title-word inline-block mr-2 md:mr-3">by</span>
-              <span className="section-title-word inline-block mr-2 md:mr-3">fast-growing</span>
-              <span className="section-title-word inline-block text-primary">companies</span>
-              <span className="section-title-word inline-block ml-2 md:ml-3">worldwide.</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+              Trusted by fast-growing companies worldwide.
             </h2>
-            <p className="section-desc text-muted-foreground text-lg md:text-xl font-primary leading-relaxed max-w-lg">
+            <p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl font-inter font-medium leading-relaxed max-w-2xl mx-auto">
               Don&apos;t just take our word for it. See how seospeeder transforms website performance and rankings for businesses like yours.
             </p>
             
