@@ -31,7 +31,7 @@ export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 				const primaryColor = service.color;
 				let secondaryColor = primaryColor.replace(/[\d.]+\)$/, "0.2)");
 				
-				if (slug === "wordpress") secondaryColor = "rgba(14, 165, 233, 0.25)";
+				if (slug === "wordpress") secondaryColor = "rgba(33, 117, 155, 0.25)";
 				if (slug === "shopify") secondaryColor = "rgba(16, 185, 129, 0.25)";
 				if (slug === "magento") secondaryColor = "rgba(245, 158, 11, 0.25)";
 				if (slug === "laravel") secondaryColor = "rgba(251, 146, 60, 0.25)";
@@ -41,7 +41,7 @@ export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 		}
 
 		if (pathname === "/about") {
-			return ["rgba(16, 185, 129, 0.35)", "rgba(14, 165, 233, 0.25)"];
+			return ["rgba(16, 185, 129, 0.35)", "rgba(33, 117, 155, 0.25)"];
 		}
 
 		if (pathname === "/contact") {

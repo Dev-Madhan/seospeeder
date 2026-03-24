@@ -27,7 +27,7 @@ export function DynamicLightRays() {
         // A simple two-toning logic: Emerald/Sky, Rose/Orange, Violet/Indigo
         let secondaryColor = primaryColor.replace(/[\d.]+\)$/, "0.2)");
         
-        if (slug === "wordpress") secondaryColor = "rgba(14, 165, 233, 0.25)"; // Sky Blue secondary
+        if (slug === "wordpress") secondaryColor = "rgba(33, 117, 155, 0.25)"; // Sky Blue secondary
         if (slug === "shopify") secondaryColor = "rgba(16, 185, 129, 0.25)";   // Emerald secondary
         if (slug === "magento") secondaryColor = "rgba(245, 158, 11, 0.25)";  // Amber secondary
         if (slug === "laravel") secondaryColor = "rgba(251, 146, 60, 0.25)";  // Orange secondary
@@ -38,7 +38,7 @@ export function DynamicLightRays() {
 
     // Special case for About page
     if (pathname === "/about") {
-      return ["rgba(16, 185, 129, 0.35)", "rgba(14, 165, 233, 0.25)"]; // Emerald & Sky Blue two-toned
+      return ["rgba(16, 185, 129, 0.35)", "rgba(33, 117, 155, 0.25)"]; // Emerald & Sky Blue two-toned
     }
 
     if (pathname === "/contact") {

@@ -80,7 +80,7 @@ export function SectionCards() {
               20,743
             </CardTitle>
             <div className="absolute right-4 top-4">
-              <Badge variant="outline" className="flex gap-1 rounded-lg text-xs font-bold text-sky-500 border-sky-500/20 bg-sky-500/5">
+              <Badge variant="outline" className="flex gap-1 rounded-lg text-xs font-bold text-[#21759b] border-[#21759b]/20 bg-[#21759b]/5">
                 <TrendingUpIcon className="size-3" />
                 +8.3%
               </Badge>
@@ -88,7 +88,7 @@ export function SectionCards() {
           </CardHeader>
           <CardFooter className="flex-col items-start gap-1 text-sm">
             <div className="line-clamp-1 flex gap-2 font-medium">
-              Up 1,591 from last period <TrendingUpIcon className="size-4 text-sky-500" />
+              Up 1,591 from last period <TrendingUpIcon className="size-4 text-[#21759b]" />
             </div>
             <div className="text-muted-foreground">
               Higher avg. spend per customer

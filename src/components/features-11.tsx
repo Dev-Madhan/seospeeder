@@ -165,9 +165,9 @@ export default function FeaturesGrid11() {
                     <div className="feature-card-wrapper sm:col-span-6 lg:col-span-4">
                         <PremiumCard className="h-full">
                             <div className="p-6 sm:p-8 md:p-10 space-y-6 md:space-y-8 flex flex-col h-full relative">
-                                <div className="size-16 rounded-2xl bg-sky-500/10 border-2 border-sky-500/20 flex items-center justify-center text-sky-500 overflow-hidden relative">
+                                <div className="size-16 rounded-2xl bg-[#21759b]/10 border-2 border-[#21759b]/20 flex items-center justify-center text-[#21759b] overflow-hidden relative">
                                     <Clock className="size-8 relative z-10" />
-                                    <div className="absolute inset-0 bg-sky-500 opacity-0 group-hover:opacity-10" />
+                                    <div className="absolute inset-0 bg-[#21759b] opacity-0 group-hover:opacity-10" />
                                 </div>
                                 <div className="space-y-4">
                                     <h3 className="text-xl md:text-2xl font-bold">Reduce Bounce</h3>
@@ -178,7 +178,7 @@ export default function FeaturesGrid11() {
                                 <div className="mt-auto pt-6 border-t border-primary/10">
                                     <div className="flex items-center justify-between mb-4">
                                         <span className="font-semibold font-inter text-sm text-foreground">
-                                            Bounce Rate <span className="text-sky-500">(32%)</span>
+                                            Bounce Rate <span className="text-[#21759b]">(32%)</span>
                                         </span>
                                     </div>
                                     <ChartContainer config={bounceConfig} className="h-32 w-full">

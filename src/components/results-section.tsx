@@ -139,7 +139,7 @@ export function ResultsSection() {
                 decimals={1}
                 label="LCP Duration"
                 description="Reduced from 3.2s. Instant load."
-                color="text-sky-500"
+                color="text-[#21759b]"
                 variant={itemVariants}
                 inView={isInView}
               />

@@ -705,7 +705,7 @@ const MetricSquare = ({ label, value, rating, icon: Icon }: any) => (
 const CommerceStatsCard = ({ label, value, sub, color, icon: Icon, trend }: any) => {
   const colors: any = {
     emerald: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
-    sky: "text-sky-500 bg-sky-500/10 border-sky-500/20",
+    sky: "text-[#21759b] bg-[#21759b]/10 border-[#21759b]/20",
     purple: "text-purple-500 bg-purple-500/10 border-purple-500/20",
     amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
     orange: "text-orange-500 bg-orange-500/10 border-orange-500/20",
@@ -761,16 +761,16 @@ function WordPressDashboard({ slug, service }: any) {
               <DiagnosticCard label="Asset Tunnel" value="Elite" status="Active" icon={Layers} />
             </div>
 
-            <Card className="bg-sky-50/50 dark:bg-sky-950/20 border-sky-100 dark:border-sky-900/30 overflow-hidden shadow-none">
+            <Card className="bg-[#e9f5fb]/50 dark:bg-[#0a2b3a]/20 border-[#d5ecf7] dark:border-[#0f4057]/30 overflow-hidden shadow-none">
               <CardContent className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <p className="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-1 font-inter">Data Synthesis</p>
+                    <p className="text-xs font-semibold text-[#21759b] dark:text-[#41a6d9] uppercase tracking-widest mb-1 font-inter">Data Synthesis</p>
                     <p className="font-bold tracking-tight">Crawl Velocity</p>
                   </div>
-                  <Target size={18} className="text-sky-600 dark:text-sky-400" />
+                  <Target size={18} className="text-[#21759b] dark:text-[#41a6d9]" />
                 </div>
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0 pt-4 border-t border-sky-100 dark:border-sky-900/30">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0 pt-4 border-t border-[#d5ecf7] dark:border-[#0f4057]/30">
                   <span className="text-xs font-medium text-muted-foreground font-inter">Yield Delta</span>
                   <span className="text-sm font-bold text-foreground">+24.8% Efficiency</span>
                 </div>
@@ -782,7 +782,7 @@ function WordPressDashboard({ slug, service }: any) {
           <div className="col-span-1 lg:col-span-6 flex flex-col items-center justify-center">
             <div className="text-center mb-8">
               <h2 className="text-2xl lg:text-3xl font-bold tracking-tighter mb-2 font-primary">Hybrid Intelligence Core</h2>
-              <p className="text-sm text-muted-foreground font-inter"><TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">Advanced WordPress optimization</TextHighlighter> sequence active</p>
+              <p className="text-sm text-muted-foreground font-inter"><TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">Advanced WordPress optimization</TextHighlighter> sequence active</p>
             </div>
 
             <Card className="w-full max-w-[280px] sm:max-w-sm mx-auto aspect-square flex flex-col items-center justify-center relative overflow-hidden shadow-none border-dashed border-2 bg-slate-50 dark:bg-muted/10">
@@ -790,9 +790,9 @@ function WordPressDashboard({ slug, service }: any) {
                 <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 font-inter">Discovery Index</p>
                 <div className="flex items-start justify-center gap-1 mb-6">
                   <span className="text-7xl lg:text-8xl font-black tracking-tighter text-foreground">99</span>
-                  <span className="text-3xl font-bold text-sky-600">+</span>
+                  <span className="text-3xl font-bold text-[#21759b]">+</span>
                 </div>
-                <StaggerButton className="bg-sky-600 hover:bg-sky-700 text-white shadow-none uppercase tracking-widest px-4 py-1.5 text-xs font-bold font-inter rounded-lg">Mastery Elite</StaggerButton>
+                <StaggerButton className="bg-[#21759b] hover:bg-[#1d5c7a] text-white shadow-none uppercase tracking-widest px-4 py-1.5 text-xs font-bold font-inter rounded-lg">Mastery Elite</StaggerButton>
               </div>
             </Card>
 
@@ -830,7 +830,7 @@ function WordPressDashboard({ slug, service }: any) {
                     <span className="text-lg font-bold tracking-tight">100.0%</span>
                   </div>
                   <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 1.5, ease: "easeOut" }} className="h-full bg-sky-600" />
+                    <motion.div initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 1.5, ease: "easeOut" }} className="h-full bg-[#21759b]" />
                   </div>
                 </div>
               </CardContent>
@@ -923,7 +923,7 @@ const ImpactCard = ({ title, subtitle, accent, bullets, icon: Icon }: any) => (
     <CardContent className="p-6">
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-3">
-          <div className="size-8 rounded-lg bg-sky-50 dark:bg-sky-950 flex items-center justify-center text-sky-600">
+          <div className="size-8 rounded-lg bg-[#e9f5fb] dark:bg-[#0a2b3a] flex items-center justify-center text-[#21759b]">
             <Icon size={16} />
           </div>
           <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground font-inter">{title}</p>
@@ -937,7 +937,7 @@ const ImpactCard = ({ title, subtitle, accent, bullets, icon: Icon }: any) => (
         <div className="space-y-2 pt-4 border-t">
           {bullets.map((b: string, i: number) => (
             <div key={i} className="flex items-center gap-2">
-              <div className="size-1 rounded-full bg-sky-600 shrink-0" />
+              <div className="size-1 rounded-full bg-[#21759b] shrink-0" />
               <span className="text-xs font-medium text-muted-foreground font-inter">{b}</span>
             </div>
           ))}
