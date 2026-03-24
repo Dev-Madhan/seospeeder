@@ -131,7 +131,7 @@ export const SERVICES = [
     slug: "local-seo",
     title: "Local SEO",
     description: "Attract nearby customers effectively",
-    color: "rgba(14, 165, 233, 0.45)", // Local Sky Blue,
+    color: "rgba(33, 117, 155, 0.45)", // Local Sky Blue,
     heroHeadline: "Own Your Local Market.",
     heroDescription: "When local customers search, ensure they find you first. We optimize your local presence to drive massive foot traffic and establish complete local dominance."
   },

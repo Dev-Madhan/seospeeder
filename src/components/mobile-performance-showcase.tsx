@@ -21,14 +21,14 @@ if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-const perfChartData = [{ label: "score", value: 96, fill: "#0ea5e9" }];
+const perfChartData = [{ label: "score", value: 96, fill: "#21759b" }];
 const perfChartConfig = {
    value: { label: "Score" },
-   score: { label: "Score", color: "#0ea5e9" },
+   score: { label: "Score", color: "#21759b" },
 } satisfies ChartConfig;
 
 export const MobilePerformanceShowcase = () => {
-   const wpBlue = "#0ea5e9";
+   const wpBlue = "#21759b";
    const [activeTab, setActiveTab] = useState<'summary' | 'metrics' | 'network'>('summary');
    const [direction, setDirection] = useState(0);
 
@@ -52,7 +52,7 @@ export const MobilePerformanceShowcase = () => {
             <motion.div ref={phoneRef} initial={{ y: 30 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }} className="col-span-12 lg:col-span-5 flex items-center justify-center relative order-2 lg:order-1 w-full">
                {/* External Hardware Shell via Iphone component */}
                <div className="origin-center transform-gpu mx-auto">
-                  <Iphone style={{ width: '300px', maxWidth: '100%' }} className="mx-auto group/phone shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] dark:shadow-[0_0_50px_-12px_rgba(14,165,233,0.25)] rounded-[44px]">
+                  <Iphone style={{ width: '300px', maxWidth: '100%' }} className="mx-auto group/phone rounded-[44px]">
                   {/* Phone Internal UI - Native iOS Aesthetic */}
                    {/* Phone Internal UI - Native iOS Aesthetic */}
                    <div className="flex size-full flex-col bg-[#F5F5F5] dark:bg-[#0a0a0a] overflow-hidden relative font-bricolage rounded-[34px]">
@@ -155,7 +155,7 @@ export const MobilePerformanceShowcase = () => {
                                         <Card className="rounded-2xl shadow-sm border-2 border-black/5 dark:border-white/5 overflow-hidden bg-card">
                                            <div className="px-4 py-3 flex items-center justify-between bg-muted/40 border-b border-border/50">
                                               <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Infrastructure</span>
-                                              <span className="text-[10px] font-bold text-sky-500 dark:text-sky-400 uppercase tracking-wide">Active</span>
+                                              <span className="text-[10px] font-bold text-[#21759b] dark:text-[#41a6d9] uppercase tracking-wide">Active</span>
                                            </div>
                                            <CardContent className="p-0 pl-4">
                                               <div className="flex items-center justify-between py-3.5 pr-4">
@@ -232,7 +232,7 @@ export const MobilePerformanceShowcase = () => {
                                                  </div>
                                               </div>
                                               <div className="flex justify-center py-6 relative">
-                                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-28 rounded-full bg-[#0ea5e9]/5 dark:bg-[#0ea5e9]/10 blur-xl pointer-events-none" />
+                                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-28 rounded-full bg-[#21759b]/5 dark:bg-[#21759b]/10 blur-xl pointer-events-none" />
                                                  <div className="relative mx-auto flex size-20 items-center justify-center rounded-full border-2 border-border/60 dark:border-white/15 bg-background shadow-sm dark:shadow-[0_0_15px_rgba(14,165,233,0.1)]">
                                                     {[0, 1, 2].map((i) => (
                                                        <motion.div
@@ -240,7 +240,7 @@ export const MobilePerformanceShowcase = () => {
                                                           initial={{ opacity: 0, scale: 1 }}
                                                           animate={{ scale: [1, 2.2], opacity: [0, 0.6, 0] }}
                                                           transition={{ duration: 3, repeat: Infinity, delay: i * 1, times: [0, 0.2, 1], ease: "easeOut" }}
-                                                          className="absolute inset-0 rounded-full border border-[#0ea5e9]/30 dark:border-[#0ea5e9]/50 z-0 pointer-events-none will-change-transform"
+                                                          className="absolute inset-0 rounded-full border border-[#21759b]/30 dark:border-[#21759b]/50 z-0 pointer-events-none will-change-transform"
                                                           style={{ transform: "translateZ(0)" }}
                                                        />
                                                     ))}
@@ -300,7 +300,7 @@ export const MobilePerformanceShowcase = () => {
                </div>
 
                {/* Deep Ambient Glows */}
-               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[350px] md:size-[580px] bg-[#0ea5e9]/10 rounded-full blur-[90px] md:blur-[110px] pointer-events-none opacity-50 md:opacity-40 -z-10" />
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[350px] md:size-[580px] bg-[#21759b]/10 rounded-full blur-[90px] md:blur-[110px] pointer-events-none opacity-50 md:opacity-40 -z-10" />
             </motion.div>
 
             {/* RIGHT COLUMN: The Performance Analysis Data */}
@@ -313,7 +313,7 @@ export const MobilePerformanceShowcase = () => {
                   </Badge>
                   <span className="h-px w-6 bg-slate-200 dark:bg-white/10 hidden sm:block" />
                   <div className="hidden sm:flex items-center gap-1.5 text-slate-400 dark:text-white/20 font-jetbrains text-[9px] uppercase tracking-widest">
-                     System ID: 0EA5E9
+                     System ID: 21759B
                   </div>
                </div>
 
@@ -322,11 +322,11 @@ export const MobilePerformanceShowcase = () => {
                   <h2 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.15] font-primary gsap-fade-up text-left w-full">
                      Modern WordPress{' '}
                      <br className="hidden lg:block" />
-                     <span className="text-[#0ea5e9]">Performance.</span>
+                     <span className="text-[#21759b]">Performance.</span>
                   </h2>
 
                   <p className="text-sm sm:text-base md:text-lg text-slate-500 dark:text-neutral-400 leading-relaxed font-normal font-inter gsap-fade-up text-left w-full">
-                     Our elite engineers provide a <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">surgical-grade speed optimization</TextHighlighter> service that transforms slow WordPress sites into high-performance assets. Achieve <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">90+ PageSpeed scores</TextHighlighter>, Grade A GTmetrix status, and <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">sub-2s load times</TextHighlighter>—instantly.
+                     Our elite engineers provide a <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">surgical-grade speed optimization</TextHighlighter> service that transforms slow WordPress sites into high-performance assets. Achieve <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">90+ PageSpeed scores</TextHighlighter>, Grade A GTmetrix status, and <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">sub-2s load times</TextHighlighter>—instantly.
                   </p>
                </div>
 

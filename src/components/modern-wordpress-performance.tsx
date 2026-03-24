@@ -23,7 +23,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-const wpBlue = "#0ea5e9";
+const wpBlue = "#21759b";
 
 if (typeof window !== "undefined") {
    gsap.registerPlugin(ScrollTrigger);
@@ -65,15 +65,15 @@ export const ModernWordPressPerformance = () => {
                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 md:gap-10 p-5 sm:p-8 md:p-10 lg:p-12">
                   <CardHeader className="p-0 space-y-4 md:space-y-6 max-w-3xl">
                      <div className="inline-flex w-fit items-center gap-2.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-jetbrains">
-                        <Activity size={14} className="animate-pulse text-sky-500" />
+                        <Activity size={14} className="animate-pulse text-[#21759b]" />
                         <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Hybrid Intelligence Core</span>
                      </div>
                      <CardTitle className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white leading-[1.1] font-primary">
                         WordPress Accelerated.<br />
-                        <span className="text-[#0ea5e9]">Optimized in 48 Hours.</span>
+                        <span className="text-[#21759b]">Optimized in 48 Hours.</span>
                      </CardTitle>
                      <CardDescription className="text-base sm:text-lg md:text-xl text-slate-500 dark:text-neutral-400 font-medium max-w-2xl leading-relaxed font-inter">
-                        <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">Expert speed optimisation</TextHighlighter> for WordPress sites of all sizes. From complex <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">WooCommerce stores</TextHighlighter> to blogs, we eliminate bottlenecks and supercharge performance.
+                        <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">Expert speed optimisation</TextHighlighter> for WordPress sites of all sizes. From complex <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">WooCommerce stores</TextHighlighter> to blogs, we eliminate bottlenecks and supercharge performance.
                      </CardDescription>
                   </CardHeader>
 
@@ -81,13 +81,13 @@ export const ModernWordPressPerformance = () => {
                      <Card className="flex-1 lg:min-w-[160px] bg-white dark:bg-[#0c0c0e] border-2 border-slate-200 dark:border-white/10 shadow-sm rounded-2xl hover:border-slate-900/30 dark:hover:border-white/30 transition-all duration-500 cursor-default">
                         <CardContent className="p-6 text-center flex flex-col justify-center h-full">
                            <p className="text-[10px] font-bold uppercase text-slate-400 dark:text-white/30 tracking-[0.2em] mb-2 font-jetbrains">Result Goal</p>
-                           <p className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white font-primary tracking-tighter">90<span className="text-sky-500">+</span></p>
+                           <p className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white font-primary tracking-tighter">90<span className="text-[#21759b]">+</span></p>
                         </CardContent>
                      </Card>
                      <Card className="flex-1 lg:min-w-[160px] bg-white dark:bg-[#0c0c0e] border-2 border-slate-200 dark:border-white/10 shadow-sm rounded-2xl hover:border-slate-900/30 dark:hover:border-white/30 transition-all duration-500 cursor-default">
                         <CardContent className="p-6 text-center flex flex-col justify-center h-full">
                            <p className="text-[10px] font-bold uppercase text-slate-400 dark:text-white/30 tracking-[0.2em] mb-2 font-jetbrains">Target</p>
-                           <p className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white font-primary tracking-tighter">48<span className="text-sky-500 text-2xl lg:text-3xl ml-1">h</span></p>
+                           <p className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white font-primary tracking-tighter">48<span className="text-[#21759b] text-2xl lg:text-3xl ml-1">h</span></p>
                         </CardContent>
                      </Card>
                   </CardContent>
@@ -107,7 +107,7 @@ export const ModernWordPressPerformance = () => {
                                     Modern WordPress Performance.
                                  </h3>
                                  <p className="text-slate-500 dark:text-white/50 text-base leading-relaxed font-inter font-medium opacity-80">
-                                    Our elite engineers provide a <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">surgical-grade speed optimization</TextHighlighter> service that transforms slow WordPress sites into <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">high-performance assets</TextHighlighter>.
+                                    Our elite engineers provide a <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">surgical-grade speed optimization</TextHighlighter> service that transforms slow WordPress sites into <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">high-performance assets</TextHighlighter>.
                                  </p>
                               </div>
                               <div className="grid grid-cols-2 gap-8">
@@ -233,7 +233,7 @@ export const ModernWordPressPerformance = () => {
                            <div className="space-y-3">
                               <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none font-primary">Better User Experience</h3>
                               <p className="text-slate-500 dark:text-white/50 text-base leading-relaxed font-inter font-medium opacity-80">
-                                 <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">Smoother scrolling</TextHighlighter>, quicker interactions, and consistent page layouts ensure <TextHighlighter highlightColor="rgba(14, 165, 233, 0.15)">deep engagement</TextHighlighter>.
+                                 <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">Smoother scrolling</TextHighlighter>, quicker interactions, and consistent page layouts ensure <TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">deep engagement</TextHighlighter>.
                               </p>
                            </div>
                            <div className="space-y-3">
@@ -266,16 +266,16 @@ export const ModernWordPressPerformance = () => {
                                     whileInView={{ strokeDashoffset: 402 - (402 * 96) / 100 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-                                    strokeWidth="6" strokeDasharray="402" strokeLinecap="round" stroke="#0ea5e9" fill="transparent" r="64" cx="80" cy="80"
+                                    strokeWidth="6" strokeDasharray="402" strokeLinecap="round" stroke="#21759b" fill="transparent" r="64" cx="80" cy="80"
                                  />
                               </svg>
 
                               <div className="relative z-10 flex flex-col items-center">
                                  <div className="flex items-start">
                                     <span className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">96</span>
-                                    <span className="text-xl font-black text-sky-500 ml-1 mt-1">%</span>
+                                    <span className="text-xl font-black text-[#21759b] ml-1 mt-1">%</span>
                                  </div>
-                                 <p className="text-[10px] font-black text-sky-500 uppercase tracking-[0.3em] mt-2">Optimal</p>
+                                 <p className="text-[10px] font-black text-[#21759b] uppercase tracking-[0.3em] mt-2">Optimal</p>
                               </div>
                            </div>
                            <div className="space-y-4 w-full px-4 font-jetbrains">
@@ -309,7 +309,7 @@ export const ModernWordPressPerformance = () => {
                               <span className="text-xl font-black font-jetbrains relative z-10">A</span>
                            </div>
                            <div className="space-y-1">
-                              <div className="flex items-center lg:justify-center gap-1.5 text-sky-500 mb-0.5">
+                              <div className="flex items-center lg:justify-center gap-1.5 text-[#21759b] mb-0.5">
                                  <TrendingUp size={10} />
                                  <p className="text-[9px] font-black uppercase tracking-[0.2em] font-jetbrains">Peak Verified</p>
                               </div>
@@ -327,7 +327,7 @@ export const ModernWordPressPerformance = () => {
                               <Clock size={24} className="relative z-10" />
                            </div>
                            <div className="space-y-1">
-                              <div className="flex items-center lg:justify-center gap-1.5 text-sky-500 mb-0.5">
+                              <div className="flex items-center lg:justify-center gap-1.5 text-[#21759b] mb-0.5">
                                  <p className="text-[9px] font-black uppercase tracking-[0.2em] font-jetbrains">Surgical Deployment</p>
                               </div>
                               <h4 className="text-base font-black text-slate-900 dark:text-white uppercase tracking-tighter font-primary leading-tight">48Hrs Optimization</h4>
@@ -351,7 +351,7 @@ export const ModernWordPressPerformance = () => {
                                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">Live // Verified</span>
                               </div>
                               <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-primary">
-                                 Ready for <br className="hidden xl:block" /> <span className="text-slate-400 dark:text-slate-500">Viral Traffic</span>
+                                 Ready for <br className="hidden xl:block" /> <span className="text-[#21759b]">Viral Traffic</span>
                               </h3>
                            </div>
                            {/* Button for Desktop Only (xl and above) */}
@@ -437,7 +437,7 @@ function BadgePulse() {
                   times: [0, 0.2, 1],
                   ease: "easeOut"
                }}
-               className="absolute inset-0 rounded-full border border-sky-500/30 will-change-transform"
+               className="absolute inset-0 rounded-full border-[#21759b]/30 will-change-transform"
             />
          ))}
       </div>
@@ -456,7 +456,7 @@ function IconScanner() {
             repeat: Infinity,
             ease: "easeInOut"
          }}
-         className="absolute left-[-50%] right-[-50%] h-0.5 bg-sky-500/40 blur-[2px] z-30 pointer-events-none"
+         className="absolute left-[-50%] right-[-50%] h-0.5 bg-[#21759b]/40 blur-[2px] z-30 pointer-events-none"
       />
    );
 }
