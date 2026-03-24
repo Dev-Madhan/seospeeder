@@ -13,8 +13,6 @@ import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 
-const INITIAL_WIDTH = "72rem"
-const MAX_WIDTH = "1000px"
 
 export function Navbar() {
   const { scrollY } = useScroll()
@@ -42,30 +40,22 @@ export function Navbar() {
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="sticky top-0 z-50 flex justify-center w-full px-4"
-      style={{ background: "transparent" }}
     >
       <motion.div
         initial={false}
         animate={{
-          scaleX: hasScrolled ? 1 : 1,
-          width: hasScrolled
-            ? (typeof window !== 'undefined' && window.innerWidth < 1024 ? "100%" : MAX_WIDTH)
-            : INITIAL_WIDTH
+          maxWidth: hasScrolled ? "1000px" : "1152px", // 1152px = 72rem
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="w-full flex justify-center"
-        style={{ background: "transparent" }}
+        className={cn(
+          "w-full rounded-2xl flex justify-center border-2 transition-[background-color,border-color,box-shadow,padding] duration-500 ease-in-out",
+          hasScrolled
+            ? "border-border bg-background/80 px-2 backdrop-blur-md shadow-lg shadow-zinc-950/5"
+            : "border-transparent bg-transparent px-4 md:px-8"
+        )}
       >
-        <div
-          className={cn(
-            "w-full rounded-2xl transition-all duration-500",
-            hasScrolled
-              ? "border-border bg-background/80 border-2 px-2 backdrop-blur-md shadow-lg shadow-zinc-950/5"
-              : "max-w-7xl px-4 md:px-8"
-          )}
-        >
-          <div className="flex h-[56px] items-center justify-between p-2 md:px-8">
-            <Link href="/" className="flex items-center gap-2 group transition-opacity hover:opacity-80">
+        <div className="flex h-[56px] w-full items-center justify-between p-2 md:px-8">
+          <Link href="/" className="flex items-center gap-2 group transition-opacity hover:opacity-80">
               <div className="-mt-1 h-5 w-auto md:h-6 flex items-center">
                 {mounted ? (
                   <Image
@@ -105,7 +95,6 @@ export function Navbar() {
               </div>
             </div>
           </div>
-        </div>
       </motion.div>
     </motion.header>
   )
