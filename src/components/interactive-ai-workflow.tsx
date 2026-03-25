@@ -2,14 +2,42 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView, LayoutGroup } from "framer-motion";
-import { Radar, Wand2, ServerCog, Network, Sparkles, Bot, LineChart, Zap, CheckCircle2, Cpu, ShieldCheck, Globe, TrendingUp, GitCommitVertical, ShoppingCart, Compass, BookOpen, MapPin, Navigation, BarChart3, Brain } from "lucide-react";
+import { 
+  Radar, Wand2, ServerCog, Network, Sparkles, Bot, LineChart, 
+  Zap, CheckCircle2, Cpu, ShieldCheck, Globe, TrendingUp, 
+  GitCommitVertical, ShoppingCart, Compass, BookOpen, MapPin, 
+  Navigation, BarChart3, Brain, Server, Cloud, Satellite, 
+  Activity, Wifi, Layers 
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "@/components/ui/code-block";
-import { RadialBar, RadialBarChart, LineChart as RechartsLineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { RadialBar, RadialBarChart, LineChart as RechartsLineChart, Line, CartesianGrid, XAxis, YAxis, PolarAngleAxis, PolarGrid, Radar as RechartsRadar, RadarChart } from "recharts";
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { OrbitingSkills } from "@/components/unlumen-ui/orbiting-skills";
 import CloudFlow from "@/components/ui/cloud-flow";
+import BotDetection from "@/components/forgeui/bot-detection";
+import { SocialOrbit } from "@/components/ui/social-orbit";
+
+const neuralChartData = [
+  { segment: "News", authority: 85, trust: 70 },
+  { segment: "Wiki", authority: 92, trust: 80 },
+  { segment: "Gov", authority: 78, trust: 65 },
+  { segment: "Edu", authority: 82, trust: 75 },
+  { segment: "PR", authority: 90, trust: 85 },
+  { segment: "Social", authority: 75, trust: 60 },
+];
+
+const neuralChartConfig = {
+  authority: {
+    label: "Authority Score",
+    color: "#f97316",
+  },
+  trust: {
+    label: "Trust Flow",
+    color: "#f43f5e",
+  },
+} satisfies ChartConfig;
 
 const processes = [
   {
@@ -41,12 +69,12 @@ const processes = [
           showPath={true}
           accentHsl="214 100% 60%"
           items={[
-            { label: "Transactional",  icon: <ShoppingCart  size={11} /> },
-            { label: "Navigational",   icon: <Navigation    size={11} /> },
-            { label: "Informational",  icon: <BookOpen      size={11} /> },
-            { label: "Commercial",     icon: <BarChart3     size={11} /> },
-            { label: "Local",          icon: <MapPin        size={11} /> },
-            { label: "Discovery",      icon: <Compass       size={11} /> },
+            { label: "Transactional", icon: <ShoppingCart size={11} /> },
+            { label: "Navigational", icon: <Navigation size={11} /> },
+            { label: "Informational", icon: <BookOpen size={11} /> },
+            { label: "Commercial", icon: <BarChart3 size={11} /> },
+            { label: "Local", icon: <MapPin size={11} /> },
+            { label: "Discovery", icon: <Compass size={11} /> },
           ]}
         >
           {/* Center hub — Instant Speed Audit effect */}
@@ -162,7 +190,7 @@ const processes = [
           <div className="flex-1 overflow-hidden opacity-90 leading-relaxed font-jetbrains text-[11px] px-4 py-2 sm:p-2">
             <p className="text-blue-600 dark:text-blue-400">export <span className="text-emerald-600 dark:text-emerald-400">async</span> function <span className="text-amber-700 dark:text-yellow-200">optimizeLayout</span>() {'{'}</p>
             <p className="text-zinc-400 dark:text-gray-400 ml-5 opacity-60">{'// Auto-inferred via ML'}</p>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse", repeatDelay: 1 }}
@@ -195,95 +223,51 @@ const processes = [
     ],
     demo: (
       <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-6 relative">
-        {/* Scanning overlay */}
-        <motion.div 
-          animate={{ top: ["-10%", "110%"] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent pointer-events-none z-30"
-        />
-
-        {/* Link Graph Visualization */}
-        <div className="relative w-56 h-56 md:w-64 md:h-64">
-          {/* Central Brand Hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <motion.div 
-              animate={{ boxShadow: ["0 0 15px rgba(249,115,22,0.15)", "0 0 30px rgba(249,115,22,0.3)", "0 0 15px rgba(249,115,22,0.15)"] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="size-16 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-orange-500/30 flex flex-col items-center justify-center shadow-lg"
+        <Card className="w-full bg-transparent border-none shadow-none">
+          <CardHeader className="items-center pb-4 p-0">
+            <CardTitle className="text-xl md:text-2xl font-black">Link Graph Authority</CardTitle>
+            <CardDescription className="text-[10px] md:text-xs">
+              Entity distribution across high-authority networks
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pb-0 p-0">
+            <ChartContainer
+              config={neuralChartConfig}
+              className="mx-auto aspect-square max-h-[300px] w-full"
             >
-              <Network size={18} className="text-orange-500" />
-              <span className="text-[7px] font-black text-orange-600 dark:text-orange-400 uppercase tracking-widest mt-1">BRAND</span>
-            </motion.div>
-          </div>
-
-          {/* SVG connection lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
-            {[
-              { x: "18%", y: "10%" },
-              { x: "82%", y: "15%" },
-              { x: "92%", y: "65%" },
-              { x: "72%", y: "90%" },
-              { x: "12%", y: "75%" },
-              { x: "5%", y: "38%" },
-            ].map((pos, i) => (
-              <motion.line
-                key={i}
-                x1="50%" y1="50%" x2={pos.x} y2={pos.y}
-                stroke="currentColor" strokeWidth="1"
-                className="text-orange-500/20 dark:text-orange-500/15"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1.5, delay: i * 0.2 }}
-              />
-            ))}
-          </svg>
-
-          {/* Authority Nodes - asymmetric placement */}
-          {[
-            { label: "News", top: "10%", left: "18%", delay: 0.3, size: "size-10" },
-            { label: "Wiki", top: "15%", left: "82%", delay: 0.6, size: "size-9" },
-            { label: "Gov", top: "65%", left: "92%", delay: 0.9, size: "size-8" },
-            { label: "Edu", top: "90%", left: "72%", delay: 1.2, size: "size-10" },
-            { label: "PR", top: "75%", left: "12%", delay: 1.5, size: "size-9" },
-            { label: "Dir", top: "38%", left: "5%", delay: 1.8, size: "size-8" },
-          ].map((node, i) => (
-            <motion.div
-              key={i}
-              className={`absolute ${node.size} rounded-xl bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-700 flex flex-col items-center justify-center shadow-sm z-10`}
-              style={{ top: node.top, left: node.left, transform: 'translate(-50%, -50%)' }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: 1, 
-                opacity: 1,
-                y: [0, -3, 3, 0],
-                x: [0, 2, -2, 0]
-              }}
-              transition={{ 
-                scale: { delay: node.delay, duration: 0.4 },
-                opacity: { delay: node.delay, duration: 0.4 },
-                y: { duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
-                x: { duration: 5 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }
-              }}
-            >
-              <span className="text-[7px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">{node.label}</span>
-              {/* Trust pulse */}
-              <motion.div 
-                animate={{ scale: [1, 1.8, 1], opacity: [0.3, 0, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity, delay: node.delay }}
-                className="absolute inset-0 border border-orange-500/30 rounded-xl pointer-events-none"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Live Status Footer */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-500/10 border-2 border-orange-500/20">
-            <div className="size-1.5 rounded-full bg-orange-500 animate-pulse" />
-            <span className="text-[8px] font-jetbrains font-black text-orange-600 dark:text-orange-400 uppercase tracking-wider">Forging Links</span>
-          </div>
-          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">DA 70+ TARGETS</span>
-        </div>
+              <RadarChart data={neuralChartData}>
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent indicator="line" />}
+                />
+                <PolarAngleAxis dataKey="segment" tick={{ fontSize: 10, fontWeight: 600 }} />
+                <PolarGrid radialLines={false} />
+                <RechartsRadar
+                  dataKey="authority"
+                  fill="var(--color-authority)"
+                  fillOpacity={0}
+                  stroke="var(--color-authority)"
+                  strokeWidth={2.5}
+                />
+                <RechartsRadar
+                  dataKey="trust"
+                  fill="var(--color-trust)"
+                  fillOpacity={0}
+                  stroke="var(--color-trust)"
+                  strokeWidth={2.5}
+                />
+              </RadarChart>
+            </ChartContainer>
+          </CardContent>
+          <CardFooter className="flex-col gap-2 text-sm p-0 pt-4">
+            <div className="flex items-center gap-2 leading-none font-medium">
+              Authority trending up by 12.5% this cycle <TrendingUp className="h-4 w-4 text-orange-500" />
+            </div>
+            <div className="flex items-center gap-2 leading-none text-muted-foreground text-[10px]">
+              Live data from Global Entity Graph
+            </div>
+          </CardFooter>
+        </Card>
       </div>
     )
   },
@@ -304,13 +288,6 @@ const processes = [
     ],
     demo: (
       <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
-        {/* Scan overlay */}
-        <motion.div 
-          animate={{ left: ["-20%", "120%"] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          className="absolute top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-cyan-500/5 to-transparent pointer-events-none z-30"
-        />
-
         {/* Speedometer Visualization */}
         <div className="relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
           {/* Recharts Arc */}
@@ -318,17 +295,17 @@ const processes = [
             config={{ performance: { label: "Performance", color: "#06b6d4" } }}
             className="absolute inset-0 w-full h-full [&_.recharts-layer]:origin-center [&_.recharts-layer]:animate-in [&_.recharts-layer]:fade-in [&_.recharts-layer]:zoom-in-95 [&_.recharts-layer]:duration-1000"
           >
-            <RadialBarChart 
-              data={[{ name: "Performance", value: 98, fill: "#06b6d4" }]} 
-              innerRadius="86%" 
-              outerRadius="100%" 
-              startAngle={225} 
+            <RadialBarChart
+              data={[{ name: "Performance", value: 98, fill: "#06b6d4" }]}
+              innerRadius="86%"
+              outerRadius="100%"
+              startAngle={225}
               endAngle={-45}
             >
-              <RadialBar 
-                dataKey="value" 
-                cornerRadius={10} 
-                background={{ fill: 'currentColor', className: 'text-zinc-200 dark:text-zinc-800' }} 
+              <RadialBar
+                dataKey="value"
+                cornerRadius={10}
+                background={{ fill: 'currentColor', className: 'text-zinc-200 dark:text-zinc-800' }}
                 animationDuration={2000}
                 animationEasing="ease-in-out"
               />
@@ -337,7 +314,7 @@ const processes = [
 
           {/* Center score */}
           <div className="flex flex-col items-center z-10 pointer-events-none mt-2">
-            <motion.span 
+            <motion.span
               className="text-3xl md:text-4xl font-black text-zinc-900 dark:text-white tabular-nums"
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 2, repeat: Infinity }}
@@ -479,101 +456,18 @@ const processes = [
     shadow: "shadow-red-500/20",
     bg: "bg-red-500/10",
     text: "text-red-500",
-    description: "Protection is performance. We implement AI-driven malware scanning, cloud-firewall orchestration, and automated vulnerability patching to ensure your brand remains impregnable and fast.",
+    description: "Enterprise-grade defense. We deploy a multi-layered security grid powered by AI that performs real-time packet inspection, automated patching, and cloud-firewall orchestration—ensuring your brand remains impregnable while maintaining peak performance.",
     metrics: [
       { label: "Threat Block", calc: "100%" },
-      { label: "Uptime", calc: "99.99%" },
-      { label: "Security Score", calc: "AAA" },
+      { label: "Uptime", calc: "99.999%" },
+      { label: "Protocols", calc: "Zero-Trust" },
     ],
     demo: (
-      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
-        {/* Threat scan line */}
-        <motion.div 
-          animate={{ top: ["-5%", "105%"] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent pointer-events-none z-30"
+      <div className="w-full h-full flex items-center justify-center p-4">
+        <BotDetection 
+          cardTitle="Neural Bot Detection" 
+          cardDescription="Sophisticated, AI-driven bot detection that constantly adapts to block fraudulent traffic and automated attacks in real-time."
         />
-
-        {/* Shield Core */}
-        <div className="relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
-          {/* Scanning Rings */}
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              animate={{ scale: [1, 1.6, 1], opacity: [0.15, 0, 0.15] }}
-              transition={{ duration: 3, repeat: Infinity, delay: i * 1, ease: "easeOut" }}
-              className="absolute inset-0 border border-red-500/20 rounded-full"
-            />
-          ))}
-
-          {/* Hexagonal Shield */}
-          <motion.div
-            animate={{ rotate: [0, 3, -3, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative z-20 size-20 flex items-center justify-center"
-          >
-            <div className="size-20 bg-white dark:bg-zinc-900 rounded-2xl border-2 border-red-500/30 flex flex-col items-center justify-center shadow-lg rotate-45">
-              <div className="-rotate-45 flex flex-col items-center">
-                <ShieldCheck size={22} className="text-red-500" />
-                <span className="text-[6px] font-black text-red-600 dark:text-red-400 uppercase tracking-widest mt-1">ACTIVE</span>
-              </div>
-            </div>
-            <motion.div 
-              animate={{ boxShadow: ["0 0 15px rgba(239,68,68,0.1)", "0 0 30px rgba(239,68,68,0.25)", "0 0 15px rgba(239,68,68,0.1)"] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="absolute inset-0 rounded-2xl rotate-45"
-            />
-          </motion.div>
-
-          {/* Threat Intercept Nodes */}
-          {[45, 135, 225, 315].map((angle, i) => (
-            <motion.div
-              key={i}
-              className="absolute size-6 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center shadow-sm z-10"
-              style={{
-                top: `${(50 + 38 * Math.sin(angle * Math.PI / 180)).toFixed(1)}%`,
-                left: `${(50 + 38 * Math.cos(angle * Math.PI / 180)).toFixed(1)}%`,
-                transform: 'translate(-50%, -50%)'
-              }}
-            >
-              <motion.div 
-                animate={{ backgroundColor: ["rgba(239,68,68,0.1)", "rgba(239,68,68,0.5)", "rgba(239,68,68,0.1)"] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.4 }}
-                className="size-2 rounded-full"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Threat Log */}
-        <div className="w-full max-w-xs space-y-1.5">
-          {[
-            { type: "XSS", status: "BLOCKED", time: "0.2ms" },
-            { type: "SQL_INJ", status: "BLOCKED", time: "0.1ms" },
-            { type: "DDoS", status: "MITIGATED", time: "< 1ms" },
-          ].map((threat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 + i * 0.15 }}
-              className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
-            >
-              <span className="text-[8px] font-jetbrains font-black text-zinc-500 dark:text-zinc-400">{threat.type}</span>
-              <span className="text-[8px] font-jetbrains font-black text-red-600 dark:text-red-400">{threat.status}</span>
-              <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">{threat.time}</span>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Status */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border-2 border-red-500/20">
-            <div className="size-1.5 rounded-full bg-red-500 animate-pulse" />
-            <span className="text-[8px] font-jetbrains font-black text-red-600 dark:text-red-400 uppercase tracking-wider">Threat Monitor</span>
-          </div>
-          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">0 BREACHES</span>
-        </div>
       </div>
     )
   },
@@ -593,97 +487,32 @@ const processes = [
       { label: "Scaling", calc: "Elastic" },
     ],
     demo: (
-      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
-        {/* Pulse wave */}
-        <motion.div 
-          animate={{ scale: [0.8, 2.5], opacity: [0.15, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-          className="absolute size-32 border border-blue-500/20 rounded-full pointer-events-none"
-        />
-
-        {/* Global Network */}
-        <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
-          {/* Central Globe Hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <motion.div
-              animate={{ boxShadow: ["0 0 15px rgba(59,130,246,0.15)", "0 0 35px rgba(59,130,246,0.3)", "0 0 15px rgba(59,130,246,0.15)"] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="size-16 rounded-full bg-white dark:bg-zinc-900 border-2 border-blue-500/30 flex flex-col items-center justify-center shadow-lg"
-            >
-              <Globe size={20} className="text-blue-600 dark:text-blue-400" />
-              <span className="text-[5px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest mt-0.5">ORIGIN</span>
-            </motion.div>
-          </div>
-
-          {/* Connection Lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
-            {[
-              { x: "15%", y: "18%" },
-              { x: "85%", y: "22%" },
-              { x: "92%", y: "58%" },
-              { x: "75%", y: "88%" },
-              { x: "25%", y: "82%" },
-              { x: "5%", y: "50%" },
-            ].map((pos, i) => (
-              <motion.line
-                key={i}
-                x1="50%" y1="50%" x2={pos.x} y2={pos.y}
-                stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 3"
-                className="text-blue-500/15 dark:text-blue-500/10"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1.5, delay: i * 0.15 }}
-              />
-            ))}
-          </svg>
-
-          {/* Edge Nodes */}
-          {[
-            { label: "US-E", top: "18%", left: "15%", delay: 0.2, ping: "2ms" },
-            { label: "EU-W", top: "22%", left: "85%", delay: 0.5, ping: "4ms" },
-            { label: "APAC", top: "58%", left: "92%", delay: 0.8, ping: "8ms" },
-            { label: "SA", top: "88%", left: "75%", delay: 1.1, ping: "6ms" },
-            { label: "AF", top: "82%", left: "25%", delay: 1.4, ping: "9ms" },
-            { label: "US-W", top: "50%", left: "5%", delay: 1.7, ping: "1ms" },
-          ].map((node, i) => (
-            <motion.div
-              key={i}
-              className="absolute flex flex-col items-center z-10"
-              style={{ top: node.top, left: node.left, transform: 'translate(-50%, -50%)' }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: 1, 
-                opacity: 1,
-                y: [0, -3, 3, 0],
-                x: [0, 2, -2, 0]
-              }}
-              transition={{ 
-                scale: { delay: node.delay, duration: 0.4 },
-                opacity: { delay: node.delay, duration: 0.4 },
-                y: { duration: 4 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
-                x: { duration: 5 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }
-              }}
-            >
-              <div className="w-11 px-1.5 py-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-sm flex flex-col items-center gap-0.5">
-                <motion.div 
-                  animate={{ backgroundColor: ["rgba(59,130,246,0.2)", "rgba(59,130,246,0.6)", "rgba(59,130,246,0.2)"] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: node.delay }}
-                  className="size-1.5 rounded-full"
-                />
-                <span className="text-[6px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">{node.label}</span>
-                <span className="text-[5px] font-jetbrains font-bold text-blue-600 dark:text-blue-400">{node.ping}</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Status */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border-2 border-blue-500/20">
-            <div className="size-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-[8px] font-jetbrains font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider">Elastic Scale</span>
-          </div>
-          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">240+ EDGE NODES</span>
+      <div className="w-full h-full flex items-center justify-center p-0 overflow-hidden min-h-[380px] sm:min-h-0">
+        <div className="scale-[0.7] sm:scale-[0.85] md:scale-100 lg:scale-110 flex items-center justify-center transform-gpu">
+          <SocialOrbit 
+            size={500}
+            rippleCount={4}
+            orbitDuration={40}
+            icons={[
+              { icon: <Server size={18} className="text-blue-500" />, orbitIndex: 0 },
+              { icon: <Cloud size={18} className="text-zinc-500" />, orbitIndex: 0 },
+              { icon: <Zap size={18} className="text-amber-500" />, orbitIndex: 1 },
+              { icon: <Satellite size={18} className="text-zinc-500" />, orbitIndex: 1 },
+              { icon: <Wifi size={18} className="text-blue-500" />, orbitIndex: 2 },
+              { icon: <Activity size={18} className="text-zinc-500" />, orbitIndex: 2 },
+              { icon: <Layers size={18} className="text-zinc-500" />, orbitIndex: 3 },
+              { icon: <Cpu size={18} className="text-blue-500" />, orbitIndex: 3 },
+            ]}
+          >
+            <div className="relative flex items-center justify-center">
+               <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full" />
+               <div className="size-14 sm:size-20 rounded-full bg-white dark:bg-zinc-900 border-2 border-blue-500/30 flex flex-col items-center justify-center shadow-lg dark:shadow-2xl relative z-10 overflow-hidden group hover:border-blue-500/60 transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent" />
+                  <Globe size={24} className="text-blue-600 dark:text-blue-400 mb-1 sm:size-[32px]" />
+                  <span className="text-[5px] sm:text-[6px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest">ORIGIN HUB</span>
+               </div>
+            </div>
+          </SocialOrbit>
         </div>
       </div>
     )
@@ -704,12 +533,12 @@ export function InteractiveAiWorkflow() {
 
   return (
     <section ref={containerRef} className="py-16 sm:py-24 md:py-32 relative overflow-hidden bg-zinc-50 dark:bg-zinc-950 font-primary">
-       {/* Divider Line Top */}
-       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" />
-      
+      {/* Divider Line Top */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" />
+
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10 w-full overflow-hidden">
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -725,7 +554,7 @@ export function InteractiveAiWorkflow() {
 
           {/* Software Tool Terminal Badge */}
           <div className="inline-flex flex-col items-center gap-2 sm:gap-3 sm:pt-2 w-full max-w-full px-2 sm:px-0">
-            <CodeBlock 
+            <CodeBlock
               className="w-full max-w-[380px] shadow-xl dark:shadow-2xl border-2 dark:border-zinc-800"
               headerTitle={<span className="text-[9px] font-jetbrains font-bold text-zinc-500 tracking-wider">seospeeder.ai.exe</span>}
               headerRight={
@@ -766,7 +595,7 @@ export function InteractiveAiWorkflow() {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -860,8 +689,8 @@ export function InteractiveAiWorkflow() {
                   <p className="text-[15px] text-zinc-700 dark:text-zinc-300 mt-2 font-inter font-medium opacity-80">
                     {activeProcess.description}
                   </p>
-                  
-                   <div className="grid grid-cols-2 sm:flex sm:gap-8 gap-x-4 gap-y-6 mt-8 sm:mt-6">
+
+                  <div className="grid grid-cols-2 sm:flex sm:gap-8 gap-x-4 gap-y-6 mt-8 sm:mt-6">
                     {activeProcess.metrics.map((metric, idx) => (
                       <div key={idx} className="flex flex-col gap-1.5 sm:gap-1">
                         <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-zinc-500">{metric.label}</span>

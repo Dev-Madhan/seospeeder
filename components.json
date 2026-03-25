@@ -26,6 +26,8 @@
     "@fancy": "https://fancycomponents.dev/r/{name}.json",
     "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
     "@kokonutui": "https://kokonutui.com/r/{name}.json",
-    "@gammaui": "https://www.gammaui.com/r/{name}.json"
+    "@gammaui": "https://www.gammaui.com/r/{name}.json",
+    "@forgeui": "https://forgeui.in/r/{name}.json",
+    "@scrollxui": "https://www.scrollxui.dev/registry/{name}.json"
   }
 }
