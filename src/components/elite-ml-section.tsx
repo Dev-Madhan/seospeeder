@@ -73,10 +73,10 @@ export function EliteMlSection() {
           widget={<NeuralBubbleForge />}
         />
 
-        {/* Algorithmic Reverse-Engineering */}
+        {/* Algorithm Decoding */}
         <InteractiveFeatureCard 
           className="lg:col-span-2 lg:row-span-1"
-          title="Algorithmic Reverse-Engineering"
+          title="Algorithm Decoding"
           description="Reverse-engineer ranking factors via SERP volatility analysis."
           action="Extract Signals"
           icon={Cpu}
@@ -193,8 +193,12 @@ function InteractiveFeatureCard({
     >
       <div className="flex flex-col h-full relative z-10 space-y-8">
         <div className="flex items-start justify-between">
-          <div className={cn("size-12 rounded-2xl border-2 bg-card flex items-center justify-center shadow-xs transition-colors duration-500 group-hover:bg-background text-black dark:text-white")}>
-            <Icon size={24} />
+          <div className="flex size-[52px] md:size-14 shrink-0 items-center justify-center rounded-full border-[3.5px] border-white dark:border-zinc-950 ring-[3.5px] ring-zinc-100 dark:ring-zinc-800/80 bg-white dark:bg-zinc-950 group-hover:ring-zinc-200 dark:group-hover:ring-zinc-700 transition-all duration-500">
+             <div className="flex size-full items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-300">
+                <div className="text-zinc-400 dark:text-zinc-500 transition-colors duration-300 flex leading-none group-hover:text-black dark:group-hover:text-white">
+                   <Icon size={20} />
+                </div>
+             </div>
           </div>
           
           <div className={cn("flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 transition-all duration-300 active:scale-95 group/btn cursor-pointer", c.light)}>
@@ -419,58 +423,32 @@ function ContentGapDiscovery() {
 }
 
 function MatrixScannerWidget() {
-  const [lines, setLines] = useState<string[]>([]);
-
-  useEffect(() => {
-    const data = [
-      "SIGNALS_DETECTED: 12,401",
-      "SERP_VOLATILITY: HIGH",
-      "LSI_NODES: VALIDATED",
-      "RANK_VELOCITY: +12.4%",
-      "E-E-A-T_SCORE: 0.98",
-      "DOM_INTEGRITY: OPTIMAL"
-    ];
-    setLines(data);
-  }, []);
-
   return (
-    <div className="w-full max-w-[240px] flex flex-col gap-3 p-5 bg-white dark:bg-zinc-950 rounded-[1.5rem] border-2 border-zinc-200 dark:border-zinc-800/50 shadow-xl dark:shadow-2xl relative overflow-hidden group/scanner">
-       <div className="flex items-center justify-between font-mono text-[10px]">
-          <div className="flex items-center gap-2 text-amber-600 dark:text-amber-500">
-             <div className="size-1.5 rounded-full bg-amber-500 animate-ping shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
-             <span className="font-black tracking-widest">LIVE_DATA</span>
-          </div>
-          <span className="text-zinc-400 dark:text-zinc-600 font-bold">NODE_04</span>
-       </div>
-
-       <div className="space-y-2 pt-2 border-l border-zinc-200 dark:border-zinc-800/50 ml-1 pl-4">
-          {lines.map((line, i) => (
-            <motion.div 
-              key={i}
-              initial={{ x: -10, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: i * 0.1 }}
-              className="flex items-center gap-3 relative"
-            >
-               <div className="absolute -left-[18px] size-1 bg-amber-500/30 rounded-full" />
-               <span className="font-mono text-[9px] text-zinc-600 dark:text-zinc-400 font-bold tracking-tight">{line}</span>
-            </motion.div>
-          ))}
-       </div>
-
-       {/* Scanning line animation */}
-       <motion.div 
-         animate={{ top: ["-10%", "110%"] }}
-         transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-         className="absolute left-0 right-0 h-px bg-amber-500/20 shadow-[0_0_4px_rgba(245,158,11,0.3)] pointer-events-none"
-       />
-
-       <div className="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-900 flex justify-between items-center">
-          <div className="flex gap-1">
-             {[1,2,3,4].map(k => <div key={k} className="size-1 bg-amber-500/20 rounded-full" />)}
-          </div>
-          <span className="text-[8px] font-black text-amber-600/60 dark:text-amber-500/60 uppercase tracking-tighter italic">Reverse_Engines_Active</span>
-       </div>
+    <div className="w-full max-w-[260px] flex flex-col rounded-xl overflow-hidden shadow-xl dark:shadow-2xl border-2 border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 relative z-10 text-left font-jetbrains">
+      {/* OS Window Header */}
+      <div className="flex items-center px-4 py-2.5 bg-zinc-100 dark:bg-zinc-900 border-b-2 border-zinc-200 dark:border-zinc-800 justify-between">
+         <div className="flex gap-1.5">
+           <div className="size-2.5 rounded-full bg-rose-400 dark:bg-rose-500 border border-rose-500 dark:border-rose-600" />
+           <div className="size-2.5 rounded-full bg-amber-400 dark:bg-amber-500 border border-amber-500 dark:border-amber-600" />
+           <div className="size-2.5 rounded-full bg-emerald-400 dark:bg-emerald-500 border border-emerald-500 dark:border-emerald-600" />
+         </div>
+         <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">LIVE_DATA // NODE_04</span>
+      </div>
+      
+      {/* Code Editor Body */}
+      <div className="p-4 text-[9px] sm:text-[10px] leading-relaxed relative flex bg-white dark:bg-[#0d0d0d]">
+        <div className="flex flex-col text-zinc-400 dark:text-zinc-600 select-none pr-3 border-r-2 border-zinc-100 dark:border-zinc-800/50 text-right">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+        </div>
+        <div className="pl-3 flex flex-col w-full text-zinc-600 dark:text-zinc-300 whitespace-nowrap">
+           <span><span className="text-amber-600 dark:text-amber-400">SIGNALS_DETECTED</span>: <span className="text-emerald-600 dark:text-emerald-400">12,401</span></span>
+           <span><span className="text-violet-600 dark:text-violet-400">SERP_VOLATILITY</span>: <span className="text-rose-600 dark:text-rose-400">HIGH</span></span>
+           <span><span className="text-emerald-600 dark:text-emerald-400">LSI_NODES</span>: <span className="text-zinc-500 dark:text-[#a1a1aa]">VALIDATED</span></span>
+           <span><span className="text-amber-600 dark:text-amber-400">RANK_VELOCITY</span>: <span className="text-emerald-600 dark:text-emerald-400">+12.4%</span></span>
+           <span><span className="text-violet-600 dark:text-violet-400">E-E-A-T_SCORE</span>: <span className="text-sky-600 dark:text-sky-400">0.98</span></span>
+           <span><span className="text-rose-600 dark:text-rose-400">DOM_INTEGRITY</span>: <span className="text-emerald-600 dark:text-emerald-400">OPTIMAL</span></span>
+        </div>
+      </div>
     </div>
   );
 }

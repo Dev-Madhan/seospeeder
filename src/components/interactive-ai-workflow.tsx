@@ -2,12 +2,14 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView, LayoutGroup } from "framer-motion";
-import { Radar, Wand2, ServerCog, Network, Sparkles, Bot, LineChart, Zap, CheckCircle2, Cpu, ShieldCheck, Globe, TrendingUp, GitCommitVertical } from "lucide-react";
+import { Radar, Wand2, ServerCog, Network, Sparkles, Bot, LineChart, Zap, CheckCircle2, Cpu, ShieldCheck, Globe, TrendingUp, GitCommitVertical, ShoppingCart, Compass, BookOpen, MapPin, Navigation, BarChart3, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "@/components/ui/code-block";
 import { RadialBar, RadialBarChart, LineChart as RechartsLineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { OrbitingSkills } from "@/components/unlumen-ui/orbiting-skills";
+import CloudFlow from "@/components/ui/cloud-flow";
 
 const processes = [
   {
@@ -26,111 +28,75 @@ const processes = [
       { label: "Cluster Density", calc: "Maximized" },
     ],
     demo: (
-      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
-        {/* Radar Sweep */}
-        <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
-          {/* Background rings */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none">
-            {[25, 38, 48].map((r, i) => (
-              <circle key={i} cx="50%" cy="50%" r={`${r}%`} stroke="currentColor" strokeWidth="0.5" fill="none" className="text-zinc-200 dark:text-zinc-800" />
-            ))}
-          </svg>
+      <div className="w-full h-full rounded-3xl border-2 border-zinc-200 dark:border-zinc-800 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden flex flex-col items-center justify-center gap-5 relative">
 
-          {/* Rotating sweep line */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0"
-          >
-            <svg className="w-full h-full overflow-visible">
-              <defs>
-                <linearGradient id="sweepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgb(59,130,246)" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="rgb(59,130,246)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <line x1="50%" y1="50%" x2="50%" y2="2%" stroke="url(#sweepGrad)" strokeWidth="2" />
-            </svg>
-          </motion.div>
+        {/* Soft blue radial glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-64 rounded-full" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)" }} />
+        </div>
 
-          {/* Center Hub */}
-          <div className="relative z-20 size-14 rounded-full bg-white dark:bg-zinc-900 border-2 border-blue-500/30 flex flex-col items-center justify-center shadow-lg">
-            <Radar size={18} className="text-blue-500" />
-            <span className="text-[6px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest mt-0.5">SCAN</span>
-            <motion.div 
-              animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0.4, 0.2] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="absolute inset-0 border border-blue-500/20 rounded-full"
-            />
-          </div>
+        <OrbitingSkills
+          radius={110}
+          duration={26}
+          showPath={true}
+          accentHsl="214 100% 60%"
+          items={[
+            { label: "Transactional",  icon: <ShoppingCart  size={11} /> },
+            { label: "Navigational",   icon: <Navigation    size={11} /> },
+            { label: "Informational",  icon: <BookOpen      size={11} /> },
+            { label: "Commercial",     icon: <BarChart3     size={11} /> },
+            { label: "Local",          icon: <MapPin        size={11} /> },
+            { label: "Discovery",      icon: <Compass       size={11} /> },
+          ]}
+        >
+          {/* Center hub — Instant Speed Audit effect */}
+          <div className="relative flex size-20 items-center justify-center rounded-full border-2 bg-background shadow-xl transition-all duration-700">
+            {/* Background Glow */}
+            <div className="absolute inset-0 z-0 scale-150 bg-radial from-blue-500/10 via-transparent to-transparent blur-2xl" />
 
-          {/* Intent Cluster Nodes */}
-          {[
-            { label: "Transactional", top: "8%", left: "55%", delay: 0.2, size: "w-16" },
-            { label: "Navigational", top: "28%", left: "88%", delay: 0.6, size: "w-14" },
-            { label: "Informational", top: "72%", left: "82%", delay: 1.0, size: "w-16" },
-            { label: "Commercial", top: "85%", left: "35%", delay: 1.4, size: "w-14" },
-            { label: "Local", top: "55%", left: "5%", delay: 1.8, size: "w-10" },
-            { label: "Discovery", top: "18%", left: "12%", delay: 2.2, size: "w-12" },
-          ].map((node, i) => (
-            <motion.div
-              key={i}
-              className="absolute flex flex-col items-center z-10"
-              style={{ top: node.top, left: node.left, transform: 'translate(-50%, -50%)' }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: 1, 
-                opacity: 1,
-                y: [0, -4, 4, 0]
-              }}
-              transition={{ 
-                scale: { delay: node.delay, duration: 0.4 },
-                opacity: { delay: node.delay, duration: 0.4 },
-                y: { duration: 3 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }
-              }}
-            >
-              <div className={`${node.size} px-2 py-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-sm flex flex-col items-center gap-0.5`}>
-                <motion.div 
-                  animate={{ backgroundColor: ["rgba(59,130,246,0.1)", "rgba(59,130,246,0.4)", "rgba(59,130,246,0.1)"] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: node.delay }}
-                  className="size-1.5 rounded-full"
-                />
-                <span className="text-[6px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-wider text-center leading-tight">{node.label}</span>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* SVG connection lines from center to nodes */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
-            {[
-              { x: "55%", y: "8%" },
-              { x: "88%", y: "28%" },
-              { x: "82%", y: "72%" },
-              { x: "35%", y: "85%" },
-              { x: "5%", y: "55%" },
-              { x: "12%", y: "18%" },
-            ].map((pos, i) => (
-              <motion.line
+            {/* Sonic Pulse Rings */}
+            {[0, 1, 2].map((i) => (
+              <motion.div
                 key={i}
-                x1="50%" y1="50%" x2={pos.x} y2={pos.y}
-                stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 3"
-                className="text-blue-500/20 dark:text-blue-500/15"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1.5, delay: i * 0.2 }}
+                initial={{ opacity: 0, scale: 1 }}
+                animate={{
+                  scale: [1, 2.2],
+                  opacity: [0, 0.5, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: i * 1,
+                  times: [0, 0.2, 1],
+                  ease: "easeOut",
+                }}
+                className="absolute inset-0 rounded-full border border-blue-500/20 z-0 pointer-events-none will-change-transform"
+                style={{ transform: "translateZ(0)" }}
               />
             ))}
-          </svg>
-        </div>
 
-        {/* Status Bar */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border-2 border-blue-500/20">
-            <div className="size-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-[8px] font-jetbrains font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider">Mapping Intents</span>
+            {/* Conic Radar Sweep */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[-8px] z-10"
+            >
+              <div className="h-full w-full rounded-full bg-conic-to-r from-blue-500/40 via-transparent to-transparent" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-1/2 w-0.5 bg-linear-to-b from-blue-500 to-transparent" />
+            </motion.div>
+
+            {/* Floating Icon */}
+            <motion.div
+              animate={{ y: [0, -2, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="relative z-20"
+            >
+              <Brain className="size-7 text-blue-500" strokeWidth={1.5} />
+            </motion.div>
           </div>
-          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">6 CLUSTERS ACTIVE</span>
-        </div>
+        </OrbitingSkills>
+
+
       </div>
     )
   },
@@ -150,123 +116,28 @@ const processes = [
       { label: "Entity Density", calc: "Ideal" },
     ],
     demo: (
-      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
-        {/* E-E-A-T Pillar Visualization */}
-        <div className="relative w-full max-w-xs h-56 md:h-64 flex items-center justify-center">
-          {/* Central LLM Core */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <motion.div
-              animate={{ boxShadow: ["0 0 15px rgba(16,185,129,0.15)", "0 0 35px rgba(16,185,129,0.3)", "0 0 15px rgba(16,185,129,0.15)"] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="size-16 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-emerald-500/30 flex flex-col items-center justify-center shadow-lg"
-            >
-              <Wand2 size={18} className="text-emerald-500" />
-              <span className="text-[6px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mt-1">LLM CORE</span>
-            </motion.div>
-          </div>
+      <div className="w-full h-full rounded-3xl border-2 border-zinc-200 dark:border-zinc-800 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden flex flex-col items-center justify-center gap-4 relative">
 
-          {/* SVG Connections */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
-            {[
-              { x: "20%", y: "15%" },
-              { x: "80%", y: "15%" },
-              { x: "80%", y: "85%" },
-              { x: "20%", y: "85%" },
-            ].map((pos, i) => (
-              <motion.line
-                key={i}
-                x1="50%" y1="50%" x2={pos.x} y2={pos.y}
-                stroke="currentColor" strokeWidth="1"
-                className="text-emerald-500/15 dark:text-emerald-500/10"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1.5, delay: i * 0.2 }}
-              />
-            ))}
-          </svg>
 
-          {/* E-E-A-T Pillars */}
-          {[
-            { letter: "E", label: "Experience", top: "15%", left: "20%", delay: 0.3 },
-            { letter: "E", label: "Expertise", top: "15%", left: "80%", delay: 0.6 },
-            { letter: "A", label: "Authority", top: "85%", left: "80%", delay: 0.9 },
-            { letter: "T", label: "Trust", top: "85%", left: "20%", delay: 1.2 },
-          ].map((pillar, i) => (
-            <motion.div
-              key={i}
-              className="absolute flex flex-col items-center z-10"
-              style={{ top: pillar.top, left: pillar.left, transform: 'translate(-50%, -50%)' }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: 1, 
-                opacity: 1,
-                y: [0, -3, 3, 0]
-              }}
-              transition={{ 
-                scale: { delay: pillar.delay, duration: 0.4, type: "spring" },
-                opacity: { delay: pillar.delay, duration: 0.4 },
-                y: { duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }
-              }}
-            >
-              <div className="w-14 px-2 py-2 rounded-xl bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-700 shadow-sm flex flex-col items-center gap-1 relative">
-                <span className="text-sm font-black text-emerald-600 dark:text-emerald-400 leading-none">{pillar.letter}</span>
-                <span className="text-[5px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-wider leading-none">{pillar.label}</span>
-                {/* Validation pulse */}
-                <motion.div 
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
-                  transition={{ duration: 2.5, repeat: Infinity, delay: pillar.delay }}
-                  className="absolute inset-0 border border-emerald-500/30 rounded-xl pointer-events-none"
-                />
-              </div>
-            </motion.div>
-          ))}
 
-          {/* Semantic Coverage Progress Ring */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
-            <motion.circle 
-              cx="50%" cy="50%" r="42%" 
-              stroke="currentColor" strokeWidth="1" strokeDasharray="6 4" fill="none"
-              className="text-emerald-500/15 dark:text-emerald-500/10"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            />
-          </svg>
+        <CloudFlow
+          className="w-full max-w-sm scale-90"
+          accentColor="#10b981"
+          centerText="LLM"
+          title="E-E-A-T Architecture"
+          nodeLabels={{
+            topLeft: "Experience",
+            topRight: "Expertise",
+            bottomLeft: "Authority",
+            bottomRight: "Trust",
+          }}
+          badges={{
+            left: "Semantic Score",
+            right: "99 / 100",
+          }}
+        />
 
-          {/* Entity Particles floating between pillars */}
-          {[0, 1, 2, 3, 4].map((i) => (
-            <motion.div
-              key={`particle-${i}`}
-              className="absolute size-1 bg-emerald-500/40 rounded-full z-10"
-              style={{ top: "50%", left: "50%" }}
-              animate={{
-                x: [0, 40 * Math.cos(i * 72 * Math.PI / 180), -30 * Math.cos((i + 2) * 72 * Math.PI / 180), 0],
-                y: [0, 40 * Math.sin(i * 72 * Math.PI / 180), -30 * Math.sin((i + 2) * 72 * Math.PI / 180), 0],
-                opacity: [0, 0.8, 0.4, 0]
-              }}
-              transition={{ duration: 4 + i, repeat: Infinity, delay: i * 0.8, ease: "easeInOut" }}
-            />
-          ))}
-        </div>
 
-        {/* Live Entity Score Footer */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border-2 border-emerald-500/20">
-            <div className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[8px] font-jetbrains font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Scoring Entities</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">SEMANTIC</span>
-            <div className="w-16 h-1 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
-              <motion.div 
-                initial={{ width: "0%" }}
-                animate={{ width: "99%" }}
-                transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-                className="h-full bg-emerald-500 rounded-full"
-              />
-            </div>
-            <span className="text-[8px] font-jetbrains font-black text-emerald-600 dark:text-emerald-400">99%</span>
-          </div>
-        </div>
       </div>
     )
   },

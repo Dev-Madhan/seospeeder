@@ -85,7 +85,7 @@ export function ResultsSection() {
             <div className="relative group mx-auto max-w-[500px] lg:max-w-none">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 <ImageComparison
-                  className="aspect-[1905/1080] w-full rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-xl relative z-10"
+                  className="aspect-[1905/1080] w-full rounded-xl border-2 border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-xl relative z-10"
                   enableHover
                   springOptions={{
                     stiffness: 160,

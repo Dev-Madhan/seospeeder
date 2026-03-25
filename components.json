@@ -25,6 +25,7 @@
     "@magicui": "https://magicui.design/r/{name}",
     "@fancy": "https://fancycomponents.dev/r/{name}.json",
     "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
-    "@kokonutui": "https://kokonutui.com/r/{name}.json"
+    "@kokonutui": "https://kokonutui.com/r/{name}.json",
+    "@gammaui": "https://www.gammaui.com/r/{name}.json"
   }
 }
