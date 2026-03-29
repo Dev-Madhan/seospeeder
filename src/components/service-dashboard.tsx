@@ -735,154 +735,163 @@ const CommerceStatsCard = ({ label, value, sub, color, icon: Icon, trend }: any)
 function WordPressDashboard({ slug, service }: any) {
   return (
     <div className="flex items-center justify-center w-full p-4 sm:p-6 lg:p-8">
-      <Card className="w-full max-w-[1240px] shadow-sm bg-white dark:bg-card overflow-hidden">
-        {/* Header */}
-        <div className="border-b bg-muted/30 px-6 py-6 lg:px-10 lg:py-8 flex flex-col items-center justify-center text-center gap-6">
-          <div className="flex flex-col items-center gap-4">
-            <div>
-              <h1 className="text-2xl font-bold tracking-tight text-foreground">WordPress Performance Hub</h1>
-            </div>
-          </div>
-
+      <div className="relative group/card rounded-[2rem] p-[2px] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 ease-in-out cursor-default w-full max-w-[1240px]">
+        
+        {/* Outer base border color when not hovered */}
+        <div className="absolute inset-0 bg-border/40 transition-opacity duration-500 ease-in-out group-hover/card:opacity-0" />
+        
+        {/* Hardware Accelerated Spinning Conic Gradient Border — Customized Blue */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 ease-in-out pointer-events-none">
+          <div className="w-full h-full animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#21759b_15%,transparent_40%,transparent_100%)] will-change-transform" />
         </div>
 
-        <div className="p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-
-          {/* LEFT COLUMN: Diagnostic Cluster */}
-          <div className="col-span-1 lg:col-span-3 space-y-6">
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1 font-inter">Sector 01</p>
-              <h2 className="text-lg font-bold tracking-tight">Diagnostic Cluster</h2>
-            </div>
-
-            <div className="space-y-3">
-              <DiagnosticCard label="PHP Pulse" value="4ms" status="WP Hub" icon={Zap} />
-              <DiagnosticCard label="Query Density" value="Clean" status="Vitals / 101" icon={Database} />
-              <DiagnosticCard label="Asset Tunnel" value="Elite" status="Active" icon={Layers} />
-            </div>
-
-            <Card className="bg-[#e9f5fb]/50 dark:bg-[#0a2b3a]/20 border-[#d5ecf7] dark:border-[#0f4057]/30 overflow-hidden shadow-none">
-              <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <p className="text-xs font-semibold text-[#21759b] dark:text-[#41a6d9] uppercase tracking-widest mb-1 font-inter">Data Synthesis</p>
-                    <p className="font-bold tracking-tight">Crawl Velocity</p>
-                  </div>
-                  <Target size={18} className="text-[#21759b] dark:text-[#41a6d9]" />
-                </div>
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0 pt-4 border-t border-[#d5ecf7] dark:border-[#0f4057]/30">
-                  <span className="text-xs font-medium text-muted-foreground font-inter">Yield Delta</span>
-                  <span className="text-sm font-bold text-foreground">+24.8% Efficiency</span>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* CENTER COLUMN: Hero Metrics */}
-          <div className="col-span-1 lg:col-span-6 flex flex-col items-center justify-center">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl lg:text-3xl font-bold tracking-tighter mb-2 font-primary">Hybrid Intelligence Core</h2>
-              <p className="text-sm text-muted-foreground font-inter"><TextHighlighter highlightColor="rgba(33, 117, 155, 0.15)">Advanced WordPress optimization</TextHighlighter> sequence active</p>
-            </div>
-
-            <Card className="w-full max-w-[280px] sm:max-w-sm mx-auto aspect-square flex flex-col items-center justify-center relative overflow-hidden shadow-none border-dashed border-2 bg-slate-50 dark:bg-muted/10">
-              <div className="relative z-10 flex flex-col items-center text-center p-8">
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 font-inter">Discovery Index</p>
-                <div className="flex items-start justify-center gap-1 mb-6">
-                  <span className="text-7xl lg:text-8xl font-black tracking-tighter text-foreground">99</span>
-                  <span className="text-3xl font-bold text-[#21759b]">+</span>
-                </div>
-                <StaggerButton className="bg-[#21759b] hover:bg-[#1d5c7a] text-white shadow-none uppercase tracking-widest px-4 py-1.5 text-xs font-bold font-inter rounded-lg">Mastery Elite</StaggerButton>
-              </div>
-            </Card>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full mt-8">
-              <MetricBox label="LCP Delta" value="0.8s" status="Elite" />
-              <MetricBox label="DB Sync" value="Nominal" status="Golden" />
-              <MetricBox label="SEO Core" value="Active" status="Sync" />
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN: Operation Matrix */}
-          <div className="col-span-1 lg:col-span-3 space-y-6">
-            <div className="text-left lg:text-right">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1 font-inter">Sector 02</p>
-              <h2 className="text-lg font-bold tracking-tight">Operation Matrix</h2>
-            </div>
-
-            <div className="space-y-3">
-              <OperationRow label="Edge Sync" value="NOMINAL" icon={Server} />
-              <OperationRow label="CWR Hardening" value="SECURE" icon={ShieldCheck} />
-              <OperationRow label="Semantic Core" value="ACTIVE" icon={Layers} />
-              <OperationRow label="Asset Tunnel" value="ELITE" icon={Zap} />
-              <OperationRow label="WAF Logic" value="TUNED" icon={Code2} />
-            </div>
-
-            <Card className="mt-auto shadow-none">
-              <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-6">
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest font-inter">Global Defense</p>
-                  <ShieldCheck size={18} className="text-muted-foreground" />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-end mb-2">
-                    <span className="text-xs font-medium text-muted-foreground font-inter">System Integrity</span>
-                    <span className="text-lg font-bold tracking-tight">100.0%</span>
-                  </div>
-                  <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 1.5, ease: "easeOut" }} className="h-full bg-[#21759b]" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* BOTTOM COLUMN: Impact Matrix */}
-          <div className="col-span-1 lg:col-span-12 mt-4 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 border-t pt-8">
+        <Card className="relative w-full shadow-none bg-white dark:bg-card rounded-[calc(2rem-2px)] overflow-hidden z-10 border-none">
+          {/* Header */}
+          <div className="border-b bg-muted/30 px-6 py-6 lg:px-10 lg:py-8 flex flex-col items-center justify-center text-center gap-6">
+            <div className="flex flex-col items-center gap-4">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1 font-inter">Strategic Advantage</p>
-                <h2 className="text-xl font-bold tracking-tight">Impact Analysis Matrix</h2>
+                <h1 className="text-2xl font-bold tracking-tight text-foreground">WordPress Performance Hub</h1>
               </div>
-              <Badge variant="secondary" className="bg-transparent sm:bg-emerald-500/10 text-emerald-600 hover:bg-transparent sm:hover:bg-emerald-500/20 shadow-none gap-1.5 px-0 sm:px-3 py-1 text-xs border-none sm:border sm:border-emerald-500/20 font-inter">
-                <div className="size-1.5 rounded-full bg-emerald-500" />
-                All Metrics Verified
-              </Badge>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <ImpactCard
-                title="Performance Score"
-                subtitle="Verified 90+"
-                accent="PageSpeed Optimized"
-                bullets={["90+ Mobile/Desktop", "Grade A GTmetrix", "Search Visiblity Up"]}
-                icon={Zap}
-              />
-              <ImpactCard
-                title="Site Integrity"
-                subtitle="Safe // Verified"
-                accent="Structure Preserved"
-                bullets={["No Design Changes", "Content Unaltered", "Tested & Verified"]}
-                icon={ShieldCheck}
-              />
-              <ImpactCard
-                title="Business Yield"
-                subtitle="Better Results"
-                accent="Revenue Catalyst"
-                bullets={["Lower Bounce Rate", "Higher Engagement", "Maximized Conversions"]}
-                icon={TrendingUp}
-              />
             </div>
           </div>
-        </div>
-      </Card>
+
+          <div className="p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+            {/* LEFT COLUMN: Diagnostic Cluster */}
+            <div className="col-span-1 lg:col-span-3 space-y-6">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1 font-inter">Sector 01</p>
+                <h2 className="text-lg font-bold tracking-tight">Diagnostic Cluster</h2>
+              </div>
+
+              <div className="space-y-3">
+                <DiagnosticCard label="PHP Pulse" value="4ms" status="WP Hub" icon={Zap} />
+                <DiagnosticCard label="Query Density" value="Clean" status="Vitals / 101" icon={Database} />
+                <DiagnosticCard label="Asset Tunnel" value="Elite" status="Active" icon={Layers} />
+              </div>
+
+              <Card className="bg-[#e9f5fb]/50 dark:bg-[#0a2b3a]/20 border-[#d5ecf7] dark:border-[#0f4057]/30 border-2 overflow-hidden shadow-none">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <p className="text-xs font-semibold text-[#21759b] dark:text-[#41a6d9] uppercase tracking-widest mb-1 font-inter">Data Synthesis</p>
+                      <p className="font-bold tracking-tight">Crawl Velocity</p>
+                    </div>
+                    <Target size={18} className="text-[#21759b] dark:text-[#41a6d9]" />
+                  </div>
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0 pt-4 border-t border-[#d5ecf7] dark:border-[#0f4057]/30">
+                    <span className="text-xs font-medium text-muted-foreground font-inter">Yield Delta</span>
+                    <span className="text-sm font-bold text-foreground">+24.8% Efficiency</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* CENTER COLUMN: Hero Metrics */}
+            <div className="col-span-1 lg:col-span-6 flex flex-col items-center justify-center">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl lg:text-3xl font-bold tracking-tighter mb-2 font-primary">Hybrid Intelligence Core</h2>
+                <p className="text-sm text-muted-foreground font-inter font-medium tracking-tight">Advanced WordPress optimization sequence active</p>
+              </div>
+
+              <Card className="w-full max-w-[280px] sm:max-w-sm mx-auto aspect-square flex flex-col items-center justify-center relative overflow-hidden shadow-none border-dashed border-2 bg-slate-50 dark:bg-muted/10">
+                <div className="relative z-10 flex flex-col items-center text-center p-8">
+                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 font-primary">Discovery Index</p>
+                  <div className="flex items-start justify-center gap-1 mb-6">
+                    <span className="text-7xl lg:text-8xl font-black tracking-tighter text-foreground">99</span>
+                    <span className="text-3xl font-bold text-[#21759b]">+</span>
+                  </div>
+                  <StaggerButton className="bg-[#21759b] hover:bg-[#1d5c7a] text-white shadow-none uppercase tracking-widest px-4 py-1.5 text-xs font-bold font-inter rounded-lg">Mastery Elite</StaggerButton>
+                </div>
+              </Card>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full mt-8">
+                <MetricBox label="LCP Delta" value="0.8s" status="Elite" />
+                <MetricBox label="DB Sync" value="Nominal" status="Golden" />
+                <MetricBox label="SEO Core" value="Active" status="Sync" />
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: Operation Matrix */}
+            <div className="col-span-1 lg:col-span-3 space-y-6">
+              <div className="text-left lg:text-right">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1 font-inter">Sector 02</p>
+                <h2 className="text-lg font-bold tracking-tight">Operation Matrix</h2>
+              </div>
+
+              <div className="space-y-3">
+                <OperationRow label="Edge Sync" value="NOMINAL" icon={Server} />
+                <OperationRow label="CWR Hardening" value="SECURE" icon={ShieldCheck} />
+                <OperationRow label="Semantic Core" value="ACTIVE" icon={Layers} />
+                <OperationRow label="Asset Tunnel" value="ELITE" icon={Zap} />
+                <OperationRow label="WAF Logic" value="TUNED" icon={Code2} />
+              </div>
+
+              <Card className="mt-auto shadow-none border-2">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-6">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest font-inter">Global Defense</p>
+                    <ShieldCheck size={18} className="text-muted-foreground" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-end mb-2">
+                      <span className="text-xs font-medium text-muted-foreground font-inter">System Integrity</span>
+                      <span className="text-lg font-bold tracking-tight">100.0%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+                      <motion.div initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 1.5, ease: "easeOut" }} className="h-full bg-[#21759b]" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* BOTTOM COLUMN: Impact Matrix */}
+            <div className="col-span-1 lg:col-span-12 mt-4 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 border-t pt-8">
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1 font-inter">Strategic Advantage</p>
+                  <h2 className="text-xl font-bold tracking-tight">Impact Analysis Matrix</h2>
+                </div>
+                <Badge variant="secondary" className="bg-transparent sm:bg-emerald-500/10 text-emerald-600 hover:bg-transparent sm:hover:bg-emerald-500/20 shadow-none gap-1.5 px-0 sm:px-3 py-1 text-xs border-none sm:border sm:border-emerald-500/20 font-inter">
+                  <div className="size-1.5 rounded-full bg-emerald-500" />
+                  All Metrics Verified
+                </Badge>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <ImpactCard
+                  title="Performance Score"
+                  subtitle="Verified 90+"
+                  accent="PageSpeed Optimized"
+                  bullets={["90+ Mobile/Desktop", "Grade A GTmetrix", "Search Visiblity Up"]}
+                  icon={Zap}
+                />
+                <ImpactCard
+                  title="Site Integrity"
+                  subtitle="Safe // Verified"
+                  accent="Structure Preserved"
+                  bullets={["No Design Changes", "Content Unaltered", "Tested & Verified"]}
+                  icon={ShieldCheck}
+                />
+                <ImpactCard
+                  title="Business Yield"
+                  subtitle="Better Results"
+                  accent="Revenue Catalyst"
+                  bullets={["Lower Bounce Rate", "Higher Engagement", "Maximized Conversions"]}
+                  icon={TrendingUp}
+                />
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }
 
 // Minimal Shadcn-based Custom Components
 const DiagnosticCard = ({ label, value, status, icon: Icon }: any) => (
-  <Card className="shadow-none group hover:border-foreground/20 transition-colors">
+  <Card className="shadow-none group hover:border-foreground/20 transition-colors border-2">
     <CardContent className="p-4 flex items-center justify-between">
       <div className="flex items-center gap-4">
         <div className="size-8 rounded-md bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-foreground group-hover:text-background transition-colors">
@@ -899,7 +908,7 @@ const DiagnosticCard = ({ label, value, status, icon: Icon }: any) => (
 );
 
 const MetricBox = ({ label, value, status }: any) => (
-  <Card className="shadow-none">
+  <Card className="shadow-none border-2">
     <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
       <span className="text-xl font-bold tracking-tight mb-2">{value}</span>
       <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-3 font-inter">{label}</p>
@@ -909,7 +918,7 @@ const MetricBox = ({ label, value, status }: any) => (
 );
 
 const OperationRow = ({ label, value, icon: Icon }: any) => (
-  <div className="flex items-center justify-between p-3 rounded-xl border bg-card hover:bg-muted/50 transition-colors">
+  <div className="flex items-center justify-between p-3 rounded-xl border-2 bg-card hover:bg-muted/50 transition-colors">
     <div className="flex items-center gap-3">
       <Icon size={14} className="text-muted-foreground" />
       <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider font-inter">{label}</span>
@@ -919,7 +928,7 @@ const OperationRow = ({ label, value, icon: Icon }: any) => (
 );
 
 const ImpactCard = ({ title, subtitle, accent, bullets, icon: Icon }: any) => (
-  <Card className="shadow-none hover:shadow-md transition-shadow">
+  <Card className="shadow-none hover:shadow-md transition-all border-2">
     <CardContent className="p-6">
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-3">

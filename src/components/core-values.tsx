@@ -58,8 +58,8 @@ function InteractiveCard({ value }: { value: typeof values[0] }) {
           <div className="w-full h-full animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,hsl(var(--primary))_10%,transparent_40%,transparent_100%)] will-change-transform" />
         </div>
 
-        {/* Core Inner Card */}
-        <div className="relative w-full h-full bg-card/90 backdrop-blur-xl rounded-[calc(1rem-2px)] px-5 py-6 flex flex-row lg:flex-col items-start gap-4 z-10 transition-colors duration-500 ease-in-out text-left">
+        {/* Core Inner Card — Opaque background to hide the spinning gradient sweep inside */}
+        <div className="relative w-full h-full bg-card rounded-[calc(1rem-2px)] px-5 py-6 flex flex-row lg:flex-col items-start gap-4 z-10 transition-colors duration-500 ease-in-out text-left">
           
           {/* Soft interior glow on hover */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none rounded-[calc(1rem-2px)]" />

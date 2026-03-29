@@ -107,8 +107,8 @@ export default function AboutPage() {
                     <div className="w-full h-full animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,hsl(var(--primary))_10%,transparent_40%,transparent_100%)] will-change-transform" />
                   </div>
 
-                  {/* Core Inner Card Container */}
-                  <div className="relative h-full w-full bg-card/90 backdrop-blur-3xl rounded-[calc(2rem-2px)] p-6 md:p-8 z-10 transition-colors duration-500 ease-in-out">
+                  {/* Core Inner Card Container — Opaque to hide gradient sweep inside */}
+                  <div className="relative h-full w-full bg-card rounded-[calc(2rem-2px)] p-6 md:p-8 z-10 transition-colors duration-500 ease-in-out">
                     
                     {/* Soft smooth interior gradient glow on hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none rounded-[calc(2rem-2px)]" />

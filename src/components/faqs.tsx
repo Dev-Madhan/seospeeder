@@ -38,7 +38,7 @@ export function FaqsSection() {
 	// Removed intro animations as per user request
 
 	return (
-		<section ref={containerRef} className="py-20 md:py-28 bg-background w-full overflow-hidden">
+		<section ref={containerRef} className="pt-20 pb-4 md:pt-28 md:pb-6 bg-background w-full overflow-hidden">
 			<div className="container px-4 md:px-6 mx-auto max-w-4xl">
 				<div ref={titleRef} className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6 mb-8 md:mb-12">
 					<h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1] md:leading-[1.05]">
@@ -196,7 +196,7 @@ export function FaqsSection() {
 					</AnimatePresence>
 				</motion.div>
 
-				<div className="mt-8 text-center">
+				<div className="mt-4 text-center">
 					<p className="text-muted-foreground">
 						Still have questions?{" "}
 						<Link

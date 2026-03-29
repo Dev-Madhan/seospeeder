@@ -223,7 +223,7 @@ export function ProvenSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full max-w-5xl mx-auto bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row min-h-[520px]"
+          className="w-full max-w-5xl mx-auto bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-xl dark:shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[520px]"
         >
           {/* Sidebar */}
           <div className="w-full md:w-72 bg-zinc-50/50 dark:bg-zinc-900/50 border-b-2 md:border-b-0 md:border-r-2 border-zinc-200 dark:border-zinc-800 p-4 md:p-6 flex flex-row md:flex-col gap-3 md:gap-2 overflow-x-auto md:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] shrink-0">
@@ -370,7 +370,7 @@ const PerformanceDashboard = () => (
   <div className="flex flex-col gap-4 h-full">
     <motion.div 
       variants={itemVariants} 
-      className="relative p-5 sm:p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+      className="relative p-5 sm:p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-md"
     >
       <div className="flex flex-col gap-4 relative z-10">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -421,7 +421,7 @@ const PerformanceDashboard = () => (
         <motion.div 
           key={i}
           variants={itemVariants}
-          className="p-4 sm:p-5 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex flex-col gap-3 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+          className="p-4 sm:p-5 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex flex-col gap-3 transition-all duration-300 hover:shadow-md"
         >
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2">
@@ -452,7 +452,7 @@ const PerformanceDashboard = () => (
 const SeoDashboard = () => (
   <div className="flex flex-col h-full not-prose gap-4">
     <motion.div 
-      className="rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 overflow-hidden flex flex-col h-full bg-zinc-50/50 dark:bg-zinc-900/50 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+      className="rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 overflow-hidden flex flex-col h-full bg-zinc-50/50 dark:bg-zinc-900/50 transition-all duration-300 hover:shadow-md"
     >
       <div className="px-5 py-4 border-b border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
         <span className="text-[10px] font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-[0.2em]">
@@ -473,7 +473,7 @@ const SeoDashboard = () => (
           <motion.div
             key={i}
             variants={itemVariants}
-            className="flex items-center gap-4 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 border-2 border-zinc-100 dark:border-zinc-700/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+            className="flex items-center gap-4 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 border-2 border-zinc-100 dark:border-zinc-700/50 shadow-sm transition-all duration-300 hover:shadow-md"
           >
             <div className="size-9 rounded-xl bg-zinc-50 dark:bg-zinc-700 flex items-center justify-center text-zinc-400 group">
               <check.icon size={16} className="group-hover:text-emerald-500 transition-colors" />
@@ -504,7 +504,7 @@ const TrafficDashboard = () => (
         <motion.div
           key={i}
           variants={itemVariants}
-          className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex items-center justify-between relative overflow-hidden group shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+          className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex items-center justify-between relative overflow-hidden group shadow-sm transition-all duration-300 hover:shadow-md"
         >
           <div className="flex flex-col gap-1 z-10">
             <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
@@ -568,7 +568,7 @@ const ReportsDashboard = () => (
           <motion.div
             key={i}
             variants={itemVariants}
-            className="flex items-center gap-3 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-2 border-zinc-100 dark:border-transparent cursor-pointer group shadow-xs transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+            className="flex items-center gap-3 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-2 border-zinc-100 dark:border-transparent cursor-pointer group shadow-xs transition-all duration-300 hover:shadow-md"
           >
             <div className="size-10 rounded-xl bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
               <item.icon size={16} />
@@ -607,7 +607,7 @@ function MetricPanel({ tab, data, inView }: { tab: TabConfig; data: { value: str
       {/* Big Value Hero */}
       <motion.div
         variants={itemVariants}
-        className="relative p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+        className="relative p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-md"
       >
         <div className="flex flex-col gap-4 relative z-10">
           <div className="flex items-center justify-between">
@@ -649,7 +649,7 @@ function MetricPanel({ tab, data, inView }: { tab: TabConfig; data: { value: str
       {/* Description */}
       <motion.div
         variants={itemVariants}
-        className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+        className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 transition-all duration-300 hover:shadow-md"
       >
         <div className="flex items-center gap-2 mb-3">
           <div className="size-5 rounded-md bg-emerald-500/10 flex items-center justify-center">

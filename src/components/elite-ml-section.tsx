@@ -32,6 +32,11 @@ import {
   XAxis,
   YAxis,
   ReferenceLine,
+  Label,
+  PolarGrid,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
 } from "recharts";
 import {
   ChartConfig,
@@ -62,23 +67,24 @@ const trafficData = [
 
 const chartConfig = {
   organic: { label: "Organic", color: "hsl(var(--primary))" },
-  paid:    { label: "Paid",    color: "hsl(var(--muted-foreground))" },
+  paid: { label: "Paid", color: "hsl(var(--muted-foreground))" },
+  health: { label: "Health", color: "hsl(var(--primary))" },
 } satisfies ChartConfig;
 
 const clusters = [
-  { topic: "Page Speed",     icon: Zap,               keywords: 142, share: 88, tags: ["core web vitals", "lcp", "performance", "speed clusters", "mobile flow"] },
-  { topic: "On-Page SEO",    icon: FileText,          keywords: 318, share: 76, tags: ["title tags", "meta desc", "headings", "schema", "pillar content"] },
-  { topic: "Link Building",  icon: Link2,             keywords: 207, share: 61, tags: ["backlinks", "authority", "anchor text", "niche clusters", "referral flow"] },
-  { topic: "Content Gaps",   icon: MousePointerClick, keywords: 91,  share: 94, tags: ["topic clusters", "pillar pages", "voids", "competitor gaps", "intent mapping"] },
+  { topic: "Page Speed", icon: Zap, keywords: 142, share: 88, tags: ["core web vitals", "lcp", "performance", "speed clusters", "mobile flow"] },
+  { topic: "On-Page SEO", icon: FileText, keywords: 318, share: 76, tags: ["title tags", "meta desc", "headings", "schema", "pillar content"] },
+  { topic: "Link Building", icon: Link2, keywords: 207, share: 61, tags: ["backlinks", "authority", "anchor text", "niche clusters", "referral flow"] },
+  { topic: "Content Gaps", icon: MousePointerClick, keywords: 91, share: 94, tags: ["topic clusters", "pillar pages", "voids", "competitor gaps", "intent mapping"] },
 ];
 
 const vitals = [
-  { label: "LCP",         value: "1.2s",  status: "good",  icon: Clock },
-  { label: "CLS",         value: "0.03",  status: "good",  icon: Activity },
-  { label: "FID",         value: "12ms",  status: "good",  icon: Zap },
-  { label: "TTFB",        value: "0.4s",  status: "good",  icon: ScanLine },
-  { label: "Back\nLinks",   value: "4,812", status: "info",  icon: Layers },
-  { label: "Crawl\nErrors", value: "0",     status: "good",  icon: CheckCircle2 },
+  { label: "LCP", value: "1.2s", status: "good", icon: Clock },
+  { label: "CLS", value: "0.03", status: "good", icon: Activity },
+  { label: "FID", value: "12ms", status: "good", icon: Zap },
+  { label: "TTFB", value: "0.4s", status: "good", icon: ScanLine },
+  { label: "Back\nLinks", value: "4,812", status: "info", icon: Layers },
+  { label: "Crawl\nErrors", value: "0", status: "good", icon: CheckCircle2 },
 ];
 
 /* ── Section ──────────────────────────────────────────────── */
@@ -105,6 +111,9 @@ export function EliteMlSection() {
       ref={containerRef}
       className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible"
     >
+      {/* Background accents for professional look */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,_var(--border)/40_1px,_transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-30" />
+
       {/* Header */}
       <div className="text-center space-y-4 md:space-y-6 max-w-4xl mx-auto eml-header">
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1] md:leading-[1.05]">
@@ -135,7 +144,7 @@ export function EliteMlSection() {
         </BentoCard>
 
         {/* Card 4 — Technical Health (wide, split layout) */}
-        <BentoCard className="eml-card md:col-span-2 lg:col-span-4 p-0">
+        <BentoCard className="eml-card md:col-span-2 lg:col-span-4 p-0 bg-card/40 backdrop-blur-[2px]">
           <TechnicalHealthVisual />
         </BentoCard>
 
@@ -148,7 +157,7 @@ export function EliteMlSection() {
 function BentoCard({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <Card className={cn(
-      "group relative overflow-hidden rounded-2xl border-2 bg-background px-5 py-6 md:px-8 md:pt-10 md:pb-8 flex flex-col shadow-none",
+      "group relative overflow-hidden rounded-3xl border-2 border-border/80 bg-background/95 hover:bg-background transition-colors duration-500 px-5 py-6 md:px-8 md:pt-10 md:pb-8 flex flex-col shadow-none",
       className
     )}>
       {children}
@@ -158,14 +167,14 @@ function BentoCard({ children, className }: { children: React.ReactNode; classNa
 
 function CardTitle({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <h3 className={cn("font-medium text-foreground text-lg group-hover:text-primary transition-colors duration-300", className)}>
+    <h3 className={cn("font-semibold text-foreground text-lg group-hover:text-primary transition-colors duration-300 tracking-tight", className)}>
       {children}
     </h3>
   );
 }
 function CardDesc({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className={cn("text-muted-foreground text-sm font-inter font-medium leading-relaxed", className)}>
+    <p className={cn("hidden md:block text-muted-foreground text-sm font-inter font-medium leading-relaxed", className)}>
       {children}
     </p>
   );
@@ -187,7 +196,7 @@ function TrafficGrowthVisual() {
             <p className="text-3xl font-bold text-foreground tracking-tight">18,021</p>
             <p className="text-xs text-muted-foreground mt-0.5 font-inter">Organic sessions / mo.</p>
           </div>
-          <div className="flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-full border border-primary/20 bg-primary/5">
+          <div className="flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-full border-2 border-primary/20 bg-primary/5">
             <ArrowUp className="size-3 text-primary" />
             <span className="text-xs font-semibold text-primary">+336%</span>
           </div>
@@ -210,11 +219,11 @@ function TrafficGrowthVisual() {
               <AreaChart data={trafficData} margin={{ top: 8, left: 0, right: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="organicGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%"  stopColor="hsl(var(--primary))" stopOpacity={0.2} />
+                    <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.2} />
                     <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="paidGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%"  stopColor="hsl(var(--muted-foreground))" stopOpacity={0.08} />
+                    <stop offset="5%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0.08} />
                     <stop offset="95%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0} />
                   </linearGradient>
                 </defs>
@@ -262,61 +271,107 @@ function TrafficGrowthVisual() {
    CARD 2 — AI Crawl Score
 ══════════════════════════════════════════════════════════ */
 function CrawlScoreVisual() {
-  const score = 97;
-  const [val, setVal] = useState(0);
-  useEffect(() => {
-    let n = 0;
-    const t = setInterval(() => {
-      n += 2;
-      if (n >= score) { setVal(score); clearInterval(t); } else setVal(n);
-    }, 18);
-    return () => clearInterval(t);
-  }, []);
-
-  const r = 45;
-  const circ = 2 * Math.PI * r;
+  const [isHovered, setIsHovered] = useState(false);
+  const chartData = [
+    { metric: "health", score: isHovered ? 100 : 97, fill: "hsl(var(--primary))" },
+  ];
 
   const checks = [
-    { label: "Schema markup",    icon: CodeXml },
-    { label: "Canonical tags",   icon: Tag },
-    { label: "Mobile-first",     icon: Smartphone },
-    { label: "Broken links",     icon: Unlink },
-    { label: "Redirect chains",  icon: Waypoints },
+    { label: "Schema markup", icon: CodeXml },
+    { label: "Canonical tags", icon: Tag },
+    { label: "Mobile-first", icon: Smartphone },
+    { label: "Broken links", icon: Unlink },
+    { label: "Redirect chains", icon: Waypoints },
   ];
 
   return (
-    <>
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="flex flex-col items-center gap-6 flex-1 h-full w-full"
+    >
       <div className="flex flex-col items-center gap-6 flex-1">
-        {/* Donut */}
-        <div className="relative size-32 flex items-center justify-center mt-2 group">
-          {/* Subtle Glow Behind */}
-          <div className="absolute inset-0 bg-primary/10 rounded-full blur-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-          
-          <svg className="absolute inset-0 size-full -rotate-90 drop-shadow-sm" viewBox="0 0 100 100">
-            {/* Background Track */}
-            <circle cx="50" cy="50" r={r} fill="none" stroke="currentColor"
-              strokeWidth="2.5" className="text-border/60" />
-            
-            {/* Animated Progress */}
-            <motion.circle
-              cx="50" cy="50" r={r} fill="none"
-              stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round"
-              strokeDasharray={circ}
-              initial={{ strokeDashoffset: circ }}
-              animate={{ strokeDashoffset: circ - (val / 100) * circ }}
-              transition={{ duration: 1.8, ease: "easeOut" }}
-              className="drop-shadow-[0_0_8px_rgba(var(--primary),0.8)]"
-            />
-            
-            {/* Outer faint dotted ring */}
-            <circle cx="50" cy="50" r={49} fill="none" stroke="currentColor"
-              strokeWidth="0.5" strokeDasharray="1 3" className="text-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-          </svg>
-          
-          <div className="flex flex-col items-center z-10 transform transition-transform duration-500 group-hover:scale-105">
-            <span className="text-4xl font-bold font-inter text-foreground tracking-tight leading-none drop-shadow-sm">{val}</span>
-            <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-[0.2em] mt-1.5 opacity-80">Health</span>
-          </div>
+        {/* Progress Bar Container */}
+        <div className="relative size-32 md:size-36 flex items-center justify-center mt-2">
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square h-full w-full"
+          >
+            <RadialBarChart
+              data={chartData}
+              startAngle={90}
+              endAngle={90 + (360 * (isHovered ? 1 : 0.97))}
+              innerRadius={56}
+              outerRadius={65}
+            >
+              {/* Main Decorative Dotted Outer Ring */}
+              <PolarGrid
+                gridType="circle"
+                radialLines={false}
+                stroke="currentColor"
+                strokeDasharray="3 3"
+                className="text-primary/30"
+                polarRadius={[68]}
+              />
+
+              {/* Inner Decorative Dotted Ring */}
+              <PolarGrid
+                gridType="circle"
+                radialLines={false}
+                stroke="currentColor"
+                strokeDasharray="2 4"
+                className="text-border/40"
+                polarRadius={[53]}
+              />
+
+              <PolarGrid
+                gridType="circle"
+                radialLines={false}
+                stroke="none"
+                className="first:fill-muted/10 last:fill-transparent"
+                polarRadius={[65, 56]}
+              />
+              <RadialBar
+                dataKey="score"
+                background={{ fill: "hsl(var(--muted)/0.1)" }}
+                cornerRadius={10}
+                isAnimationActive={true}
+                animationDuration={1500}
+                animationEasing="ease-in-out"
+              />
+              <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                <Label
+                  content={({ viewBox }) => {
+                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                      return (
+                        <text
+                          x={viewBox.cx}
+                          y={viewBox.cy}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                        >
+                          <tspan
+                            x={viewBox.cx}
+                            y={viewBox.cy}
+                            className="fill-foreground text-4xl font-bold font-inter tracking-tighter"
+                          >
+                            97
+                          </tspan>
+                          <tspan
+                            x={viewBox.cx}
+                            y={(viewBox.cy || 0) + 18}
+                            className="fill-muted-foreground text-[10px] font-bold uppercase tracking-[0.2em]"
+                          >
+                            Health
+                          </tspan>
+                        </text>
+                      )
+                    }
+                  }}
+                />
+              </PolarRadiusAxis>
+            </RadialBarChart>
+          </ChartContainer>
         </div>
 
         {/* Checks */}
@@ -341,7 +396,7 @@ function CrawlScoreVisual() {
           Crawls 50,000 pages in minutes and surfaces every technical issue before it costs you rankings.
         </CardDesc>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -384,7 +439,7 @@ function SemanticClustersVisual() {
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                
+
                 <c.icon className="size-5" />
               </button>
             );
@@ -399,7 +454,7 @@ function SemanticClustersVisual() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: -5 }}
             transition={{ duration: 0.3 }}
-            className="flex-1 rounded-xl border border-border/70 bg-card p-5 shadow-sm flex flex-col gap-4 relative overflow-hidden group/cluster"
+            className="flex-1 rounded-2xl border-2 border-border/70 bg-card p-5 flex flex-col gap-4 relative overflow-hidden group/cluster"
           >
             {/* Subtle aesthetic glow */}
             <div className="absolute top-0 right-0 -m-8 size-32 bg-primary/10 rounded-full blur-3xl pointer-events-none transition-opacity duration-500 opacity-50 group-hover/cluster:opacity-100" />
@@ -412,7 +467,7 @@ function SemanticClustersVisual() {
                 </div>
                 <p className="text-[11px] text-muted-foreground font-medium pl-5">{cl.keywords} high-intent terms</p>
               </div>
-              
+
               <div className="text-right">
                 <span className="text-[8px] font-semibold uppercase tracking-[0.1em] text-muted-foreground block mb-0">Opportunity</span>
                 <span className="text-lg font-black font-inter text-primary tracking-tighter drop-shadow-sm leading-none">{cl.share}%</span>
@@ -420,11 +475,11 @@ function SemanticClustersVisual() {
             </div>
 
             {/* Keyword pills - Limited to 2 lines */}
-            <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-border/40 z-10 max-h-[60px] overflow-hidden">
-              {cl.tags.map((t) => (
-                <span 
-                  key={t} 
-                  className="text-[10px] font-semibold px-2.5 py-1 rounded-md bg-muted/30 border border-border/50 text-foreground/80 hover:text-foreground hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 cursor-default"
+            <div className="flex flex-wrap gap-1 mt-auto pt-3 border-t border-border/40 z-10 overflow-hidden">
+              {cl.tags.slice(0, 4).map((t) => (
+                <span
+                  key={t}
+                  className="text-[9px] font-bold px-2 py-0.5 rounded-md bg-muted/40 border border-border/50 text-foreground/70 transition-all duration-300"
                 >
                   {t}
                 </span>
@@ -437,7 +492,7 @@ function SemanticClustersVisual() {
       <div className="mt-6 space-y-1.5 text-center">
         <CardTitle>Semantic Keyword Clusters</CardTitle>
         <CardDesc>
-          Groups thousands of keywords by topic so your content strategy always targets what people actually search for.
+          Groups keywords by topic to ensure your strategy targets exactly what users search for.
         </CardDesc>
       </div>
     </>
@@ -466,37 +521,37 @@ function TechnicalHealthVisual() {
       onMouseLeave={() => { x.set(0); y.set(0); }}
     >
       {/* Left: copy */}
-      <div className="relative z-10 space-y-4 p-6 pt-4 md:pt-6 md:pb-8 md:pl-10 pointer-events-none flex flex-col justify-start">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2.5 mb-2">
-            <span className="relative flex size-2.5">
+      <div className="relative z-10 space-y-1 md:space-y-4 p-4 md:p-6 md:pt-6 md:pb-8 md:pl-10 pointer-events-none flex flex-col justify-start">
+        <div className="space-y-1 md:space-y-3">
+          <div className="flex items-center gap-2 md:gap-2.5 mb-0.5 md:mb-2 pt-2 md:pt-0">
+            <span className="relative flex size-2 md:size-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 duration-1000"></span>
-              <span className="relative inline-flex size-2.5 rounded-full bg-primary"></span>
+              <span className="relative inline-flex size-2 md:size-2.5 rounded-full bg-primary"></span>
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Live Connection</span>
+            <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Live Connection</span>
           </div>
-          
-          <CardTitle className="text-xl leading-tight">Technical SEO Command Center</CardTitle>
-          <CardDesc className="text-pretty max-w-[300px]">
-            Core Web Vitals, crawl health, and backlink profiles — monitored in real time with actionable alerts before rankings slip.
+
+          <CardTitle className="text-lg md:text-xl leading-tight">Technical SEO Command Center</CardTitle>
+          <CardDesc className="text-pretty max-w-[280px] md:max-w-[300px]">
+            Real-time monitoring of Core Web Vitals, crawl health, and backlink profiles with proactive alerts.
           </CardDesc>
         </div>
 
         {/* Upgraded Stat Grid */}
-        <div className="grid grid-cols-2 gap-6 pt-5 mt-2 border-t border-border/50">
+        <div className="grid grid-cols-2 gap-3 md:gap-6 mt-1 md:mt-2">
           {[
             { label: "Pages Monitored", val: "50,000+", fill: "100%" },
-            { label: "Avg. Audit Time", val: "58s",     fill: "85%"  },
+            { label: "Avg. Audit Time", val: "58s", fill: "85%" },
           ].map((s) => (
             <div key={s.label} className="flex flex-col">
-              <span className="text-2xl font-bold font-inter text-foreground tracking-tight drop-shadow-sm">{s.val}</span>
-              <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mt-1">{s.label}</span>
-              <div className="h-0.5 w-full bg-muted/40 mt-3 rounded-full overflow-hidden">
-                <motion.div 
+              <span className="text-xl md:text-2xl font-bold font-inter text-foreground tracking-tight drop-shadow-sm">{s.val}</span>
+              <span className="text-[8px] md:text-[10px] font-medium text-muted-foreground uppercase tracking-wider mt-0.5 md:mt-1">{s.label}</span>
+              <div className="h-0.5 w-full bg-muted/40 mt-1 md:mt-3 rounded-full overflow-hidden">
+                <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: s.fill }}
                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-                  className="h-full bg-primary/80" 
+                  className="h-full bg-primary/80"
                 />
               </div>
             </div>
@@ -505,12 +560,12 @@ function TechnicalHealthVisual() {
       </div>
 
       {/* Right: vitals grid */}
-      <div className="mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto mt-4 sm:mt-0 px-4 sm:px-0 overflow-hidden sm:overflow-visible">
+      <div className="mask-b-from-98% md:mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto mt-0 sm:mt-0 px-4 sm:px-0 overflow-hidden sm:overflow-visible pb-2 sm:pb-0">
         <motion.div
           style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="relative sm:absolute sm:-right-1 sm:-bottom-1 rounded-xl sm:rounded-none sm:rounded-tl-md border-2 bg-card p-4 shadow-2xl transition-shadow duration-500 group-hover:shadow-primary/10 w-full sm:w-auto"
+          className="relative sm:absolute sm:-right-1 sm:-bottom-1 rounded-2xl border-2 bg-card p-2 md:p-4 shadow-lg transition-shadow duration-500 group-hover:shadow-primary/5 w-full sm:w-auto"
         >
-          <div className="grid grid-cols-2 gap-2 min-w-[160px]">
+          <div className="grid grid-cols-2 gap-1 md:gap-2 min-w-[160px]">
             {vitals.map((v, i) => {
               const Icon = v.icon;
               return (
@@ -519,10 +574,10 @@ function TechnicalHealthVisual() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: i * 0.06 }}
-                  className="rounded-xl border border-border/60 bg-background px-3 py-2.5 hover:border-primary/30 transition-colors"
+                  className="rounded-xl border-2 border-border/60 bg-background px-2.5 py-1.5 md:px-3 md:py-2.5 hover:border-primary/30 transition-colors"
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <p className="text-[8px] font-semibold uppercase tracking-widest text-muted-foreground whitespace-pre-line leading-tight">{v.label}</p>
+                  <div className="flex items-center justify-between mb-0 md:mb-1">
+                    <p className="text-[7.5px] md:text-[8px] font-semibold uppercase tracking-widest text-muted-foreground whitespace-pre-line leading-tight">{v.label}</p>
                     <Icon className="size-2.5 text-foreground" />
                   </div>
                   <p className={cn(

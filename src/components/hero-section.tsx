@@ -122,7 +122,7 @@ export default function HeroSection() {
                             }}>
                             <div className="relative mx-auto mt-8 md:mt-16 lg:mt-20 overflow-visible px-4 md:px-6 lg:px-0">
                                 <div
-                                    className="bg-background relative mx-auto max-w-6xl overflow-hidden rounded-xl md:rounded-2xl border shadow-2xl shadow-zinc-950/20 ring-1 ring-background"
+                                    className="bg-background relative mx-auto max-w-6xl overflow-hidden rounded-xl md:rounded-2xl border-2 shadow-2xl shadow-zinc-950/20 ring-1 ring-background"
                                     style={{
                                         boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.06), 0 25px 50px -12px rgba(0,0,0,0.25)',
                                         WebkitTransform: 'translateZ(0)',

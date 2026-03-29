@@ -463,7 +463,7 @@ function DashboardVisual() {
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="relative z-10 space-y-6 p-6 md:pt-10 md:pb-8 md:pl-10 pointer-events-none">
+			<div className="relative z-10 space-y-4 p-5 md:p-6 md:pt-10 md:pb-8 md:pl-10 pointer-events-none">
 				<div className="flex size-12 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:scale-110 transition-transform duration-500">
 					<LayoutDashboard className="size-5 text-foreground group-hover:text-primary transition-colors duration-300" />
 				</div>
@@ -472,12 +472,12 @@ function DashboardVisual() {
 						Technical SEO Command Center
 					</FeatureTitle>
 					<FeatureDescription className="text-pretty pr-4 sm:pr-0 max-w-[340px] md:max-w-[400px]">
-						Monitor Core Web Vitals, site health, and backlink profiles from a unified dashboard with real-time alerts and actionable insights.
+						Unified dashboard to monitor site health, Core Web Vitals, and backlink profiles with real-time, actionable alerts.
 					</FeatureDescription>
 				</div>
 			</div>
 			{/* Dashboard Screen */}
-			<div className="mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto visual-dashboard-mock overflow-visible mt-4 sm:mt-0 px-4 sm:px-0">
+			<div className="mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto visual-dashboard-mock overflow-visible mt-2 sm:mt-0 px-4 sm:px-0">
 				<motion.div 
 					style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
 					className="relative sm:absolute sm:-right-1 sm:-bottom-1 aspect-video max-h-60 sm:max-h-42 md:aspect-square md:max-h-50 lg:aspect-16/12 rounded-xl sm:rounded-none sm:rounded-tl-md border-2 bg-card p-1 shadow-2xl transition-shadow duration-500 group-hover:shadow-primary/10"
