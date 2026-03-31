@@ -107,11 +107,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .md\:py-24 {
-    margin-top: 6rem;
-  }
-}
 
 /* Safari / iOS rendering fixes */
 @supports (-webkit-touch-callout: none) {

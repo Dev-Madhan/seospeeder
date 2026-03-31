@@ -13,7 +13,7 @@ const FaqsSection = dynamic(() => import("@/components/faqs").then(mod => mod.Fa
 
 export default function Home() {
   return (
-    <div className="w-full space-y-16 md:space-y-24 pb-20 md:pb-32">
+    <div className="w-full pb-20 md:pb-32">
       <HeroSection />
       <LogoCloud />
       <ResultsSection />

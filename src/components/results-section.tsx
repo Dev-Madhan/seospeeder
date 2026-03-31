@@ -56,7 +56,7 @@ export function ResultsSection() {
   };
 
   return (
-    <section ref={containerRef} className="pt-20 pb-10 md:pt-32 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black overflow-hidden relative">
+    <section ref={containerRef} className="pt-40 pb-10 md:pt-64 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black overflow-hidden relative">
       
       <div className="max-w-7xl mx-auto space-y-12 md:space-y-20 relative z-10">
         {/* 1. Section Headline & Subheading */}
