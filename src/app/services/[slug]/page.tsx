@@ -12,6 +12,7 @@ import { productLinks } from "@/components/nav-links";
 import ServiceDashboard from "@/components/service-dashboard";
 import { MobilePerformanceShowcase } from "@/components/mobile-performance-showcase";
 import { ModernWordPressPerformance } from "@/components/modern-wordpress-performance";
+import { AnimatedGroup } from "@/components/ui/animated-group";
 
 export async function generateStaticParams() {
   return SERVICES.map((service) => ({
@@ -41,46 +42,63 @@ export default async function ServicePage({
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="flex flex-col items-center text-center space-y-8">
             {/* Added Platform Icon on top */}
-            <div className="mb-2 animate-in fade-in slide-in-from-bottom-2 duration-1000">
-              <PlatformIcon className="size-16 md:size-20 text-neutral-800 dark:text-neutral-200 opacity-90" strokeWidth={1.5} />
-            </div>
-
-
-            {/* Platform Badge - Replacing with BoostRankingsBadge for Optimization subpages */}
-            {productLinks.some((link) => link.href === `/services/${slug}`) ? (
-              <div className="animate-in fade-in slide-in-from-top-4 duration-1000 delay-100">
-                <BoostRankingsBadge icon={PlatformIcon}>
-                  {service.title} Optimisation
-                </BoostRankingsBadge>
-              </div>
-            ) : (
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-neutral-200/50 bg-neutral-100/50 backdrop-blur-sm animate-in fade-in slide-in-from-top-4 duration-1000 delay-100">
-                <PlatformIcon size={14} className="text-neutral-500" />
-                <span className="text-xs font-bold tracking-tight uppercase text-neutral-600">
-                  {service.title} Optimisation
-                </span>
-              </div>
-            )}
-
-            {/* Main Headline - Exact 72px/700 styling with 1.0 line-height */}
-            <h1 className="text-[48px] md:text-[80px] lg:text-[96px] font-bold tracking-tighter leading-[0.95] text-[#0A0A0A] dark:text-neutral-100 max-w-5xl">
-              <TextEffect preset="fade-in-blur" speedSegment={0.3}>
-                {(service as any).heroHeadline || `${service.title} Performance Perfected.`}
-              </TextEffect>
-            </h1>
+            <TextEffect
+              preset="fade-in-blur"
+              speedSegment={0.3}
+              as="h1"
+              className="text-[48px] md:text-[80px] lg:text-[96px] font-bold tracking-tighter leading-[1.0] text-[#0A0A0A] dark:text-neutral-100 max-w-5xl"
+            >
+              {(service as any).heroHeadline || `${service.title} Performance Perfected.`}
+            </TextEffect>
 
             {/* Description - Exact 20px/400 styling with generous max-width */}
-            <p className="max-w-3xl text-[18px] md:text-[22px] text-[#737373] font-medium leading-[1.6] font-inter animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-              {(service as any).heroDescription || `Speed optimisation for ${service.title} sites of all sizes. From complex e-commerce stores to high-traffic blogs, we make them fly. Our specialised ${service.title} speed optimisation service eliminates bottlenecks and supercharges your performance metrics.`}
-            </p>
+            <TextEffect
+              per="line"
+              preset="fade-in-blur"
+              speedSegment={0.3}
+              delay={0.5}
+              as="p"
+              className="max-w-3xl text-[18px] md:text-[22px] text-[#737373] font-medium leading-[1.6] font-inter"
+            >
+              {(service as any).heroDescription || `Specialised speed optimization for ${service.title} sites. We eliminate performance bottlenecks to deliver lightning-fast load times and Grade A rankings guaranteed.`}
+            </TextEffect>
 
             {/* Global Actions - Swapped Variants */}
-            <div className="flex flex-col sm:flex-row items-center gap-5 pt-6 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+            <AnimatedGroup
+              className="flex flex-col sm:flex-row items-center gap-5 pt-6"
+              variants={{
+                container: {
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1,
+                      delayChildren: 0.8,
+                    },
+                  },
+                },
+                item: {
+                  hidden: {
+                    opacity: 0,
+                    filter: "blur(12px)",
+                    y: 12,
+                  },
+                  visible: {
+                    opacity: 1,
+                    filter: "blur(0.1px)",
+                    y: 0,
+                    transition: {
+                      y: { type: "spring", bounce: 0.3, duration: 1.5 },
+                      opacity: { duration: 0.5 },
+                      filter: { duration: 0.5, ease: "easeOut" },
+                    },
+                  },
+                },
+              }}
+            >
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold hover:scale-[1.05]"
+                className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold transition-all duration-300"
               >
                 <Link href="#audit">
                   <span className="text-nowrap">Get Free Audit</span>
@@ -89,43 +107,55 @@ export default async function ServicePage({
               <Button
                 asChild
                 size="lg"
-                className="group/btn w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none hover:scale-[1.05]"
+                className="group/btn w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
               >
                 <Link href="#how-it-works">
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
                   <span className="relative z-10 text-nowrap">See How It Works</span>
                 </Link>
               </Button>
-            </div>
+            </AnimatedGroup>
+
+            {/* Service-specific Dashboard moved to Hero area for impact */}
+            <AnimatedGroup
+              variants={{
+                container: {
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.05,
+                      delayChildren: 0.5,
+                    },
+                  },
+                },
+                item: {
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                }
+              }}
+              className="w-full mt-16 md:mt-24"
+            >
+              <div className="relative mx-auto overflow-visible px-0 lg:px-4">
+                <div
+                  className="bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl md:rounded-[2.5rem] border-2 shadow-2xl shadow-zinc-950/20 ring-1 ring-background"
+                  style={{
+                    boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.06), 0 25px 50px -12px rgba(0,0,0,0.25)',
+                    WebkitTransform: 'translateZ(0)',
+                    isolation: 'isolate',
+                  }}
+                >
+                  {/* Subtle Background Lighting for the container */}
+                  <div className="absolute -top-24 left-1/2 -z-10 h-96 w-[120%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.08),transparent_70%)] blur-[60px]" />
+
+                  <div className="relative w-full overflow-hidden p-0 sm:p-2">
+                    <ServiceDashboard slug={slug} />
+                  </div>
+                </div>
+              </div>
+            </AnimatedGroup>
           </div>
         </div>
       </section>
 
-      {/* Main Analysis Section: Interactive Performance Dashboard */}
-      <section className="py-24 md:py-32 bg-neutral-50 dark:bg-neutral-950/50 border-y border-neutral-200 dark:border-neutral-800/50">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col items-center text-center mb-16 md:mb-24 space-y-8">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-[#0A0A0A] dark:text-neutral-100 leading-[0.95] font-primary max-w-5xl">
-              <TextEffect preset="fade-in-blur" speedSegment={0.3}>
-                {slug === "shopify" ? "Shopify Growth, Unthrottled." :
-                  slug === "magento" ? "Magento Speed, Tactically Engineered." :
-                    slug === "wordpress" ? "WordPress Performance Perfected." :
-                      "Engineered for Viral Performance."}
-              </TextEffect>
-            </h2>
-
-            <p className="max-w-4xl text-lg md:text-2xl text-[#737373] font-medium font-inter leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-              {slug === "shopify" ? "We rebuild your Liquid core for sub-millisecond response times. From checkout latency reduction to predictive asset caching, your store is designed to stay fast even during BFCM viral peaks." :
-                slug === "magento" ? "We overhaul your Magento PHP core and database indexing for elite-level performance. Optimized for massive catalogs and complex enterprise workflows, ensuring your site remains responsive under extreme volume." :
-                  slug === "wordpress" ? "Expert speed optimisation for WordPress sites of all sizes. From complex WooCommerce stores to blogs, we eliminate bottlenecks and supercharge performance." :
-                    `We rebuild your ${service.title} core for sub-millisecond response times. From database indexing to predictive caching, your site is designed to stay fast even during viral traffic peaks.`}
-            </p>
-          </div>
-          <div className="w-full">
-            <ServiceDashboard slug={slug} />
-          </div>
-        </div>
-      </section>
 
 
       {/* WordPress Accelerated Experience Hub */}

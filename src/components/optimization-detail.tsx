@@ -15,6 +15,9 @@ interface OptimizationDetailProps {
 	description: string;
 	platform: string;
 	iconName: "globe" | "shopping-bag" | "code" | "flame" | "server" | "layers" | "workflow" | "zap";
+	showButtons?: boolean;
+	showFeatures?: boolean;
+	showCTA?: boolean;
 }
 
 const transitionVariants = {
@@ -48,7 +51,15 @@ const iconMap = {
 	zap: Zap,
 };
 
-export function OptimizationDetail({ title, description, platform, iconName }: OptimizationDetailProps) {
+export function OptimizationDetail({ 
+	title, 
+	description, 
+	platform, 
+	iconName,
+	showButtons = true,
+	showFeatures = true,
+	showCTA = true
+}: OptimizationDetailProps) {
 	const Icon = iconMap[iconName];
 
 	return (
@@ -65,98 +76,133 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 			<div className="container relative z-10 mx-auto px-4 md:px-6">
 				{/* Hero Section */}
 				<div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
-					<AnimatedGroup variants={transitionVariants}>
-						<div className="mb-6">
-							<BoostRankingsBadge icon={Icon}>
-								{platform} Optimisation
-							</BoostRankingsBadge>
-						</div>
-					</AnimatedGroup>
+					{/* Badge removed to reduce repetition */}
 
-					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-primary">
-						<TextEffect preset="fade-in-blur" speedSegment={0.3}>
+
+					{title && (
+						<TextEffect
+							preset="fade-in-blur"
+							speedSegment={0.3}
+							as="h1"
+							className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-primary leading-[1.1]"
+						>
 							{title}
 						</TextEffect>
-					</h1>
+					)}
 
-					<TextEffect
-						per="line"
-						preset="fade-in-blur"
-						speedSegment={0.3}
-						delay={0.2}
-						className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-inter mb-10"
-					>
-						{`${description} Our specialised ${platform} speed optimisation service eliminates bottlenecks and supercharges your performance metrics.`}
-					</TextEffect>
+					{description && (
+						<TextEffect
+							per="line"
+							preset="fade-in-blur"
+							speedSegment={0.3}
+							delay={0.5}
+							as="p"
+							className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-inter mb-10"
+						>
+							{description}
+						</TextEffect>
+					)}
 
-					<AnimatedGroup variants={transitionVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-						<Button
-							asChild
-							variant="outline"
-							size="lg"
-							className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold border-2"
+					{showButtons && (
+						<AnimatedGroup
+							variants={{
+								container: {
+									visible: {
+										transition: {
+											staggerChildren: 0.1,
+											delayChildren: 0.8,
+										},
+									},
+								},
+								item: {
+									hidden: {
+										opacity: 0,
+										filter: "blur(12px)",
+										y: 12,
+									},
+									visible: {
+										opacity: 1,
+										filter: "blur(0.1px)",
+										y: 0,
+										transition: {
+											y: { type: "spring", bounce: 0.3, duration: 1.5 },
+											opacity: { duration: 0.5 },
+											filter: { duration: 0.5, ease: "easeOut" },
+										},
+									},
+								},
+							}}
+							className="flex flex-col sm:flex-row items-center justify-center gap-4"
 						>
-							<Link href="/contact">
-								<span className="text-nowrap">Get Free Audit</span>
-							</Link>
-						</Button>
-						<Button
-							asChild
-							size="lg"
-							className="group/btn w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
-						>
-							<Link href="#features">
-								<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
-								<span className="relative z-10 text-nowrap">See How It Works</span>
-							</Link>
-						</Button>
-					</AnimatedGroup>
+							<Button
+								asChild
+								variant="outline"
+								size="lg"
+								className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold border-2 transition-all duration-300"
+							>
+								<Link href="/contact">
+									<span className="text-nowrap">Get Free Audit</span>
+								</Link>
+							</Button>
+							<Button
+								asChild
+								size="lg"
+								className="group/btn w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
+							>
+								<Link href="#features">
+									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+									<span className="relative z-10 text-nowrap">See How It Works</span>
+								</Link>
+							</Button>
+						</AnimatedGroup>
+					)}
 				</div>
 
 				{/* Feature Grid */}
-				<section id="features" className="relative mb-24">
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						{[
-							{
-								icon: Gauge,
-								title: "Core Web Vitals",
-								text: "Pass LCP, FID, and CLS with confidence. We target the specific metrics Google uses to rank your site.",
-							},
-							{
-								icon: Zap,
-								title: "Zero Downtime",
-								text: "Our optimisations are non-destructive and performed in a safe staging environment before deployment.",
-							},
-							{
-								icon: Shield,
-								title: "Long-term Impact",
-								text: "We don't just patch issues; we rebuild for performance, ensuring your site stays fast as you grow.",
-							},
-						].map((feature, i) => (
-							<motion.div
-								key={i}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: i * 0.1 }}
-								className="group relative p-8 rounded-3xl border-2 border-border/50 bg-card hover:border-primary transition-all duration-500"
-							>
-								<div className="size-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-									<feature.icon className="size-6" />
-								</div>
-								<h3 className="text-xl font-bold mb-3 font-primary">{feature.title}</h3>
-								<p className="text-muted-foreground font-inter leading-relaxed">{feature.text}</p>
-							</motion.div>
-						))}
-					</div>
-				</section>
+				{showFeatures && (
+					<section id="features" className="relative mb-24">
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+							{[
+								{
+									icon: Gauge,
+									title: "Core Web Vitals",
+									text: "Pass LCP, FID, and CLS with confidence. We target the specific metrics Google uses to rank your site.",
+								},
+								{
+									icon: Zap,
+									title: "Zero Downtime",
+									text: "Our optimisations are non-destructive and performed in a safe staging environment before deployment.",
+								},
+								{
+									icon: Shield,
+									title: "Long-term Impact",
+									text: "We don't just patch issues; we rebuild for performance, ensuring your site stays fast as you grow.",
+								},
+							].map((feature, i) => (
+								<motion.div
+									key={i}
+									initial={{ opacity: 0, y: 20 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true }}
+									transition={{ delay: i * 0.1 }}
+									className="group relative p-8 rounded-3xl border-2 border-border/50 bg-card hover:border-primary transition-all duration-500"
+								>
+									<div className="size-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+										<feature.icon className="size-6" />
+									</div>
+									<h3 className="text-xl font-bold mb-3 font-primary">{feature.title}</h3>
+									<p className="text-muted-foreground font-inter leading-relaxed">{feature.text}</p>
+								</motion.div>
+							))}
+						</div>
+					</section>
+				)}
 
-
-
-				{/* CTA Section */}
-				<section className="relative">
-					<CallToAction />
-				</section>
+				{showCTA && (
+					<section className="relative">
+						<CallToAction />
+					</section>
+				)}
 			</div>
 		</main>
 	);

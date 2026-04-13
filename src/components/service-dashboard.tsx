@@ -734,18 +734,18 @@ const CommerceStatsCard = ({ label, value, sub, color, icon: Icon, trend }: any)
 
 function WordPressDashboard({ slug, service }: any) {
   return (
-    <div className="flex items-center justify-center w-full p-4 sm:p-6 lg:p-8">
-      <div className="relative group/card rounded-[2rem] p-[2px] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 ease-in-out cursor-default w-full max-w-[1240px]">
-        
+    <div className="flex items-center justify-center w-full p-0 sm:p-4 lg:p-6">
+      <div className="relative group/card sm:rounded-[2rem] sm:p-[2px] overflow-hidden sm:shadow-sm sm:hover:shadow-2xl sm:hover:shadow-primary/5 transition-all duration-500 ease-in-out cursor-default w-full max-w-[1240px] bg-transparent sm:bg-transparent">
+
         {/* Outer base border color when not hovered */}
-        <div className="absolute inset-0 bg-border/40 transition-opacity duration-500 ease-in-out group-hover/card:opacity-0" />
-        
+        <div className="absolute inset-0 bg-border/40 transition-opacity duration-500 ease-in-out group-hover/card:opacity-0 hidden sm:block" />
+
         {/* Hardware Accelerated Spinning Conic Gradient Border — Customized Blue */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 ease-in-out pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 ease-in-out pointer-events-none hidden sm:block">
           <div className="w-full h-full animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#21759b_15%,transparent_40%,transparent_100%)] will-change-transform" />
         </div>
 
-        <Card className="relative w-full shadow-none bg-white dark:bg-card rounded-[calc(2rem-2px)] overflow-hidden z-10 border-none">
+        <Card className="relative w-full shadow-none bg-transparent sm:bg-white sm:dark:bg-card sm:rounded-[calc(2rem-2px)] overflow-hidden z-10 border-none">
           {/* Header */}
           <div className="border-b bg-muted/30 px-6 py-6 lg:px-10 lg:py-8 flex flex-col items-center justify-center text-center gap-6">
             <div className="flex flex-col items-center gap-4">
@@ -755,17 +755,17 @@ function WordPressDashboard({ slug, service }: any) {
             </div>
           </div>
 
-          <div className="p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          <div className="p-4 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             {/* LEFT COLUMN: Diagnostic Cluster */}
             <div className="col-span-1 lg:col-span-3 space-y-6">
-              <div>
+              <div className="text-left">
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1 font-inter">Sector 01</p>
                 <h2 className="text-lg font-bold tracking-tight">Diagnostic Cluster</h2>
               </div>
 
               <div className="space-y-3">
                 <DiagnosticCard label="PHP Pulse" value="4ms" status="WP Hub" icon={Zap} />
-                <DiagnosticCard label="Query Density" value="Clean" status="Vitals / 101" icon={Database} />
+                <DiagnosticCard label="SQL Load" value="Clean" status="Vitals / 101" icon={Database} />
                 <DiagnosticCard label="Asset Tunnel" value="Elite" status="Active" icon={Layers} />
               </div>
 
@@ -894,10 +894,10 @@ const DiagnosticCard = ({ label, value, status, icon: Icon }: any) => (
   <Card className="shadow-none group hover:border-foreground/20 transition-colors border-2">
     <CardContent className="p-4 flex items-center justify-between">
       <div className="flex items-center gap-4">
-        <div className="size-8 rounded-md bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-foreground group-hover:text-background transition-colors">
-          <Icon size={16} />
+        <div className="size-8 rounded-md bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-foreground group-hover:text-background transition-all duration-500 ease-in-out group-hover:shadow-lg group-hover:shadow-foreground/10">
+          <Icon size={16} className="transition-transform duration-500 ease-in-out" />
         </div>
-        <div className="space-y-0.5">
+        <div className="space-y-0.5 text-left flex flex-col items-start">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-foreground leading-none font-inter">{label}</p>
           <p className="text-[10px] text-muted-foreground font-medium font-inter">{status}</p>
         </div>
@@ -918,9 +918,11 @@ const MetricBox = ({ label, value, status }: any) => (
 );
 
 const OperationRow = ({ label, value, icon: Icon }: any) => (
-  <div className="flex items-center justify-between p-3 rounded-xl border-2 bg-card hover:bg-muted/50 transition-colors">
+  <div className="flex items-center justify-between p-3 rounded-xl border-2 bg-card hover:bg-muted/50 transition-all duration-300 group">
     <div className="flex items-center gap-3">
-      <Icon size={14} className="text-muted-foreground" />
+      <div className="size-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-foreground group-hover:text-background transition-all duration-500 ease-in-out">
+        <Icon size={16} className="transition-transform duration-500" />
+      </div>
       <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider font-inter">{label}</span>
     </div>
     <span className="text-[10px] font-bold uppercase text-foreground">{value}</span>

@@ -99,7 +99,7 @@ export default function HeroSection() {
                                         asChild
                                         size="lg"
                                         variant="outline"
-                                        className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold">
+                                        className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold transition-all duration-300">
                                         <Link href="#services">
                                             <span className="text-nowrap">Explore Services</span>
                                         </Link>
