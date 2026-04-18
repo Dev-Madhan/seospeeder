@@ -6,9 +6,9 @@ import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 import { 
   Target
 } from 'lucide-react';
-import FeaturesGrid11 from "@/components/features-11";
-import { CallToAction } from "@/components/cta";
-import { CoreValues } from "@/components/core-values";
+import FeaturesGrid11 from "@/components/sections/features/features-11";
+import { CallToAction } from "@/components/sections/cta/cta";
+import { CoreValues } from "@/components/sections/values/core-values";
 
 export default function AboutPage() {
   return (

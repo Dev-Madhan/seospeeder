@@ -5,8 +5,8 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { Icons } from "@/components/icons";
-import type { LinkItemType } from "@/components/sheard";
+import { Icons } from "@/components/core/icons";
+import type { LinkItemType } from "@/components/sections/navbar/shared";
 
 export const productLinks: LinkItemType[] = [
   {

@@ -1,4 +1,4 @@
-import { OptimizationDetail } from "@/components/optimization-detail";
+import { OptimizationDetail } from "@/components/sections/performance/optimization-detail";
 
 export const metadata = {
   title: ".Net Application Speed Tuning | SEO Speeder",

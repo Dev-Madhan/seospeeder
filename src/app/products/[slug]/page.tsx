@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { productLinks } from '@/components/nav-links';
+import { productLinks } from '@/components/sections/navbar/nav-links';
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const product = productLinks.find(p => p.href === `/products/${params.slug}`);

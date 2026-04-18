@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useRef } from "react";
-import { CobeGlobe } from "@/components/cobe-globe";
+import { CobeGlobe } from "@/components/sections/features/cobe-globe";
 import { 
 	Zap, 
 	Bot,

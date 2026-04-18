@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Poppins, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/navbar";
-import FooterSection from "@/components/footer";
+import { ThemeProvider } from "@/components/core/theme-provider";
+import { Navbar } from "@/components/sections/navbar/navbar";
+import FooterSection from "@/components/sections/footer/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { DynamicLightRays } from "@/components/ui/dynamic-light-rays";
 

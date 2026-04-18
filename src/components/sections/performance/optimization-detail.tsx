@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
-import { BoostRankingsBadge } from "@/components/boost-rankings-badge";
-import { CallToAction } from "@/components/cta";
+import { BoostRankingsBadge } from "@/components/sections/hero/boost-rankings-badge";
+import { CallToAction } from "@/components/sections/cta/cta";
 
 interface OptimizationDetailProps {
 	title: string;

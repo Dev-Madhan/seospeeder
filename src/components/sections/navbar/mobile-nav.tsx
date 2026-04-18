@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { MenuIcon, XIcon, ChevronRight } from "lucide-react";
 import React from "react";
 import { createPortal } from "react-dom";
-import { companyLinks, companyLinks2, productLinks } from "@/components/nav-links";
+import { companyLinks, companyLinks2, productLinks } from "@/components/sections/navbar/nav-links";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 

@@ -2,16 +2,16 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { SERVICES } from "@/config/services";
 import { TextEffect } from "@/components/ui/text-effect";
-import { CallToAction } from "@/components/cta";
+import { CallToAction } from "@/components/sections/cta/cta";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/core/icons";
 import { Globe2, Zap, Shield, Gauge, ArrowRight } from "lucide-react";
-import { BoostRankingsBadge } from "@/components/boost-rankings-badge";
-import { productLinks } from "@/components/nav-links";
-import ServiceDashboard from "@/components/service-dashboard";
-import { MobilePerformanceShowcase } from "@/components/mobile-performance-showcase";
-import { ModernWordPressPerformance } from "@/components/modern-wordpress-performance";
+import { BoostRankingsBadge } from "@/components/sections/hero/boost-rankings-badge";
+import { productLinks } from "@/components/sections/navbar/nav-links";
+import ServiceDashboard from "@/components/sections/dashboard/service-dashboard";
+import { MobilePerformanceShowcase } from "@/components/sections/performance/mobile-performance-showcase";
+import { ModernWordPressPerformance } from "@/components/sections/performance/modern-wordpress-performance";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 
 export async function generateStaticParams() {

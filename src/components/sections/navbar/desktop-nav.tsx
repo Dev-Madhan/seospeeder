@@ -6,8 +6,8 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { companyLinks, companyLinks2, productLinks } from "@/components/nav-links";
-import { LinkItem } from "@/components/sheard";
+import { companyLinks, companyLinks2, productLinks } from "@/components/sections/navbar/nav-links";
+import { LinkItem } from "@/components/sections/navbar/shared";
 import Link from "next/link";
 import React from "react";
 import { Highlighter } from "@/components/ui/highlighter";

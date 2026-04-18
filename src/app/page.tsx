@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic"
 
-import HeroSection from "@/components/hero-section"
-import LogoCloud from "@/components/logo-cloud-2"
-import { ResultsSection } from "@/components/results-section"
+import HeroSection from "@/components/sections/hero/hero-section"
+import LogoCloud from "@/components/sections/logos/logo-cloud-2"
+import { ResultsSection } from "@/components/sections/results/results-section"
 
-const FeatureSection = dynamic(() => import("@/components/landing-lazy-sections").then(mod => mod.FeatureSection), { ssr: true })
-const ProvenSection = dynamic(() => import("@/components/proven-section").then(mod => mod.ProvenSection), { ssr: true })
-const EliteMlSection = dynamic(() => import("@/components/elite-ml-section").then(mod => mod.EliteMlSection), { ssr: true })
-const InteractiveAiWorkflow = dynamic(() => import("@/components/interactive-ai-workflow").then(mod => mod.InteractiveAiWorkflow), { ssr: true })
-const TestimonialSection = dynamic(() => import("@/components/shake-testimonial-card").then(mod => mod.TestimonialSection), { ssr: true })
-const FaqsSection = dynamic(() => import("@/components/faqs").then(mod => mod.FaqsSection), { ssr: true })
+const FeatureSection = dynamic(() => import("@/components/sections/landing-lazy-sections").then(mod => mod.FeatureSection), { ssr: true })
+const ProvenSection = dynamic(() => import("@/components/sections/proven/proven-section").then(mod => mod.ProvenSection), { ssr: true })
+const EliteMlSection = dynamic(() => import("@/components/sections/elite-ml/elite-ml-section").then(mod => mod.EliteMlSection), { ssr: true })
+const InteractiveAiWorkflow = dynamic(() => import("@/components/sections/workflow/interactive-ai-workflow").then(mod => mod.InteractiveAiWorkflow), { ssr: true })
+const TestimonialSection = dynamic(() => import("@/components/sections/testimonials/shake-testimonial-card").then(mod => mod.TestimonialSection), { ssr: true })
+const FaqsSection = dynamic(() => import("@/components/sections/faqs/faqs").then(mod => mod.FaqsSection), { ssr: true })
 
 export default function Home() {
   return (
