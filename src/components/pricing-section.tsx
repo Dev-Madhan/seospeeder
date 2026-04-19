@@ -281,7 +281,7 @@ export function PricingSection() {
 	const [activeCategory, setActiveCategory] = React.useState("seo");
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const [introFinished, setIntroFinished] = React.useState(false);
-	
+
 	useGSAP(() => {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -299,7 +299,7 @@ export function PricingSection() {
 			stagger: 0.15,
 			ease: "power3.out"
 		})
-		.call(() => setIntroFinished(true), [], "-=0.4");
+			.call(() => setIntroFinished(true), [], "-=0.4");
 	}, { scope: containerRef });
 
 	const categories = [
@@ -312,18 +312,17 @@ export function PricingSection() {
 	const currentPlans = pricingData[activeCategory] || [];
 
 	return (
-		<div 
+		<div
 			ref={containerRef}
 			className="relative flex w-full flex-col items-center justify-center space-y-7 p-4 font-inter pt-10"
 		>
 			<div className="w-full h-[1px] bg-gradient-to-r from-transparent via-border to-transparent origin-center absolute top-0 left-0" />
 			<div className="mx-auto max-w-xl space-y-5">
 				<h2 className="gsap-fade-up text-center font-primary font-bold text-2xl tracking-tight md:text-3xl lg:font-extrabold lg:text-4xl">
-					Plans that Scale with You
+					Plans That Scale With You
 				</h2>
 				<p className="gsap-fade-up text-center text-muted-foreground text-sm md:text-base">
-					Whether you're just starting out or growing fast, our flexible pricing
-					has you covered — with no hidden costs.
+					Whether you're just starting out or growing fast, our flexible pricing has you covered with no hidden costs.
 				</p>
 			</div>
 
@@ -337,24 +336,24 @@ export function PricingSection() {
 						{categories.map((cat) => {
 							const isActive = activeCategory === cat.id;
 
-						return (
-							<button
-								key={cat.id}
-								onClick={() => setActiveCategory(cat.id)}
-								className={cn(
-									"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 rounded-xl px-4 sm:px-6 text-sm transition-all duration-300 relative overflow-hidden group/btn font-inter",
-									isActive
-										? "font-semibold border-2 border-primary bg-primary hover:bg-primary/95 text-primary-foreground shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)]"
-										: "font-semibold border-2 border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
-								)}
-							>
-								{isActive && (
-									<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
-								)}
-								<span className="relative z-10 text-nowrap">{cat.label}</span>
-							</button>
-						);
-					})}
+							return (
+								<button
+									key={cat.id}
+									onClick={() => setActiveCategory(cat.id)}
+									className={cn(
+										"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 rounded-xl px-4 sm:px-6 text-sm transition-all duration-300 relative overflow-hidden group/btn font-inter",
+										isActive
+											? "font-semibold border-2 border-primary bg-primary hover:bg-primary/95 text-primary-foreground shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)]"
+											: "font-semibold border-2 border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
+									)}
+								>
+									{isActive && (
+										<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+									)}
+									<span className="relative z-10 text-nowrap">{cat.label}</span>
+								</button>
+							);
+						})}
 					</div>
 				</div>
 			</div>
@@ -459,7 +458,7 @@ export function PricingCard({
 									{Math.round(
 										((plan.price.monthly - plan.price.yearly) /
 											plan.price.monthly) *
-											100
+										100
 									)}
 									% off
 								</motion.div>
