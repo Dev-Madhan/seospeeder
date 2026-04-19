@@ -9,6 +9,7 @@ import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { BoostRankingsBadge } from "@/components/sections/hero/boost-rankings-badge";
 import { CallToAction } from "@/components/sections/cta/cta";
+import { PricingSection } from "@/components/pricing-section";
 
 interface OptimizationDetailProps {
 	title: string;
@@ -18,6 +19,7 @@ interface OptimizationDetailProps {
 	showButtons?: boolean;
 	showFeatures?: boolean;
 	showCTA?: boolean;
+	showPricing?: boolean;
 }
 
 const transitionVariants = {
@@ -58,7 +60,8 @@ export function OptimizationDetail({
 	iconName,
 	showButtons = true,
 	showFeatures = true,
-	showCTA = true
+	showCTA = true,
+	showPricing = false
 }: OptimizationDetailProps) {
 	const Icon = iconMap[iconName];
 
@@ -195,6 +198,12 @@ export function OptimizationDetail({
 								</motion.div>
 							))}
 						</div>
+					</section>
+				)}
+
+				{showPricing && (
+					<section className="relative mb-24">
+						<PricingSection />
 					</section>
 				)}
 

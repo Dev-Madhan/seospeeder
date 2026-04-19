@@ -12,6 +12,7 @@ export default function WordPressPage() {
       title=""
       description=""
       iconName="globe"
+      showPricing={true}
     />
   );
 }

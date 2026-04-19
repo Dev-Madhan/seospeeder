@@ -13,6 +13,7 @@ import ServiceDashboard from "@/components/sections/dashboard/service-dashboard"
 import { MobilePerformanceShowcase } from "@/components/sections/performance/mobile-performance-showcase";
 import { ModernWordPressPerformance } from "@/components/sections/performance/modern-wordpress-performance";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import { PricingSection } from "@/components/pricing-section";
 
 export async function generateStaticParams() {
   return SERVICES.map((service) => ({
@@ -168,6 +169,15 @@ export default async function ServicePage({
         <div className="w-full overflow-x-hidden">
           <div className="border-t border-neutral-200 dark:border-white/5 pt-12 md:pt-20 pb-12 md:pb-20">
             <MobilePerformanceShowcase />
+          </div>
+        </div>
+      )}
+
+      {/* Pricing Section */}
+      {slug === "wordpress" && (
+        <div className="w-full overflow-x-hidden">
+          <div className="border-t border-neutral-200 dark:border-white/5 pt-12 md:pt-20 pb-12 md:pb-20">
+            <PricingSection />
           </div>
         </div>
       )}
