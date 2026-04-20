@@ -107,7 +107,6 @@
   }
 }
 
-
 /* Safari / iOS rendering fixes */
 @supports (-webkit-touch-callout: none) {
   /* Ensure backdrop-filter works on iOS Safari */
