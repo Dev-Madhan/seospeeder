@@ -78,11 +78,11 @@ export function ShopifyPerformanceShowcase() {
       <div className="absolute inset-y-0 left-0 z-10 w-4 md:w-32 bg-gradient-to-r from-background to-transparent pointer-events-none" />
       <div className="absolute inset-y-0 right-0 z-10 w-4 md:w-32 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
-      <Marquee duration={60} direction="left" repeat={2} className="py-4 [--gap:1.5rem]">
+      <Marquee direction="left" repeat={2} className="py-4 [--gap:1.5rem] [--duration:40s] md:[--duration:60s]">
         {[1, 2, 3, 4, 5, 6].map((num) => (
           <div
             key={num}
-            className="marquee-card-1 group/card relative w-[300px] sm:w-[380px] aspect-[16/10] rounded-lg border-2 border-border/50 overflow-hidden shadow-lg shadow-black/5 transition-all duration-500"
+            className="marquee-card-1 shrink-0 group/card relative w-[300px] sm:w-[380px] aspect-[16/10] rounded-lg border-2 border-border/50 overflow-hidden shadow-lg shadow-black/5 transition-all duration-500"
           >
             <Image
               src={`/assets/images/shopify-images/shopify-img (${num}).jpg`}
@@ -94,7 +94,7 @@ export function ShopifyPerformanceShowcase() {
             />
 
             {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover/card:opacity-100 backdrop-blur-[2px] transition-all duration-500 flex flex-col items-center justify-center p-6 text-white translate-y-4 group-hover/card:translate-y-0 font-inter">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 text-white translate-y-4 group-hover/card:translate-y-0 font-inter">
               <div className="flex flex-col items-center gap-2 mb-6">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00ff9d]">Performance</span>
                 <div className="flex items-center gap-6">
@@ -138,11 +138,11 @@ export function ShopifyPerformanceShowcase() {
       </Marquee>
 
       <div className="hidden md:block">
-        <Marquee duration={60} direction="right" repeat={2} className="py-4 [--gap:1.5rem]">
+        <Marquee direction="right" repeat={2} className="py-4 [--gap:1.5rem] [--duration:40s] md:[--duration:60s]">
           {[7, 8, 9, 10, 11, 12].map((num) => (
             <div
               key={num}
-              className="marquee-card-2 group/card relative w-[300px] sm:w-[380px] aspect-[16/10] rounded-lg border-2 border-border/50 overflow-hidden shadow-lg shadow-black/5 transition-all duration-500"
+              className="marquee-card-2 shrink-0 group/card relative w-[300px] sm:w-[380px] aspect-[16/10] rounded-lg border-2 border-border/50 overflow-hidden shadow-lg shadow-black/5 transition-all duration-500"
             >
               <Image
                 src={`/assets/images/shopify-images/shopify-img (${num}).jpg`}
@@ -153,7 +153,7 @@ export function ShopifyPerformanceShowcase() {
               />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover/card:opacity-100 backdrop-blur-[2px] transition-all duration-500 flex flex-col items-center justify-center p-6 text-white translate-y-4 group-hover/card:translate-y-0 font-inter">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 text-white translate-y-4 group-hover/card:translate-y-0 font-inter">
                 <div className="flex flex-col items-center gap-2 mb-6">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00ff9d]">Performance</span>
                   <div className="flex items-center gap-6">

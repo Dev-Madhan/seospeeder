@@ -108,18 +108,18 @@ const config = {
   			},
   			'marquee-left': {
   				from: {
-  					transform: 'translateX(0)'
+  					transform: 'translate3d(0, 0, 0)'
   				},
   				to: {
-  					transform: 'translateX(calc(-100% - var(--gap)))'
+  					transform: 'translate3d(calc(-100% - var(--gap)), 0, 0)'
   				}
   			},
   			'marquee-right': {
   				from: {
-  					transform: 'translateX(calc(-100% - var(--gap)))'
+  					transform: 'translate3d(calc(-100% - var(--gap)), 0, 0)'
   				},
   				to: {
-  					transform: 'translateX(0)'
+  					transform: 'translate3d(0, 0, 0)'
   				}
   			}
   		},

@@ -4,7 +4,7 @@ export function Marquee({
   children,
   direction = "left",
   repeat = 4,
-  duration = 60,
+  duration,
   className,
   ...props
 }: {
@@ -21,17 +21,17 @@ export function Marquee({
         "group flex [gap:var(--gap)] overflow-hidden [--gap:1rem]",
         className
       )}
-      style={{ "--duration": `${duration}s` } as React.CSSProperties}
+      style={duration ? { "--duration": `${duration}s` } as React.CSSProperties : undefined}
     >
       {Array(repeat)
         .fill(0)
         .map((_, i) => (
           <div
             key={i}
-            className={cn("flex shrink-0 justify-around [gap:var(--gap)] will-change-transform", {
+            className={cn("flex shrink-0 justify-around [gap:var(--gap)] will-change-transform transform-gpu", {
               "animate-marquee-left": direction === "left",
               "animate-marquee-right": direction === "right",
-              "md:group-hover:[animation-play-state:paused]": true,
+              "group-hover:[animation-play-state:paused]": true,
             })}
           >
             {children}

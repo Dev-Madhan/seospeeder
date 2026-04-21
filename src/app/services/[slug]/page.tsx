@@ -18,6 +18,8 @@ import { PricingSection } from "@/components/pricing-section";
 import { Marquee } from "@/components/ui/marquee";
 import { Card } from "@/components/ui/card";
 import { ShopifyPerformanceShowcase } from "@/components/sections/performance/shopify-performance-showcase";
+import { ShopifyLiveMetrics } from "@/components/sections/performance/shopify-live-metrics";
+import { ShopifyAutomatedOptimization } from "@/components/sections/performance/shopify-automated-optimization";
 
 
 export async function generateStaticParams() {
@@ -52,7 +54,7 @@ export default async function ServicePage({
               preset="fade-in-blur"
               speedSegment={0.3}
               as="h1"
-              className="mx-auto mt-6 md:mt-8 max-w-5xl text-balance text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] text-center text-[#0A0A0A] dark:text-neutral-100"
+              className="mx-auto mt-6 md:mt-8 max-w-5xl text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-center text-[#0A0A0A] dark:text-neutral-100"
             >
               {(service as any).heroHeadline || `${service.title} Performance Perfected.`}
             </TextEffect>
@@ -66,7 +68,7 @@ export default async function ServicePage({
               as="p"
               className="mx-auto mt-6 md:mt-6 max-w-2xl text-balance text-xs md:text-base text-muted-foreground opacity-90 font-inter font-medium"
             >
-              {(service as any).heroDescription || `Specialised speed optimization for ${service.title} sites. We eliminate performance bottlenecks to deliver lightning-fast load times and Grade A rankings guaranteed.`}
+              {(service as any).heroDescription || `Specialised speed optimization for ${service.title} sites. We eliminate performance bottlenecks for lightning-fast load times.`}
             </TextEffect>
 
             {/* Global Actions - Swapped Variants */}
@@ -178,16 +180,34 @@ export default async function ServicePage({
       {/* Mobile Performance Deep Dive */}
       {slug === "wordpress" && (
         <div className="w-full overflow-x-hidden">
-          <div className="border-t border-neutral-200 dark:border-white/5 pt-12 md:pt-20 pb-12 md:pb-20">
+          <div className="pt-12 md:pt-20 pb-12 md:pb-20">
             <MobilePerformanceShowcase />
           </div>
         </div>
       )}
 
-      {/* Pricing Section */}
-      {slug === "wordpress" && (
+      {/* Shopify Live Metrics */}
+      {slug === "shopify" && (
         <div className="w-full overflow-x-hidden">
-          <div className="border-t border-neutral-200 dark:border-white/5 pt-12 md:pt-20 pb-12 md:pb-20">
+          <div>
+            <ShopifyLiveMetrics />
+          </div>
+        </div>
+      )}
+
+      {/* Shopify Automated Optimization */}
+      {slug === "shopify" && (
+        <div className="w-full overflow-x-hidden">
+          <div>
+            <ShopifyAutomatedOptimization />
+          </div>
+        </div>
+      )}
+
+      {/* Pricing Section */}
+      {(slug === "wordpress" || slug === "shopify") && (
+        <div className="w-full overflow-x-hidden">
+          <div className="pt-12 md:pt-20 pb-12 md:pb-20">
             <PricingSection />
           </div>
         </div>
@@ -196,7 +216,7 @@ export default async function ServicePage({
 
       {/* Final Site CTA */}
       {slug !== "wordpress" && (
-        <div className="mt-8 border-t border-border/40">
+        <div className="mt-8">
           <CallToAction />
         </div>
       )}
