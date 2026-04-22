@@ -114,7 +114,7 @@ export function ShopifyAutomatedOptimization() {
 
                   {/* Icon */}
                   <div className="flex items-center justify-center text-primary transition-colors duration-500 ease-in-out shrink-0 relative z-10 group-hover/card:text-primary/80 mb-2">
-                    {React.cloneElement(feature.icon as React.ReactElement, {
+                    {React.cloneElement(feature.icon as React.ReactElement<{ className: string }>, {
                       className: "w-10 h-10 md:w-12 md:h-12 stroke-[1.2]",
                     })}
                   </div>
